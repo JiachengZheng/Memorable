@@ -1,0 +1,10 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'Memorable' do
+pod 'DateTools'
+pod 'SVProgressHUD'
+pod 'pop'
+pod 'SnapKit'
+pod 'RealmSwift'
+end
