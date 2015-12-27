@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import pop
 class JCDetailContentView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
@@ -40,5 +41,25 @@ class JCDetailContentView: UIView {
             make.bottom.equalTo(self.snp_bottom)
         }
 
+    }
+    
+    func ToggleAnimation(){
+        self.layer.pop_removeAllAnimations()
+        self.hidden = false
+        
+        let opacityAnim = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
+        opacityAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        opacityAnim.duration = 0.8
+        opacityAnim.fromValue = 0.2
+        opacityAnim.toValue = 1
+        self.layer.pop_addAnimation(opacityAnim, forKey: "opacityAnim")
+        
+        self.layer.addSpringAnimation(kPOPLayerScaleXY,
+            fromValue: NSValue.init(CGSize: CGSize(width: 0.5, height: 0.5)),
+            toValue: NSValue.init(CGSize: CGSize(width: 1, height: 1)),
+            bounds: 5,
+            speed: 1,
+            animKey: "scaleAnim"){ (pop, finish) -> Void in
+        }
     }
 }

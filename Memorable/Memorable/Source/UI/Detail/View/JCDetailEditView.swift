@@ -11,14 +11,14 @@ import UIKit
 let editViewHeight: CGFloat = 270
 let editViewExtentHeight: CGFloat = 60
 
-protocol JCDetailEditViewDelegate: NSObjectProtocol{
-    func didClickCancelBtn()
-    func didClickSaveBtn()
-}
+let editViewOriginY = (editViewExtentHeight + editViewHeight) * (-1)/2 - 10
+let editViewNormalY = (editViewExtentHeight + editViewHeight)/2 - editViewExtentHeight/2
 
 class JCDetailEditView: UIVisualEffectView {
 
-    weak var delegate: JCDetailEditViewDelegate?
+    var cancelActionBlock: (()->Void)?
+    var saveActionBlock: (()->Void)?
+    
     var tableView: UITableView!
     
     override init(effect: UIVisualEffect?) {
@@ -85,16 +85,16 @@ class JCDetailEditView: UIVisualEffectView {
         let bottomLine = CALayer()
         bottomLine.frame = CGRectMake((screenWidth - 25)/2, editViewHeight + editViewExtentHeight - 10, 25, 3)
         bottomLine.cornerRadius = 2
-        bottomLine.backgroundColor = UIColor.whiteColor().CGColor//UIColor.colorWithHex(0xa8a8a8).CGColor
+        bottomLine.backgroundColor = UIColor.whiteColor().CGColor
         self.layer.addSublayer(bottomLine)
     }
     
     func clickCancelBtn(){
-        self.delegate?.didClickCancelBtn()
+        cancelActionBlock?()
     }
     
     func clickSaveBtn(){
-        self.delegate?.didClickSaveBtn()
+        saveActionBlock?()
     }
     
     /*

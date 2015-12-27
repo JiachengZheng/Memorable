@@ -69,7 +69,7 @@ class JCDetailEditTableViewCell: UITableViewCell {
             }else{
                 nameTF = UITextField()
                 nameTF?.placeholder = "事件名"
-                nameTF?.font = UIFont.systemFontOfSize(13)
+                nameTF?.font = UIFont.systemFontOfSize(14)
                 nameTF?.adjustsFontSizeToFitWidth
                 nameTF?.textAlignment = .Right
                 nameTF?.textColor = ColorImportant()
@@ -82,7 +82,7 @@ class JCDetailEditTableViewCell: UITableViewCell {
                 timeLabel = UILabel()
                 timeLabel!.text = "00:00"
                 timeLabel?.textAlignment = .Right
-                timeLabel?.font = UIFont.systemFontOfSize(13)
+                timeLabel?.font = UIFont.systemFontOfSize(14)
                 timeLabel?.textColor = ColorImportant()
                 self.contentView.addSubview(timeLabel!)
             }
@@ -93,7 +93,7 @@ class JCDetailEditTableViewCell: UITableViewCell {
                 dateLabel = UILabel()
                 dateLabel!.text = "2015,12月25 周四"
                 dateLabel?.textAlignment = .Right
-                dateLabel?.font = UIFont.systemFontOfSize(13)
+                dateLabel?.font = UIFont.systemFontOfSize(14)
                 dateLabel?.textColor = ColorImportant()
                 self.contentView.addSubview(dateLabel!)
             }
@@ -104,7 +104,7 @@ class JCDetailEditTableViewCell: UITableViewCell {
                 typeLabel = UILabel()
                 typeLabel!.text = "分类"
                 typeLabel?.textAlignment = .Right
-                typeLabel?.font = UIFont.systemFontOfSize(13)
+                typeLabel?.font = UIFont.systemFontOfSize(14)
                 typeLabel?.textColor = ColorImportant()
                 self.contentView.addSubview(typeLabel!)
             }
@@ -150,11 +150,11 @@ class JCDetailEditTableViewCell: UITableViewCell {
 
         case .Type:
             typeLabel!.snp_makeConstraints(closure: { (make) -> Void in
-                make.right.equalTo(self).offset(-20)
+                make.right.equalTo(self).offset(-25)
                 make.centerY.equalTo(self)
             })
             arrowImage!.snp_makeConstraints(closure: { (make) -> Void in
-                make.right.equalTo(self).offset(-5)
+                make.right.equalTo(self).offset(-10)
                 make.centerY.equalTo(self)
             })
         case .Top:

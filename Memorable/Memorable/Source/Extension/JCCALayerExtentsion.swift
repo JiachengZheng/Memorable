@@ -10,6 +10,7 @@ import pop
 
 extension CALayer{
     func addSpringAnimation(propertyName:String ,fromValue: NSValue?,toValue: NSValue?,bounds: CGFloat,speed: CGFloat,animKey: String,completionBlock:((POPAnimation!, Bool) -> Void)!){
+        
         let anim = POPSpringAnimation(propertyNamed: propertyName)
         if let fromValue = fromValue{
             anim.fromValue = fromValue

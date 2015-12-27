@@ -8,11 +8,12 @@
 
 import UIKit
 import pop
-class JCMemorableDetailVCL: JCBaseVCL,JCDetailEditViewDelegate,UITextFieldDelegate {
+class JCMemorableDetailVCL: JCBaseVCL,UITextFieldDelegate {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     @IBOutlet weak var contentView: JCDetailContentView!
+    
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var themeBtn: UIButton!
@@ -24,13 +25,13 @@ class JCMemorableDetailVCL: JCBaseVCL,JCDetailEditViewDelegate,UITextFieldDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initUI()
+        initUI()
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.animationContentView()
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.performSelector("animationContentView", withObject: nil, afterDelay: 0.3)
     }
     
     //MARK: 点击事件
@@ -38,33 +39,47 @@ class JCMemorableDetailVCL: JCBaseVCL,JCDetailEditViewDelegate,UITextFieldDelega
         isEdit = !isEdit
         if let _ = editView{
         }else{
-            self.initEditView()
+            initEditView()
         }
-        let tap = UITapGestureRecognizer(target: self, action: "didClickCancelBtn")
+        let tap = UITapGestureRecognizer(target: self, action: "clickCancelBtn")
         backgroundImageView.addGestureRecognizer(tap)
-        self.animationEditView(isEdit)
+        animationEditView(isEdit)
     }
     
     @IBAction func clickShareBtn(sender: AnyObject) {
-        self.didClickCancelBtn()
+        clickCancelBtn()
     }
     
     @IBAction func clickThemeBtn(sender: AnyObject) {
-        self.didClickCancelBtn()
+        clickCancelBtn()
+    }
+    
+    func clickCancelBtn(){
+        if !isEdit{
+            return
+        }
+        isEdit = false
+        animationEditView(isEdit)
+    }
+    
+    func clickSaveBtn(){
+        clickCancelBtn()
     }
     
     //MARK:动画处理
-    func animationEditView(show: Bool,upValue: CGFloat = (editViewExtentHeight + editViewHeight) * (-1)/2 - 10,downValue: CGFloat = (editViewExtentHeight + editViewHeight)/2 - editViewExtentHeight/2,speed: CGFloat = 16){
+    func animationEditView(show: Bool,fromValue: CGFloat = editViewOriginY,toValue: CGFloat = editViewNormalY,speed: CGFloat = 16){
+        
         isEditVeiwAnimation = true
         if show{
             UIApplication.sharedApplication().statusBarStyle = .Default
         }else{
+            NSNotificationCenter.defaultCenter().postNotificationName(EditViewDisappearNotification, object: nil)
             UIApplication.sharedApplication().statusBarStyle = .LightContent
         }
         
-        var tuple = (upValue,downValue)
+        var tuple = (fromValue,toValue)
         if !show{
-            tuple = (downValue,upValue)
+            tuple = (toValue,fromValue)
         }
         editView?.layer.pop_removeAllAnimations()
         editView!.layer.addSpringAnimation(kPOPLayerPositionY,
@@ -80,14 +95,7 @@ class JCMemorableDetailVCL: JCBaseVCL,JCDetailEditViewDelegate,UITextFieldDelega
     }
     
     func animationContentView(){
-        contentView.layer.pop_removeAllAnimations()
-        contentView.hidden = false
-        let opacityAnim = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
-        opacityAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        opacityAnim.duration = 0.8
-        opacityAnim.fromValue = 0.2
-        opacityAnim.toValue = 1
-        contentView.layer.pop_addAnimation(opacityAnim, forKey: "opacityAnim")
+        contentView.ToggleAnimation()
     }
     
     //MARK: 初始化UI
@@ -130,13 +138,17 @@ class JCMemorableDetailVCL: JCBaseVCL,JCDetailEditViewDelegate,UITextFieldDelega
     func initEditView(){
         let effect = UIBlurEffect(style: .ExtraLight)
         editView = JCDetailEditView(effect: effect)
-        editView!.delegate = self
         editView!.tableView.delegate = self
         editView!.tableView.dataSource = self
+        editView!.saveActionBlock = {[weak self] in
+            self?.clickSaveBtn()
+        }
+        editView!.cancelActionBlock = { [weak self] in
+            self?.clickCancelBtn()
+        }
         self.view.addSubview(editView!)
         editView!.frame = CGRectMake(0, (-1.0)*(editViewHeight+editViewExtentHeight), screenWidth, editViewHeight + editViewExtentHeight)
         let pan = UIPanGestureRecognizer(target: self, action: "panEditView:")
-        editView?.addGestureRecognizer(pan)
         backgroundImageView?.addGestureRecognizer(pan)
     }
     
@@ -153,7 +165,7 @@ class JCMemorableDetailVCL: JCBaseVCL,JCDetailEditViewDelegate,UITextFieldDelega
             let changeY = translation.y - editViewExtentHeight/2
             if changeY < 0{
                 UIView.animateWithDuration(0.05, animations: {[weak self] () -> Void in
-                    self?.editView!.frame = CGRectMake(0, changeY , (self?.editView!.width)!, (self?.editView!.height)!)
+                    self?.editView!.frame = CGRectMake(0, changeY , screenWidth, editViewExtentHeight + editViewHeight)
                     })
             }
             
@@ -166,28 +178,14 @@ class JCMemorableDetailVCL: JCBaseVCL,JCDetailEditViewDelegate,UITextFieldDelega
             
             if translation.y > 0{
                 isEdit = true
-                self.animationEditView(isEdit,upValue:y ,speed: 4)
+                animationEditView(isEdit,fromValue:y ,speed: 4)
             }else{
                 isEdit = false
-                self.animationEditView(isEdit,downValue: y,speed: 3)
+                animationEditView(isEdit,toValue: y,speed: 3)
             }
             
         }
         
-    }
-
-    //MARK:  JCDetailEditViewDelegate
-    func didClickCancelBtn(){
-        if !isEdit{
-            return
-        }
-        isEdit = false
-        NSNotificationCenter.defaultCenter().postNotificationName(EditViewDisappearNotification, object: nil)
-        self.animationEditView(isEdit)
-    }
-    
-    func didClickSaveBtn(){
-        self.didClickCancelBtn()
     }
     
     //MARK: UITextFieldDelegate
@@ -195,9 +193,6 @@ class JCMemorableDetailVCL: JCBaseVCL,JCDetailEditViewDelegate,UITextFieldDelega
         textField.resignFirstResponder()
         return true
     }
-
-    
-    
 
     /*
     // MARK: - Navigation
