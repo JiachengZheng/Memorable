@@ -43,7 +43,7 @@ class JCDetailContentView: UIView {
 
     }
     
-    func ToggleAnimation(){
+    func toggleAnimation(){
         self.layer.pop_removeAllAnimations()
         self.hidden = false
         

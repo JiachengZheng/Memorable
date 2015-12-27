@@ -95,7 +95,7 @@ class JCMemorableDetailVCL: JCBaseVCL,UITextFieldDelegate {
     }
     
     func animationContentView(){
-        contentView.ToggleAnimation()
+        contentView.toggleAnimation()
     }
     
     //MARK: 初始化UI
@@ -183,9 +183,7 @@ class JCMemorableDetailVCL: JCBaseVCL,UITextFieldDelegate {
                 isEdit = false
                 animationEditView(isEdit,toValue: y,speed: 3)
             }
-            
         }
-        
     }
     
     //MARK: UITextFieldDelegate

@@ -31,7 +31,7 @@ class JCDetailEditView: UIVisualEffectView {
     }
     
     func initUI(){
-        let cancelBtn = UIButton(type: .System)
+        let cancelBtn = JCBaseButton(type: .Custom)
         cancelBtn.setTitle("取消", forState: .Normal)
         cancelBtn.titleLabel?.font = UIFont.systemFontOfSize(16)
         self.contentView.addSubview(cancelBtn)
@@ -43,7 +43,7 @@ class JCDetailEditView: UIVisualEffectView {
             make.top.equalTo(self.snp_top).offset(20+editViewExtentHeight/2)
         }
         
-        let saveBtn = UIButton(type: .System)
+        let saveBtn = JCBaseButton(type: .Custom)
         saveBtn.setTitle("保存", forState: .Normal)
         saveBtn.titleLabel?.font = UIFont.systemFontOfSize(16)
         self.contentView.addSubview(saveBtn)

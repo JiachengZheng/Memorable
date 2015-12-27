@@ -24,6 +24,7 @@
 		0BBB36E41C2D1698008795A6 /* JCBaseVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB36E31C2D1698008795A6 /* JCBaseVCL.swift */; };
 		0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB36E51C2D16A9008795A6 /* JCBaseModel.swift */; };
 		0BBB36F21C2D1788008795A6 /* JCMemorableDetailVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB36ED1C2D1788008795A6 /* JCMemorableDetailVCL.swift */; };
+		0BE7F1791C2FC6960060B3C1 /* JCBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE7F1781C2FC6960060B3C1 /* JCBaseButton.swift */; };
 		7B45C0656F19ACE7465657B1 /* Pods_Memorable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12473F0AA30B59C2A1BA112 /* Pods_Memorable.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		0BBB36E31C2D1698008795A6 /* JCBaseVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBaseVCL.swift; sourceTree = "<group>"; };
 		0BBB36E51C2D16A9008795A6 /* JCBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBaseModel.swift; sourceTree = "<group>"; };
 		0BBB36ED1C2D1788008795A6 /* JCMemorableDetailVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCMemorableDetailVCL.swift; sourceTree = "<group>"; };
+		0BE7F1781C2FC6960060B3C1 /* JCBaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBaseButton.swift; sourceTree = "<group>"; };
 		5821D56AB1879AEB5BC44BE3 /* Pods-Memorable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memorable.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Memorable/Pods-Memorable.debug.xcconfig"; sourceTree = "<group>"; };
 		A12473F0AA30B59C2A1BA112 /* Pods_Memorable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memorable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA350435C4584019A31FB9C8 /* Pods-Memorable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memorable.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memorable/Pods-Memorable.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		0BBB36E21C2D1681008795A6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0BE7F1781C2FC6960060B3C1 /* JCBaseButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				0B9067D91C2D4EDA0047FE4E /* JCMemorableDetailModel.swift in Sources */,
 				0B8BE26B1C2EC1BE00E59F1C /* JCUIViewExtension.swift in Sources */,
 				0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */,
+				0BE7F1791C2FC6960060B3C1 /* JCBaseButton.swift in Sources */,
 				0BBB36E41C2D1698008795A6 /* JCBaseVCL.swift in Sources */,
 				0BBB36CC1C2CE668008795A6 /* Memorable.xcdatamodeld in Sources */,
 				0B9067D71C2D44CC0047FE4E /* JCDetailContentView.swift in Sources */,

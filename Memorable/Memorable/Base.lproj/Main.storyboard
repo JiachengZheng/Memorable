@@ -83,36 +83,36 @@
                                     <outlet property="titleLabel" destination="M3l-gj-Ppg" id="fAo-qq-Oee"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="m2V-rx-cv4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="m2V-rx-cv4" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
                                 <rect key="frame" x="18" y="16" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="-15" minY="-10" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="menu_btn"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Pv-Mv-Etu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Pv-Mv-Etu" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
                                 <rect key="frame" x="281" y="20" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="10" minY="-10" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="edit_btn"/>
                                 <connections>
-                                    <action selector="clickEditBtn:" destination="tWA-bb-NfQ" eventType="touchUpInside" id="WP5-Y3-eNs"/>
+                                    <action selector="clickEditBtn:" destination="tWA-bb-NfQ" eventType="touchUpInside" id="1Lo-uH-8iZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bZi-ht-tOA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bZi-ht-tOA" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
                                 <rect key="frame" x="6" y="526" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="theme_btn"/>
                                 <connections>
-                                    <action selector="clickThemeBtn:" destination="tWA-bb-NfQ" eventType="touchUpInside" id="jOf-3J-8uo"/>
+                                    <action selector="clickThemeBtn:" destination="tWA-bb-NfQ" eventType="touchUpInside" id="nwt-IJ-IZL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bU3-O4-4CR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bU3-O4-4CR" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
                                 <rect key="frame" x="281" y="526" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="share_btn"/>
                                 <connections>
-                                    <action selector="clickShareBtn:" destination="tWA-bb-NfQ" eventType="touchUpInside" id="Ic9-Zl-nbk"/>
+                                    <action selector="clickShareBtn:" destination="tWA-bb-NfQ" eventType="touchUpInside" id="eah-5p-Zor"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -122,10 +122,10 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="phT-rG-dLb" id="OC7-oO-a3t"/>
                         <outlet property="contentView" destination="QkY-lO-6xY" id="7eU-CR-aWr"/>
-                        <outlet property="editBtn" destination="4Pv-Mv-Etu" id="aB7-s7-a6z"/>
-                        <outlet property="menuBtn" destination="m2V-rx-cv4" id="t84-Kl-mA5"/>
-                        <outlet property="shareBtn" destination="bU3-O4-4CR" id="Bdh-zn-2Pr"/>
-                        <outlet property="themeBtn" destination="bZi-ht-tOA" id="XL8-RS-mL5"/>
+                        <outlet property="editBtn" destination="4Pv-Mv-Etu" id="glo-vK-gAx"/>
+                        <outlet property="menuBtn" destination="m2V-rx-cv4" id="yTA-fg-fW1"/>
+                        <outlet property="shareBtn" destination="bU3-O4-4CR" id="gqK-Wd-gTC"/>
+                        <outlet property="themeBtn" destination="bZi-ht-tOA" id="prn-nt-PLr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctx-ms-AJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
