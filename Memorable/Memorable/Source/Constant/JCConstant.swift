@@ -15,3 +15,24 @@ let iphone6Height: CGFloat = 667
 let iphone6pHeight: CGFloat = 736
 let screenWidth = UIScreen.mainScreen().bounds.width
 let screenHeight = UIScreen.mainScreen().bounds.height
+
+/// 顶部title文字，重要文字
+func ColorImportant() -> UIColor {
+    return UIColor.colorWithHex(0x27272f)
+}
+
+/// 辅助文字，次要信息
+func ColorSecondary() -> UIColor {
+    return UIColor.colorWithHex(0x545c66)
+}
+
+/// 助文字，次要信息2
+func ColorSecondary2() -> UIColor {
+    return UIColor.colorWithHex(0x9d9d9d)
+}
+
+/// 最弱的文字描述
+func ColorMinor() -> UIColor {
+    return UIColor.colorWithHex(0xbebebe)
+}
+

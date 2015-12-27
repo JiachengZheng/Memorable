@@ -30,3 +30,22 @@ func isIphone6p() -> Bool{
     return screenHeight == iphone6pHeight
 }
 
+func ImageWithColor (color:UIColor, bounds:CGRect) -> UIImage? {
+    let rect:CGRect = bounds;
+    UIGraphicsBeginImageContext(rect.size);
+    let context:CGContextRef? = UIGraphicsGetCurrentContext()
+    
+    if let context1 = context {
+        CGContextSetFillColorWithColor(context1, color.CGColor);
+        CGContextFillRect(context, rect);
+        
+        let image:UIImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return image
+    }
+    
+    return nil
+}
+
+

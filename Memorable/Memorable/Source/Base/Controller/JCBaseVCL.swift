@@ -26,6 +26,11 @@ class JCBaseVCL: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func loadViewController(name: String) -> JCBaseVCL{
+        let storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        return storyBoard.instantiateViewControllerWithIdentifier(name) as! JCBaseVCL
+    }
+    
 
     /*
     // MARK: - Navigation

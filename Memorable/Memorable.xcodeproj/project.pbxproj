@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B8BE2651C2EB01A00E59F1C /* JCDetailEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2641C2EB01A00E59F1C /* JCDetailEditView.swift */; };
+		0B8BE2671C2EBC8400E59F1C /* JCDetailEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2661C2EBC8400E59F1C /* JCDetailEditTableViewCell.swift */; };
+		0B8BE2691C2EC16D00E59F1C /* JCColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2681C2EC16D00E59F1C /* JCColorExtension.swift */; };
+		0B8BE26B1C2EC1BE00E59F1C /* JCUIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE26A1C2EC1BE00E59F1C /* JCUIViewExtension.swift */; };
 		0B9067D01C2D2D270047FE4E /* JCUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9067CF1C2D2D270047FE4E /* JCUtility.swift */; };
-		0B9067D31C2D31890047FE4E /* JCExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9067D21C2D31890047FE4E /* JCExtentsion.swift */; };
+		0B9067D31C2D31890047FE4E /* JCCALayerExtentsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9067D21C2D31890047FE4E /* JCCALayerExtentsion.swift */; };
 		0B9067D51C2D386C0047FE4E /* JCConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9067D41C2D386C0047FE4E /* JCConstant.swift */; };
 		0B9067D71C2D44CC0047FE4E /* JCDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9067D61C2D44CC0047FE4E /* JCDetailContentView.swift */; };
 		0B9067D91C2D4EDA0047FE4E /* JCMemorableDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9067D81C2D4EDA0047FE4E /* JCMemorableDetailModel.swift */; };
@@ -24,8 +28,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B8BE2641C2EB01A00E59F1C /* JCDetailEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCDetailEditView.swift; sourceTree = "<group>"; };
+		0B8BE2661C2EBC8400E59F1C /* JCDetailEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCDetailEditTableViewCell.swift; sourceTree = "<group>"; };
+		0B8BE2681C2EC16D00E59F1C /* JCColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCColorExtension.swift; sourceTree = "<group>"; };
+		0B8BE26A1C2EC1BE00E59F1C /* JCUIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCUIViewExtension.swift; sourceTree = "<group>"; };
 		0B9067CF1C2D2D270047FE4E /* JCUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCUtility.swift; sourceTree = "<group>"; };
-		0B9067D21C2D31890047FE4E /* JCExtentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCExtentsion.swift; sourceTree = "<group>"; };
+		0B9067D21C2D31890047FE4E /* JCCALayerExtentsion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCCALayerExtentsion.swift; sourceTree = "<group>"; };
 		0B9067D41C2D386C0047FE4E /* JCConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCConstant.swift; sourceTree = "<group>"; };
 		0B9067D61C2D44CC0047FE4E /* JCDetailContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCDetailContentView.swift; sourceTree = "<group>"; };
 		0B9067D81C2D4EDA0047FE4E /* JCMemorableDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCMemorableDetailModel.swift; sourceTree = "<group>"; };
@@ -59,7 +67,9 @@
 		0B9067D11C2D2E180047FE4E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0B9067D21C2D31890047FE4E /* JCExtentsion.swift */,
+				0B9067D21C2D31890047FE4E /* JCCALayerExtentsion.swift */,
+				0B8BE2681C2EC16D00E59F1C /* JCColorExtension.swift */,
+				0B8BE26A1C2EC1BE00E59F1C /* JCUIViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -213,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				0B9067D61C2D44CC0047FE4E /* JCDetailContentView.swift */,
+				0B8BE2641C2EB01A00E59F1C /* JCDetailEditView.swift */,
+				0B8BE2661C2EBC8400E59F1C /* JCDetailEditTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,15 +383,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BBB36F21C2D1788008795A6 /* JCMemorableDetailVCL.swift in Sources */,
-				0B9067D31C2D31890047FE4E /* JCExtentsion.swift in Sources */,
+				0B9067D31C2D31890047FE4E /* JCCALayerExtentsion.swift in Sources */,
 				0B9067D51C2D386C0047FE4E /* JCConstant.swift in Sources */,
+				0B8BE2671C2EBC8400E59F1C /* JCDetailEditTableViewCell.swift in Sources */,
+				0B8BE2691C2EC16D00E59F1C /* JCColorExtension.swift in Sources */,
 				0BBB36C41C2CE667008795A6 /* AppDelegate.swift in Sources */,
 				0B9067D91C2D4EDA0047FE4E /* JCMemorableDetailModel.swift in Sources */,
+				0B8BE26B1C2EC1BE00E59F1C /* JCUIViewExtension.swift in Sources */,
 				0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */,
 				0BBB36E41C2D1698008795A6 /* JCBaseVCL.swift in Sources */,
 				0BBB36CC1C2CE668008795A6 /* Memorable.xcdatamodeld in Sources */,
 				0B9067D71C2D44CC0047FE4E /* JCDetailContentView.swift in Sources */,
 				0B9067D01C2D2D270047FE4E /* JCUtility.swift in Sources */,
+				0B8BE2651C2EB01A00E59F1C /* JCDetailEditView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -480,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -494,6 +510,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yuan jing (563MAQM6F6)";
 				INFOPLIST_FILE = Memorable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tuan800.tao800iphone.tao800;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -507,6 +524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Memorable/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tuan800.tao800iphone.tao800;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -37,7 +37,7 @@ class JCDetailContentView: UIView {
         }
         dateLabel.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(self)
-            make.top.equalTo(self.snp_bottom)
+            make.bottom.equalTo(self.snp_bottom)
         }
 
     }
