@@ -8,6 +8,10 @@
 
 import UIKit
 import CoreData
+import RealmSwift
+
+let eventRealm = try! Realm()
+let eventManager = JCEventManage()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        eventManager.addDefaultEvent()
         // Override point for customization after application launch.
         return true
     }

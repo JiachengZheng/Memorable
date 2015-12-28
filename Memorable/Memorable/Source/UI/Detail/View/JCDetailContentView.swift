@@ -16,16 +16,23 @@ class JCDetailContentView: UIView {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var subDaysLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        titleLabel.sizeToFit()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         titleLabel.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(self)
             make.top.equalTo(self)
+            make.width.equalTo(screenWidth)
         }
         subTitleLabel.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(self)
             make.top.equalTo(titleLabel.snp_bottom)
+            make.width.equalTo(screenWidth)
         }
         daysLabel.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(self)
@@ -39,6 +46,7 @@ class JCDetailContentView: UIView {
         dateLabel.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(self)
             make.bottom.equalTo(self.snp_bottom)
+            make.width.equalTo(screenWidth)
         }
 
     }
@@ -61,5 +69,13 @@ class JCDetailContentView: UIView {
             speed: 1,
             animKey: "scaleAnim"){ (pop, finish) -> Void in
         }
+    }
+    
+    func setupLable(name:String,date:String,time:String){
+        let totalDate = date + " " +  time
+        titleLabel.text = name
+        dateLabel.text = standardDateFormat(totalDate)
+        daysLabel.text = intervalTimeFromDate(totalDate).0
+        subDaysLabel.text = "天" + intervalTimeFromDate(totalDate).1 + "时" + intervalTimeFromDate(totalDate).2 + "分"
     }
 }

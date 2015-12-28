@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 class JCBaseVCL: UIViewController {
 
+    var model: JCBaseModel = JCBaseModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()

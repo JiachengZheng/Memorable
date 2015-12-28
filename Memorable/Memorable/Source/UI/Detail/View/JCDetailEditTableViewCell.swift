@@ -7,38 +7,22 @@
 //
 
 import UIKit
-
+import pop
 let EditViewDisappearNotification = "EditViewDisappearNotification"
 
-enum EditTableViewCellType: Int{
-    case Name,Date,Time,Type,Top
-    var description: String {
-        switch self{
-            case .Name: return "事件名"
-            case .Date: return "日期"
-            case .Time: return "时间"
-            case .Type: return "分类"
-            case .Top: return "置顶"
-        }
-    }
 
-}
 
-class JCDetailEditTableViewCell: UITableViewCell {
+class JCDetailEditTableViewCell: JCBaseTableViewCell {
 
     var nameTF: UITextField?
-    var type: EditTableViewCellType?
     var isTopSwitch: UISwitch?
-    var isTop: Bool = false
     var dateLabel: UILabel?
     var timeLabel: UILabel?
     var typeLabel: UILabel?
     var arrowImage: UIImageView?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        // Initialization code
+    override class func identifier() -> String {
+        return "\(JCDetailEditTableViewCell.self)"
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -55,15 +39,21 @@ class JCDetailEditTableViewCell: UITableViewCell {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "editViewDidDisappear", name: EditViewDisappearNotification, object: nil)
     }
     
-    convenience init(style: UITableViewCellStyle, reuseIdentifier: String?,type: EditTableViewCellType){
-        self.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.type = type
-        self.textLabel?.text = type.description
-        self.initUI(type)
+    override func setObject (obj: AnyObject?) {
+        super.setObject(obj)
+        guard let _ = obj,item = item as? JCDetailEditViewItem else{
+            return
+        }
+       
+        textLabel?.text = item.itemType.description
+        setupUI()
     }
 
-    func initUI(type: EditTableViewCellType){
-        switch type{
+    func setupUI(){
+        guard let item = item as? JCDetailEditViewItem else{
+            return
+        }
+        switch item.itemType{
         case .Name:
             if let _ = nameTF{
             }else{
@@ -76,33 +66,31 @@ class JCDetailEditTableViewCell: UITableViewCell {
                 nameTF?.returnKeyType = .Done
                 self.contentView.addSubview(nameTF!)
             }
+            nameTF!.text = item.text
         case .Time:
             if let _ = timeLabel{
             }else{
                 timeLabel = UILabel()
-                timeLabel!.text = "00:00"
                 timeLabel?.textAlignment = .Right
                 timeLabel?.font = UIFont.systemFontOfSize(14)
                 timeLabel?.textColor = ColorImportant()
                 self.contentView.addSubview(timeLabel!)
             }
-
+            timeLabel!.text = item.text
         case .Date:
             if let _ = dateLabel{
             }else{
                 dateLabel = UILabel()
-                dateLabel!.text = "2015,12月25 周四"
                 dateLabel?.textAlignment = .Right
                 dateLabel?.font = UIFont.systemFontOfSize(14)
                 dateLabel?.textColor = ColorImportant()
                 self.contentView.addSubview(dateLabel!)
             }
-            
+            dateLabel!.text = item.text
         case .Type:
             if let _ = typeLabel{
             }else{
                 typeLabel = UILabel()
-                typeLabel!.text = "分类"
                 typeLabel?.textAlignment = .Right
                 typeLabel?.font = UIFont.systemFontOfSize(14)
                 typeLabel?.textColor = ColorImportant()
@@ -113,21 +101,25 @@ class JCDetailEditTableViewCell: UITableViewCell {
                 arrowImage = UIImageView(image:UIImage(named: "edit_arrow"))
                 self.contentView.addSubview(arrowImage!)
             }
-            
+            typeLabel!.text = item.text
         case .Top:
             if let _ = isTopSwitch{
             }else{
                 isTopSwitch = UISwitch()
-                isTopSwitch?.on = isTop
+                
                 self.contentView.addSubview(isTopSwitch!)
             }
+            isTopSwitch?.on = item.isTop
         }
 
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        switch type!{
+        guard let item = item as? JCDetailEditViewItem else{
+            return
+        }
+        switch item.itemType{
         case .Name:
             nameTF!.snp_makeConstraints(closure: { (make) -> Void in
                 make.right.equalTo(self).offset(-10)
@@ -177,7 +169,6 @@ class JCDetailEditTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
