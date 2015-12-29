@@ -24,7 +24,8 @@ class JCEventManage {
         }
     }
     
-    func updateEvent(event: JCEvent) {
+    func updateEventWith(eventId:String ,eventName: String,eventDate: String,eventTime: String,eventType: String,eventIsTop: Bool) {
+        let event = JCEvent(value:[eventId,eventName,eventDate,eventTime,eventType,eventIsTop])
         let _ = try? eventRealm.write { () -> Void in
             eventRealm.add(event,update: true)
         }

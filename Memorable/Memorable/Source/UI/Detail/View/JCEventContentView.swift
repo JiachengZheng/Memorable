@@ -23,7 +23,6 @@ class JCEventContentView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         titleLabel.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(self)
             make.top.equalTo(self)
@@ -73,9 +72,57 @@ class JCEventContentView: UIView {
     
     func setupLable(name:String,date:String,time:String){
         let totalDate = date + " " +  time
+        if let d = strToDate(totalDate){
+            if d.isEarlierThan(NSDate()){
+                subTitleLabel.text = "过去已经"
+            }else{
+                subTitleLabel.text = "还有"
+            }
+        }
+       
         titleLabel.text = name
         dateLabel.text = standardDateFormat(totalDate)
         daysLabel.text = intervalTimeFromDate(totalDate).0
         subDaysLabel.text = "天" + intervalTimeFromDate(totalDate).1 + "时" + intervalTimeFromDate(totalDate).2 + "分"
+        updateDaysLabelFont()
     }
+    
+    func updateDaysLabelFont(){
+        if let text1 = daysLabel.text {
+            let text = text1 as NSString
+            var size: CGFloat = 72
+            if text.length == 5{
+            }else if (text1 as NSString).length == 4{
+                size = 90
+            }else if text.length == 3{
+                size = 100
+            }else if text.length == 2{
+                size = 120
+            }else if text.length == 1{
+                size = 135
+            }
+            
+            if isIphone5(){
+                size += 3
+            }
+            if isIphone6(){
+                size += 15
+            }
+            if isIphone6p(){
+                size += 25
+            }
+            daysLabel.font = UIFont(name: "Arial", size: size)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

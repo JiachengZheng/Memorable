@@ -41,7 +41,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天12时34分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="COs-1u-BmW">
                                         <rect key="frame" x="199" y="275" width="75" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -52,10 +52,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GXL-5A-qkO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="69" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GXL-5A-qkO">
                                         <rect key="frame" x="-140" y="110" width="600" height="256"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="176"/>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="125"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -115,6 +115,21 @@
                                     <action selector="clickShareBtn:" destination="tWA-bb-NfQ" eventType="touchUpInside" id="eah-5p-Zor"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" id="P0m-Fi-z6M">
+                                <rect key="frame" x="0.0" y="678" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <date key="date" timeIntervalSinceReferenceDate="473058741.84688997">
+                                    <!--2015-12-29 05:12:21 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-3187256743">
+                                    <!--1900-01-01 10:54:17 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="2208942000">
+                                    <!--2070-12-31 11:00:00 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="zh_CN"/>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="0.23711939102564106" green="0.23711939102564106" blue="0.23711939102564106" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -122,6 +137,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="phT-rG-dLb" id="OC7-oO-a3t"/>
                         <outlet property="contentView" destination="QkY-lO-6xY" id="7eU-CR-aWr"/>
+                        <outlet property="datePicker" destination="P0m-Fi-z6M" id="RA1-FK-4C3"/>
                         <outlet property="editBtn" destination="4Pv-Mv-Etu" id="glo-vK-gAx"/>
                         <outlet property="menuBtn" destination="m2V-rx-cv4" id="yTA-fg-fW1"/>
                         <outlet property="shareBtn" destination="bU3-O4-4CR" id="gqK-Wd-gTC"/>
@@ -131,28 +147,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctx-ms-AJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="62" y="134"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ax5-zS-XWR">
-            <objects>
-                <viewController id="OAW-q5-9rW" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ing-NL-A7C">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="5Sd-SR-9uR">
-                                <rect key="frame" x="141" y="237" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eo8-2L-2n4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="406" y="151"/>
         </scene>
     </scenes>
     <resources>

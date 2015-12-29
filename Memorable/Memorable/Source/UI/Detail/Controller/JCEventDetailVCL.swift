@@ -8,6 +8,7 @@
 
 import UIKit
 import pop
+
 class JCEventDetailVCL: JCBaseVCL {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -15,6 +16,7 @@ class JCEventDetailVCL: JCBaseVCL {
     @IBOutlet weak var contentView: JCEventContentView!
     
     @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var themeBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
@@ -23,23 +25,32 @@ class JCEventDetailVCL: JCBaseVCL {
     var editViewDataSource: JCEventEditViewDataSource!
     var editView: JCEventEditView?
     var isEdit: Bool = false
-    var pickerView: UIPickerView?
+    var timer: NSTimer!
     
     var eventName: String = ""
-    var eventDate: String?
-    var eventTime: String?
+    var eventDate: String = dateToStr(NSDate())
+    var eventTime: String = "00:00"
     var eventType: String?
     var eventIsTop: Bool?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "stopTimerWhenEnterForeground", name: applicationDidEnterBackgroundNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadWhenEnterForeground", name: applicationWillEnterForegroundNotification, object: nil)
+        
+    }
+    
+    func reloadWhenEnterForeground(){
+        timer.fireDate =  NSDate.distantPast()
+    }
+    
+    func stopTimerWhenEnterForeground(){
+        timer.fireDate =  NSDate.distantFuture()
     }
     
     //MARK: 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
-        //eventManager.addEvent(JCEvent(value:["1","周一","2015-12-28","00:00","分类",true]))
         initUI()
         loadModel()
         // Do any additional setup after loading the view.
@@ -47,7 +58,23 @@ class JCEventDetailVCL: JCBaseVCL {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        if !timer.valid{
+            timer.fireDate =  NSDate.distantPast()
+        }
         self.performSelector("animationContentView", withObject: nil, afterDelay: 0.3)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if timer.valid{
+            timer.fireDate =  NSDate.distantFuture()
+        }
+
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        timer.invalidate()
+        timer = nil
     }
     
     //MARK: 加载模型
@@ -60,13 +87,12 @@ class JCEventDetailVCL: JCBaseVCL {
         }
     }
     
-    //MARK: tableView
-    func setupEditTableView(){
+    func reloadEditTableView(){
         let model1 = self.model as! JCEventDetailModel
         guard let items = model1.editViewItem else{
             return
         }
-        editView!.tableView.registerClass(JCEventEditTableViewCell.self, forCellReuseIdentifier: "JCEventEditTableViewCell")
+
         editViewDataSource = JCEventEditViewDataSource(items:items)
         editView!.tableView.dataSource = editViewDataSource
         editView!.tableView.reloadData()
@@ -76,7 +102,7 @@ class JCEventDetailVCL: JCBaseVCL {
     @IBAction func clickEditBtn(sender: AnyObject) {
         isEdit = !isEdit
         if let _ = editView{
-            reloadEditView()
+            reloadEditView(nil)
         }else{
             initEditView()
         }
@@ -102,8 +128,8 @@ class JCEventDetailVCL: JCBaseVCL {
     }
     
     func clickSaveBtn(){
-        eventManager.updateEvent(JCEvent(value:["1",eventName,"2015-12-28","00:00","分类",true]))
-        contentView.setupLable(eventName, date: "2015-12-28", time: "00:00")
+        contentView.setupLable(eventName, date: eventDate, time: eventTime)
+        eventManager.updateEventWith("1",eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: "生活",eventIsTop: true)
         clickCancelBtn()
     }
     
@@ -121,6 +147,7 @@ class JCEventDetailVCL: JCBaseVCL {
         }else{
             NSNotificationCenter.defaultCenter().postNotificationName(EditViewDisappearNotification, object: nil)
             UIApplication.sharedApplication().statusBarStyle = .LightContent
+            showPickerView(false)
         }
         
         var tuple = (fromValue,toValue)
@@ -169,19 +196,24 @@ class JCEventDetailVCL: JCBaseVCL {
             make.bottom.equalTo(backgroundImageView).offset(-10)
             make.size.equalTo(menuBtn)
         }
+        datePicker.frame = CGRectMake(0, screenHeight, screenWidth, 216)
+        datePicker.backgroundColor = UIColor.whiteColor()
+        datePicker.addTarget(self, action: "datePickerChange:", forControlEvents: .ValueChanged)
         menuBtn.imageEdgeInsets = UIEdgeInsets(top: -10, left: -20, bottom: 0, right: 0)
         editBtn.imageEdgeInsets = UIEdgeInsets(top: -10, left: 20, bottom: 0, right: 0)
+        
     }
     
     func initContentView(){
         guard let model = self.model as? JCEventDetailModel else{
             return
         }
-
-        if let name = model.event?.name,let date = model.event?.date,let time = model.event?.time{
-            contentView.setupLable(name, date: date,time:time)
+        
+        if let name = model.event?.name{
             eventName = name
+            updateContentViewLabel()
         }
+        timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "updateContentViewLabel", userInfo: nil, repeats: true)
         
         contentView.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(backgroundImageView.snp_top).offset(getScaleValue(80))
@@ -197,7 +229,8 @@ class JCEventDetailVCL: JCBaseVCL {
         let effect = UIBlurEffect(style: .ExtraLight)
         editView = JCEventEditView(effect: effect)
         editView!.tableView.delegate = self
-        reloadEditView()
+        editView!.tableView.registerClass(JCEventEditTableViewCell.self, forCellReuseIdentifier: "JCEventEditTableViewCell")
+        reloadEditView(nil)
         editView!.saveActionBlock = {[weak self] in
             self?.clickSaveBtn()
         }
@@ -210,11 +243,56 @@ class JCEventDetailVCL: JCBaseVCL {
         backgroundImageView?.addGestureRecognizer(pan)
     }
     
-    func reloadEditView(){
+    func reloadEditView(parm:[String: AnyObject]?){
         let model1 = self.model as! JCEventDetailModel
-        model1.loadEditViewItem(nil, complete: {[weak self] (suc) -> Void in
-            self?.setupEditTableView()
+        model1.loadEditViewItem(parm, complete: {[weak self] (suc) -> Void in
+            self?.reloadEditTableView()
             }) { (fail ) -> Void in
+        }
+    }
+    
+    func updateContentViewLabel(){
+        guard let model = self.model as? JCEventDetailModel else{
+            return
+        }
+        
+        if let name = model.event?.name,let date = model.event?.date,let time = model.event?.time{
+            contentView.setupLable(name, date: date,time:time)
+        }
+    }
+    
+    func showPickerView(show: Bool){
+        if show{
+            setupPickerDate()
+        }
+        UIView.animateWithDuration(0.2, animations: {[weak self] () -> Void in
+            if let picker = self?.datePicker{
+                if show{
+                    let y = screenHeight - picker.height
+                    picker.frame = CGRectMake(0, y, screenWidth, picker.height)
+                }else{
+                    picker.frame = CGRectMake(0, screenHeight, screenWidth, picker.height)
+                }
+            }
+            }) { (finish) -> Void in
+        }
+    }
+    
+    func setupPickerDate(){
+        if let model = self.model as? JCEventDetailModel{
+            if datePicker.datePickerMode == .Date{
+                if let date = model.event?.date{
+                    if let str = strToDate(date,formatter: "yyyy-MM-dd"){
+                        datePicker.date = str
+                    }
+                }
+            }else{
+                if let date = model.event?.time{
+                    if let str = strToDate(date,formatter: "HH:mm"){
+                        datePicker.date = str
+                    }
+                }
+            }
         }
     }
     
@@ -252,11 +330,29 @@ class JCEventDetailVCL: JCBaseVCL {
         }
     }
     
+    //MARK: 监听textField
     func textFieldEditChanged(textField: UITextField){
         if let text = textField.text{
             eventName = text
         }
+        showPickerView(false)
     }
+    
+    //MARK: 监听 datePicker
+    func datePickerChange(picker: UIDatePicker){
+        let event: JCEvent!
+        if picker.datePickerMode == .Date{
+            eventDate = dateToStr(picker.date)
+            event = JCEvent(value:["1",eventName, eventDate,"00:00","生活",true])
+        }else{
+            eventTime = dateToStr(picker.date,formatter:"HH:mm")
+            event = JCEvent(value:["1",eventName,eventDate,eventTime,"生活",true])
+        }
+        
+        let dic: [String: AnyObject] = ["isEdit":true,"editEvent": event]
+        reloadEditView(dic)
+    }
+    
     
     /*
     // MARK: - Navigation
@@ -300,7 +396,19 @@ extension JCEventDetailVCL:UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
+        if indexPath == 0{
+            return
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName(EditViewDisappearNotification, object: nil)
+        if indexPath.row == 1{
+            datePicker.datePickerMode = .Date
+            showPickerView(true)
+        }else if indexPath.row == 2{
+            datePicker.datePickerMode = .Time
+            showPickerView(true)
+        }else if indexPath.row == 3{
+            
+        }
     }
 }
 

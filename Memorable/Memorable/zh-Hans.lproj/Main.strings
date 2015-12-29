@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "天12时34分"; ObjectID = "COs-1u-BmW"; */
+"COs-1u-BmW.text" = "天12时34分";
+
+/* Class = "UILabel"; text = "6"; ObjectID = "GXL-5A-qkO"; */
+"GXL-5A-qkO.text" = "6";
+
+/* Class = "UILabel"; text = "标题"; ObjectID = "M3l-gj-Ppg"; */
+"M3l-gj-Ppg.text" = "标题";
+
+/* Class = "UILabel"; text = "时间"; ObjectID = "Owv-dA-nM5"; */
+"Owv-dA-nM5.text" = "时间";
+
+/* Class = "UILabel"; text = "还有"; ObjectID = "T42-P0-YxN"; */
+"T42-P0-YxN.text" = "还有";

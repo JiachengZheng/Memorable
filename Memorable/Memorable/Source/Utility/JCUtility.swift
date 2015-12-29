@@ -30,7 +30,7 @@ func isIphone6p() -> Bool{
     return screenHeight == iphone6pHeight
 }
 
-func strToDate(str: String,formatter:String = "YYYY-MM-dd hh:mm") -> NSDate?{
+func strToDate(str: String,formatter:String = "yyyy-MM-dd HH:mm") -> NSDate?{
     let dateFormat = NSDateFormatter()
     dateFormat.timeZone = NSTimeZone.localTimeZone()
     dateFormat.dateFormat = formatter
@@ -42,11 +42,15 @@ func strToDate(str: String,formatter:String = "YYYY-MM-dd hh:mm") -> NSDate?{
     }
 }
 
-func dateToStr(date: NSDate,formatter:String = "YYYY-MM-dd") -> String{
+func dateToStr(date: NSDate,formatter:String = "yyyy-MM-dd") -> String{
     let dateFormat = NSDateFormatter()
+//    let zone = NSTimeZone.localTimeZone()
+//    let interval = zone.secondsFromGMTForDate(date)
+//    let newDate = date.dateByAddingSeconds(interval)
     dateFormat.timeZone = NSTimeZone.localTimeZone()
     dateFormat.dateFormat = formatter
-    return dateFormat.stringFromDate(date)
+    let str = dateFormat.stringFromDate(date)
+    return str
 }
 
 func getRecentSaturday()-> String{
@@ -77,7 +81,7 @@ func standardDateFormat(str:String) -> String{
 }
 
 func intervalTimeFromDate(str :String) -> (String,String,String){
-    let date1 = strToDate(str,formatter: "YYYY-MM-dd hh:mm")
+    let date1 = strToDate(str,formatter: "yyyy-MM-dd HH:mm")
     guard let date = date1 else{
         return ("","","")
     }
@@ -116,5 +120,26 @@ func ImageWithColor (color:UIColor, bounds:CGRect) -> UIImage? {
     
     return nil
 }
+
+func caculateLableSize(labelText: NSString,
+    width: Float = MAXFLOAT,
+    height: Float = MAXFLOAT,
+    textAttributes: [String : AnyObject]) -> CGSize {
+    return labelText.boundingRectWithSize(
+            CGSizeMake(CGFloat(width), CGFloat(height)),
+            options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+        attributes:textAttributes , context: nil).size
+        
+        
+}
+
+
+
+
+
+
+
+
+
 
 

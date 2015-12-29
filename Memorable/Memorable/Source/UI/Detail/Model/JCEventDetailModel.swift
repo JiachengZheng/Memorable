@@ -22,8 +22,24 @@ class JCEventDetailModel: JCBaseModel {
     }
     
     func loadEditViewItem(param: [String : AnyObject]?, complete: ([String : AnyObject]? -> Void), failure: ([String : AnyObject]? -> Void)){
+        let isEdit = param?["isEdit"]
+        let editEvent = param?["editEvent"]
+        if let isEdit = isEdit as? Bool{
+            if isEdit{
+                if let editEvent1 = editEvent{
+                    loadFromEditEvent(editEvent1 as! JCEvent)
+                }
+            }else{
+                loadFromDataBase()
+            }
+        }else{
+            loadFromDataBase()
+        }
+        complete(nil)
+    }
+    
+    func loadFromDataBase(){
         guard let event = event else{
-            failure(nil)
             return
         }
         let item1 = JCEventEditViewItem(itemType: .Name, text: event.name)
@@ -32,9 +48,16 @@ class JCEventDetailModel: JCBaseModel {
         let item4 = JCEventEditViewItem(itemType: .Type, text: event.type)
         let item5 = JCEventEditViewItem(itemType: .Top,  isTop:event.isTop)
         editViewItem = [item1,item2,item3,item4,item5]
-        complete(nil)
     }
     
+    func loadFromEditEvent(editEvent: JCEvent){
+        let item1 = JCEventEditViewItem(itemType: .Name, text: editEvent.name)
+        let item2 = JCEventEditViewItem(itemType: .Date, text: editEvent.date)
+        let item3 = JCEventEditViewItem(itemType: .Time, text: editEvent.time)
+        let item4 = JCEventEditViewItem(itemType: .Type, text: editEvent.type)
+        let item5 = JCEventEditViewItem(itemType: .Top,  isTop:editEvent.isTop)
+        editViewItem = [item1,item2,item3,item4,item5]
+    }
     
     
     

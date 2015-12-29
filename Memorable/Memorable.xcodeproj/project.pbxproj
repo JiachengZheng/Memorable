@@ -37,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B329BA01C327A86003D7B5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		0B329BA11C327A86003D7B5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0B8BE2641C2EB01A00E59F1C /* JCEventEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventEditView.swift; sourceTree = "<group>"; };
 		0B8BE2661C2EBC8400E59F1C /* JCEventEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventEditTableViewCell.swift; sourceTree = "<group>"; };
 		0B8BE2681C2EC16D00E59F1C /* JCColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCColorExtension.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0BBB36C81C2CE667008795A6 /* Base */,
+				0B329BA01C327A86003D7B5B /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0BBB36D01C2CE668008795A6 /* Base */,
+				0B329BA11C327A86003D7B5B /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			path = Memorable;
