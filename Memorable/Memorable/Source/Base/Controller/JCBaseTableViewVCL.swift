@@ -8,6 +8,9 @@
 
 import UIKit
 
-class JCBaseTableViewVCL: JCBaseVCL {
+class JCBaseTableViewVCL: JCBaseVCL ,UITableViewDelegate{
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    
 }

@@ -42,6 +42,37 @@ class JCEventManage {
             eventRealm.delete(event)
         }
     }
+    
+    func addDefaultEventCategory() {
+//        let _ = try? eventRealm.write { () -> Void in
+//            eventRealm.add(category)
+//        }
+    }
+    
+    func addEventCategory(category: JCEventCategory) {
+        let _ = try? eventRealm.write { () -> Void in
+            eventRealm.add(category)
+        }
+    }
+    
+    func updateEventCategory(categoryId:String ,categoryName: String) {
+        let category = JCEventCategory(value:[categoryId,categoryName])
+        let _ = try? eventRealm.write { () -> Void in
+            eventRealm.add(category,update: true)
+        }
+    }
+    
+//    func deleteAllCategory() {
+//        let _ = try? eventRealm.write { () -> Void in
+//            eventRealm.deleteAll()
+//        }
+//    }
+    
+    func deleteCategory(category : JCEventCategory) {
+        let _ = try? eventRealm.write { () -> Void in
+            eventRealm.delete(category)
+        }
+    }
 
     
 }

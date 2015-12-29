@@ -9,6 +9,9 @@
 import UIKit
 
 class JCBaseModel: NSObject {
+    
+    var items: [AnyObject]?
+    
     func loadItem(param: [String: AnyObject]?,complete: ([String: AnyObject]?-> Void),failure: ([String: AnyObject]?-> Void)){
         
     }
