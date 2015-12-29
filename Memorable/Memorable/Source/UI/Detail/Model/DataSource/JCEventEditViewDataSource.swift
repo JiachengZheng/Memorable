@@ -1,5 +1,5 @@
 //
-//  JCDetailEditViewDataSource.swift
+//  JCEventEditViewDataSource.swift
 //  Memorable
 //
 //  Created by zhengjiacheng on 15/12/28.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class JCDetailEditViewDataSource: JCBaseTableViewDataSource {
+class JCEventEditViewDataSource: JCBaseTableViewDataSource {
     override func tableView(tableView: UITableView, cellClassForObject object: AnyObject) -> JCBaseTableViewCell.Type {
-        if object is JCDetailEditViewItem{
-            return JCDetailEditTableViewCell.self
+        if object is JCEventEditViewItem{
+            return JCEventEditTableViewCell.self
         }
         return super.tableView(tableView, cellClassForObject: object)
     }

@@ -1,5 +1,5 @@
 //
-//  JCDetailContentView.swift
+//  JCEventContentView.swift
 //  Memorable
 //
 //  Created by zhengjiacheng on 15/12/25.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 import pop
-class JCDetailContentView: UIView {
+class JCEventContentView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var daysLabel: UILabel!

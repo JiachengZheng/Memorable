@@ -1,5 +1,5 @@
 //
-//  JCDetailEditView.swift
+//  JCEventEditView.swift
 //  Memorable
 //
 //  Created by zhengjiacheng on 15/12/26.
@@ -14,7 +14,7 @@ let editViewExtentHeight: CGFloat = 60
 let editViewOriginY = (editViewExtentHeight + editViewHeight) * (-1)/2 - 10
 let editViewNormalY = (editViewExtentHeight + editViewHeight)/2 - editViewExtentHeight/2
 
-class JCDetailEditView: UIVisualEffectView {
+class JCEventEditView: UIVisualEffectView {
 
     var cancelActionBlock: (()->Void)?
     var saveActionBlock: (()->Void)?

@@ -1,5 +1,5 @@
 //
-//  JCDetailEditViewItem.swift
+//  JCEventEditViewItem.swift
 //  Memorable
 //
 //  Created by zhengjiacheng on 15/12/28.
@@ -19,7 +19,7 @@ enum EditTableViewItemType: Int{
         }
     }
 }
-class JCDetailEditViewItem: NSObject {
+class JCEventEditViewItem: NSObject {
     var itemType: EditTableViewItemType
     var text: String
     var isTop: Bool

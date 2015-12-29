@@ -1,5 +1,5 @@
 //
-//  JCMemorableDetailVCL.swift
+//  JCEventDetailVCL.swift
 //  Memorable
 //
 //  Created by zhengjiacheng on 15/12/25.
@@ -8,11 +8,11 @@
 
 import UIKit
 import pop
-class JCMemorableDetailVCL: JCBaseVCL {
+class JCEventDetailVCL: JCBaseVCL {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    @IBOutlet weak var contentView: JCDetailContentView!
+    @IBOutlet weak var contentView: JCEventContentView!
     
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var menuBtn: UIButton!
@@ -20,8 +20,8 @@ class JCMemorableDetailVCL: JCBaseVCL {
     @IBOutlet weak var shareBtn: UIButton!
     
     var isEditVeiwAnimation = false
-    var editViewDataSource: JCDetailEditViewDataSource!
-    var editView: JCDetailEditView?
+    var editViewDataSource: JCEventEditViewDataSource!
+    var editView: JCEventEditView?
     var isEdit: Bool = false
     var pickerView: UIPickerView?
     
@@ -52,7 +52,7 @@ class JCMemorableDetailVCL: JCBaseVCL {
     
     //MARK: 加载模型
     func loadModel(){
-        self.model = JCMemorableDetailModel()
+        self.model = JCEventDetailModel()
         model.loadItem(nil, complete: {[weak self] (suc) -> Void in
             self?.initContentView()
         }) { (fail) -> Void in
@@ -62,12 +62,12 @@ class JCMemorableDetailVCL: JCBaseVCL {
     
     //MARK: tableView
     func setupEditTableView(){
-        let model1 = self.model as! JCMemorableDetailModel
+        let model1 = self.model as! JCEventDetailModel
         guard let items = model1.editViewItem else{
             return
         }
-        editView!.tableView.registerClass(JCDetailEditTableViewCell.self, forCellReuseIdentifier: "JCDetailEditTableViewCell")
-        editViewDataSource = JCDetailEditViewDataSource(items:items)
+        editView!.tableView.registerClass(JCEventEditTableViewCell.self, forCellReuseIdentifier: "JCEventEditTableViewCell")
+        editViewDataSource = JCEventEditViewDataSource(items:items)
         editView!.tableView.dataSource = editViewDataSource
         editView!.tableView.reloadData()
     }
@@ -174,7 +174,7 @@ class JCMemorableDetailVCL: JCBaseVCL {
     }
     
     func initContentView(){
-        guard let model = self.model as? JCMemorableDetailModel else{
+        guard let model = self.model as? JCEventDetailModel else{
             return
         }
 
@@ -195,7 +195,7 @@ class JCMemorableDetailVCL: JCBaseVCL {
     
     func initEditView(){
         let effect = UIBlurEffect(style: .ExtraLight)
-        editView = JCDetailEditView(effect: effect)
+        editView = JCEventEditView(effect: effect)
         editView!.tableView.delegate = self
         reloadEditView()
         editView!.saveActionBlock = {[weak self] in
@@ -211,7 +211,7 @@ class JCMemorableDetailVCL: JCBaseVCL {
     }
     
     func reloadEditView(){
-        let model1 = self.model as! JCMemorableDetailModel
+        let model1 = self.model as! JCEventDetailModel
         model1.loadEditViewItem(nil, complete: {[weak self] (suc) -> Void in
             self?.setupEditTableView()
             }) { (fail ) -> Void in
@@ -271,7 +271,7 @@ class JCMemorableDetailVCL: JCBaseVCL {
 }
 
 //MARK: UITextFieldDelegate
-extension JCMemorableDetailVCL: UITextFieldDelegate{
+extension JCEventDetailVCL: UITextFieldDelegate{
     
     func textFieldShouldReturn(textField: UITextField) -> Bool{
         textField.resignFirstResponder()
@@ -288,10 +288,10 @@ extension JCMemorableDetailVCL: UITextFieldDelegate{
 }
 
 //MARK: UITableViewDelegate
-extension JCMemorableDetailVCL:UITableViewDelegate{
+extension JCEventDetailVCL:UITableViewDelegate{
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
-        if let cell = cell as? JCDetailEditTableViewCell{
+        if let cell = cell as? JCEventEditTableViewCell{
             if let textField = cell.nameTF{
                 textField.addTarget(self, action: "textFieldEditChanged:", forControlEvents: .EditingChanged)
                 textField.delegate = self

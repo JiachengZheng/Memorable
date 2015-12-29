@@ -1,5 +1,5 @@
 //
-//  JCMemorableDetailModel.swift
+//  JCEventDetailModel.swift
 //  Memorable
 //
 //  Created by zhengjiacheng on 15/12/25.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-class JCMemorableDetailModel: JCBaseModel {
+class JCEventDetailModel: JCBaseModel {
     
     var event: JCEvent?
-    var editViewItem: [JCDetailEditViewItem]?
+    var editViewItem: [JCEventEditViewItem]?
     
     override func loadItem(param: [String : AnyObject]?, complete: ([String : AnyObject]? -> Void), failure: ([String : AnyObject]? -> Void)) {
         let list = eventRealm.objects(JCEvent)
@@ -26,11 +26,11 @@ class JCMemorableDetailModel: JCBaseModel {
             failure(nil)
             return
         }
-        let item1 = JCDetailEditViewItem(itemType: .Name, text: event.name)
-        let item2 = JCDetailEditViewItem(itemType: .Date, text: event.date)
-        let item3 = JCDetailEditViewItem(itemType: .Time, text: event.time)
-        let item4 = JCDetailEditViewItem(itemType: .Type, text: event.type)
-        let item5 = JCDetailEditViewItem(itemType: .Top,  isTop:event.isTop)
+        let item1 = JCEventEditViewItem(itemType: .Name, text: event.name)
+        let item2 = JCEventEditViewItem(itemType: .Date, text: event.date)
+        let item3 = JCEventEditViewItem(itemType: .Time, text: event.time)
+        let item4 = JCEventEditViewItem(itemType: .Type, text: event.type)
+        let item5 = JCEventEditViewItem(itemType: .Top,  isTop:event.isTop)
         editViewItem = [item1,item2,item3,item4,item5]
         complete(nil)
     }

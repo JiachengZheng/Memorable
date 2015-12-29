@@ -1,5 +1,5 @@
 //
-//  JCDetailEditTableViewCell.swift
+//  JCEventEditTableViewCell.swift
 //  Memorable
 //
 //  Created by zhengjiacheng on 15/12/26.
@@ -12,7 +12,7 @@ let EditViewDisappearNotification = "EditViewDisappearNotification"
 
 
 
-class JCDetailEditTableViewCell: JCBaseTableViewCell {
+class JCEventEditTableViewCell: JCBaseTableViewCell {
 
     var nameTF: UITextField?
     var isTopSwitch: UISwitch?
@@ -22,7 +22,7 @@ class JCDetailEditTableViewCell: JCBaseTableViewCell {
     var arrowImage: UIImageView?
     
     override class func identifier() -> String {
-        return "\(JCDetailEditTableViewCell.self)"
+        return "\(JCEventEditTableViewCell.self)"
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -41,7 +41,7 @@ class JCDetailEditTableViewCell: JCBaseTableViewCell {
     
     override func setObject (obj: AnyObject?) {
         super.setObject(obj)
-        guard let _ = obj,item = item as? JCDetailEditViewItem else{
+        guard let _ = obj,item = item as? JCEventEditViewItem else{
             return
         }
        
@@ -50,7 +50,7 @@ class JCDetailEditTableViewCell: JCBaseTableViewCell {
     }
 
     func setupUI(){
-        guard let item = item as? JCDetailEditViewItem else{
+        guard let item = item as? JCEventEditViewItem else{
             return
         }
         switch item.itemType{
@@ -116,7 +116,7 @@ class JCDetailEditTableViewCell: JCBaseTableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        guard let item = item as? JCDetailEditViewItem else{
+        guard let item = item as? JCEventEditViewItem else{
             return
         }
         switch item.itemType{
