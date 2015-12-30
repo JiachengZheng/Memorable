@@ -18,8 +18,6 @@ let screenHeight = UIScreen.mainScreen().bounds.height
 
 let detailDaysLabelMaxFontSize = 150
 
-let applicationDidEnterBackgroundNotification = "applicationDidEnterBackgroundNotification"
-let applicationWillEnterForegroundNotification = "applicationWillEnterForegroundNotification"
 /// 顶部title文字，重要文字
 func ColorImportant() -> UIColor {
     return UIColor.colorWithHex(0x27272f)

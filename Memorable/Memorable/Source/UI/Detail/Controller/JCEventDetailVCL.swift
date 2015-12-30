@@ -8,7 +8,8 @@
 
 import UIKit
 import pop
-
+import RxCocoa
+import RxSwift
 class JCEventDetailVCL: JCBaseVCL {
 
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -31,31 +32,17 @@ class JCEventDetailVCL: JCBaseVCL {
     var eventDate: String = dateToStr(NSDate())
     var eventTime: String = "00:00"
     var eventType: String?
-    var eventIsTop: Bool?
+    var eventIsTop: Bool = false
     
     var disappearFromEdit: Bool = false
+    private var disposeBag = DisposeBag()
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "stopTimerWhenEnterForeground", name: applicationDidEnterBackgroundNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadWhenEnterForeground", name: applicationWillEnterForegroundNotification, object: nil)
-        
-    }
-    
-    func reloadWhenEnterForeground(){
-        timer.fireDate =  NSDate.distantPast()
-    }
-    
-    func stopTimerWhenEnterForeground(){
-        timer.fireDate =  NSDate.distantFuture()
-    }
-    
     //MARK: 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
         loadModel()
-        // Do any additional setup after loading the view.
+        subscribe()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -80,13 +67,46 @@ class JCEventDetailVCL: JCBaseVCL {
         if timer.valid{
             timer.fireDate =  NSDate.distantFuture()
         }
-
+        showPickerView(false)
     }
     
     deinit{
-        NSNotificationCenter.defaultCenter().removeObserver(self)
         timer.invalidate()
         timer = nil
+    }
+    
+    //MARK: 订阅信号
+    func subscribe(){
+
+        //进入后台暂停计时器
+        NSNotificationCenter.defaultCenter().rx_notification(UIApplicationDidEnterBackgroundNotification, object: nil).subscribe({ (event) -> Void in
+            self.timer.fireDate =  NSDate.distantFuture()
+        }).addDisposableTo(disposeBag)
+        
+        //恢复前台开始计时器
+        NSNotificationCenter.defaultCenter().rx_notification(UIApplicationWillEnterForegroundNotification, object: nil).subscribe({ (event) -> Void in
+            self.timer.fireDate =  NSDate.distantPast()
+        }).addDisposableTo(disposeBag)
+
+        //datePicker 变化
+        datePicker.rx_date.subscribeNext { [weak self](date) -> Void in
+            guard let instance = self else{
+                return
+            }
+    
+            let event: JCEvent!
+            if instance.datePicker.datePickerMode == .Date{
+                instance.eventDate = dateToStr(instance.datePicker.date)
+                event = JCEvent(value:["1",instance.eventName, instance.eventDate,"00:00","生活",instance.eventIsTop])
+            }else{
+                instance.eventTime = dateToStr(instance.datePicker.date,formatter:"HH:mm")
+                event = JCEvent(value:["1",instance.eventName,instance.eventDate,instance.eventTime,"生活",instance.eventIsTop])
+            }
+            
+            let dic: [String: AnyObject] = ["isEdit":true,"editEvent": event]
+            instance.reloadEditView(dic)
+        }.addDisposableTo(disposeBag)
+
     }
     
     //MARK: 加载模型
@@ -104,10 +124,13 @@ class JCEventDetailVCL: JCBaseVCL {
         guard let items = model1.editViewItem else{
             return
         }
+        guard let editView = editView else{
+            return
+        }
 
         editViewDataSource = JCEventEditViewDataSource(items:items)
-        editView!.tableView.dataSource = editViewDataSource
-        editView!.tableView.reloadData()
+        editView.tableView.dataSource = editViewDataSource
+        editView.tableView.reloadData()
     }
     
     //MARK: 点击事件
@@ -118,6 +141,7 @@ class JCEventDetailVCL: JCBaseVCL {
         }else{
             initEditView()
         }
+        
         let tap = UITapGestureRecognizer(target: self, action: "clickCancelBtn")
         backgroundImageView.addGestureRecognizer(tap)
         animationEditView(isEdit)
@@ -140,14 +164,22 @@ class JCEventDetailVCL: JCBaseVCL {
     }
     
     func clickSaveBtn(){
+        if !checkContent(){
+            showTipView("不能为空")
+            return
+        }
         contentView.setupLable(eventName, date: eventDate, time: eventTime)
-        eventManager.updateEventWith("1",eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: "生活",eventIsTop: true)
+        eventManager.updateEventWith("1",eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: "生活",eventIsTop: eventIsTop)
         clickCancelBtn()
+        showSuccess("保存成功")
     }
     
     //MARK: 检查输入合法性
-    func checkContent(){
-
+    func checkContent() -> Bool{
+        if eventName.isEmpty{
+            return false
+        }
+        return true
     }
     
     //MARK:动画处理
@@ -210,7 +242,7 @@ class JCEventDetailVCL: JCBaseVCL {
         }
         datePicker.frame = CGRectMake(0, screenHeight, screenWidth, 216)
         datePicker.backgroundColor = UIColor.whiteColor()
-        datePicker.addTarget(self, action: "datePickerChange:", forControlEvents: .ValueChanged)
+        
         menuBtn.imageEdgeInsets = UIEdgeInsets(top: -10, left: -20, bottom: 0, right: 0)
         editBtn.imageEdgeInsets = UIEdgeInsets(top: -10, left: 20, bottom: 0, right: 0)
         
@@ -224,6 +256,9 @@ class JCEventDetailVCL: JCBaseVCL {
         if let name = model.event?.name{
             eventName = name
             updateContentViewLabel()
+        }
+        if let isTop =  model.event?.isTop{
+            eventIsTop = isTop
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "updateContentViewLabel", userInfo: nil, repeats: true)
         
@@ -342,30 +377,6 @@ class JCEventDetailVCL: JCBaseVCL {
         }
     }
     
-    //MARK: 监听textField
-    func textFieldEditChanged(textField: UITextField){
-        if let text = textField.text{
-            eventName = text
-        }
-        showPickerView(false)
-    }
-    
-    //MARK: 监听 datePicker
-    func datePickerChange(picker: UIDatePicker){
-        let event: JCEvent!
-        if picker.datePickerMode == .Date{
-            eventDate = dateToStr(picker.date)
-            event = JCEvent(value:["1",eventName, eventDate,"00:00","生活",true])
-        }else{
-            eventTime = dateToStr(picker.date,formatter:"HH:mm")
-            event = JCEvent(value:["1",eventName,eventDate,eventTime,"生活",true])
-        }
-        
-        let dic: [String: AnyObject] = ["isEdit":true,"editEvent": event]
-        reloadEditView(dic)
-    }
-    
-    
     /*
     // MARK: - Navigation
 
@@ -401,8 +412,15 @@ extension JCEventDetailVCL:UITableViewDelegate{
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
         if let cell = cell as? JCEventEditTableViewCell{
             if let textField = cell.nameTF{
-                textField.addTarget(self, action: "textFieldEditChanged:", forControlEvents: .EditingChanged)
+                textField.rx_text.subscribeNext({ [weak self](text) -> Void in
+                    self?.eventName = text
+                }).addDisposableTo(disposeBag)
                 textField.delegate = self
+            }
+            if let isTopSwitch = cell.isTopSwitch{
+                isTopSwitch.rx_value.subscribeNext({ [weak self](bool) -> Void in
+                    self?.eventIsTop = bool
+                }).addDisposableTo(disposeBag)
             }
         }
     }

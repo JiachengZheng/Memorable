@@ -8,14 +8,15 @@
 
 import UIKit
 import SnapKit
-//import ReactiveCocoa
-class JCBaseVCL: UIViewController {
+import SVProgressHUD
+class JCBaseVCL: UIViewController ,UIGestureRecognizerDelegate{
 
     var model: JCBaseModel = JCBaseModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -32,6 +33,18 @@ class JCBaseVCL: UIViewController {
     func loadViewController(name: String) -> JCBaseVCL{
         let storyBoard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         return storyBoard.instantiateViewControllerWithIdentifier(name) as! JCBaseVCL
+    }
+    
+    func showSuccess(text: String = ""){
+        SVProgressHUD.showSuccessWithStatus(text)
+    }
+    
+    func showFail(text: String = ""){
+        SVProgressHUD.showErrorWithStatus(text)
+    }
+    
+    func showTipView(text: String = ""){
+        SVProgressHUD.showInfoWithStatus(text)
     }
     
 
