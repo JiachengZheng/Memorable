@@ -10,6 +10,14 @@ import UIKit
 
 class JCEventCategoryModel: JCBaseModel {
     override func loadItem(param: [String : AnyObject]?, complete: ([String : AnyObject]? -> Void), failure: ([String : AnyObject]? -> Void)) {
-        
+        let list = eventRealm.objects(JCEventCategory)
+        if list.count == 0{
+            failure(nil)
+            return
+        }
+        for item in list{
+            self.items.append(JCEventCategoryItem(text: item.categoryName!))
+        }
+        complete(nil)
     }
 }

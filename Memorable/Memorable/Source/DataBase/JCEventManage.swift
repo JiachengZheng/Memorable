@@ -44,9 +44,16 @@ class JCEventManage {
     }
     
     func addDefaultEventCategory() {
-//        let _ = try? eventRealm.write { () -> Void in
-//            eventRealm.add(category)
-//        }
+        let list = eventRealm.objects(JCEventCategory)
+        if list.count > 0{
+            return
+        }
+        let cate1 = JCEventCategory(value:["4","生活"])
+        let cate2 = JCEventCategory(value:["5","工作"])
+        let cate3 = JCEventCategory(value:["6","纪念日"])
+        let _ = try? eventRealm.write { () -> Void in
+            eventRealm.add([cate1,cate2,cate3])
+        }
     }
     
     func addEventCategory(category: JCEventCategory) {

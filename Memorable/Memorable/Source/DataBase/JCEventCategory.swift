@@ -11,11 +11,11 @@ import RealmSwift
 
 class JCEventCategory: Object {
     
-    var id: String?
-    var categoryName: String?
+    dynamic var id: String?
+    dynamic var categoryName: String?
     
     override class func primaryKey()-> String{
-        return "categoryName"
+        return "id"
     }
 // Specify properties to ignore (Realm won't persist these)
     

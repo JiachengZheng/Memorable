@@ -7,4 +7,8 @@ pod 'SVProgressHUD'
 pod 'pop'
 pod 'SnapKit'
 pod 'RealmSwift'
+pod 'RxSwift', '~> 2.0.0-beta'
+pod 'RxCocoa', '~> 2.0.0-beta'
+pod 'RxBlocking', '~> 2.0.0-beta'
+pod 'UMengAnalytics', '~> 3.5.10'
 end

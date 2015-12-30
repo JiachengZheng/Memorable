@@ -14,6 +14,15 @@ class JCEventCategoryVCL: JCBaseTableViewVCL {
         super.viewDidLoad()
         self.model = JCEventCategoryModel()
         loadItem()
+        addLine()
+    }
+    
+    func addLine(){
+        let line = CALayer()
+        line.backgroundColor = UIColor.whiteColor().CGColor
+        line.frame = CGRectMake(0, 64, screenWidth, 0.5)
+        line.opacity = 0.5
+        self.view.layer.addSublayer(line)
     }
     
     func loadItem(){
@@ -26,9 +35,12 @@ class JCEventCategoryVCL: JCBaseTableViewVCL {
     
     func reloadData(){
         let model = self.model as! JCEventCategoryModel
-        if let items = model.items{
-            self.tableView.dataSource = JCEventEditViewDataSource(items:items)
-            self.tableView.reloadData()
-        }
+        self.dataSource = JCEventCategoryDataSource(items:model.items)
+        self.tableView.dataSource = self.dataSource
+        self.tableView.reloadData()
+    }
+    
+    @IBAction func backAction(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

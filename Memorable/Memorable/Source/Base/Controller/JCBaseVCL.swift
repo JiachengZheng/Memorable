@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+//import ReactiveCocoa
 class JCBaseVCL: UIViewController {
 
     var model: JCBaseModel = JCBaseModel()

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0291FE1C33789000C664E9 /* JCEventCategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0291FD1C33789000C664E9 /* JCEventCategoryItem.swift */; };
+		0B0292001C3378B600C664E9 /* JCEventCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0291FF1C3378B600C664E9 /* JCEventCategoryCell.swift */; };
 		0B329BA91C32967E003D7B5B /* JCEventCategoryVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B329BA61C32967E003D7B5B /* JCEventCategoryVCL.swift */; };
 		0B329BAB1C329695003D7B5B /* JCEventCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B329BAA1C329695003D7B5B /* JCEventCategoryModel.swift */; };
 		0B329BAE1C3296EB003D7B5B /* JCEventCategoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B329BAD1C3296EB003D7B5B /* JCEventCategoryDataSource.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0291FD1C33789000C664E9 /* JCEventCategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventCategoryItem.swift; sourceTree = "<group>"; };
+		0B0291FF1C3378B600C664E9 /* JCEventCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventCategoryCell.swift; sourceTree = "<group>"; };
 		0B329BA01C327A86003D7B5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0B329BA11C327A86003D7B5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0B329BA61C32967E003D7B5B /* JCEventCategoryVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventCategoryVCL.swift; sourceTree = "<group>"; };
@@ -92,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B0291FC1C33787A00C664E9 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				0B0291FD1C33789000C664E9 /* JCEventCategoryItem.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
 		0B329BA21C329481003D7B5B /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +125,7 @@
 		0B329BA71C32967E003D7B5B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0B0291FC1C33787A00C664E9 /* Item */,
 				0B329BAC1C3296C4003D7B5B /* DataSource */,
 				0B329BAA1C329695003D7B5B /* JCEventCategoryModel.swift */,
 			);
@@ -122,6 +135,7 @@
 		0B329BA81C32967E003D7B5B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0B0291FF1C3378B600C664E9 /* JCEventCategoryCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -469,7 +483,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#\"${SRCROOT}/Pods/Target Support Files/Pods-Memorable/Pods-Memorable-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Memorable/Pods-Memorable-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -487,7 +501,9 @@
 				0B8BE2691C2EC16D00E59F1C /* JCColorExtension.swift in Sources */,
 				0BBB36C41C2CE667008795A6 /* AppDelegate.swift in Sources */,
 				0B329BB01C32984E003D7B5B /* JCEventCategory.swift in Sources */,
+				0B0291FE1C33789000C664E9 /* JCEventCategoryItem.swift in Sources */,
 				0BADE5A71C31272700F61EAC /* JCEventEditViewDataSource.swift in Sources */,
+				0B0292001C3378B600C664E9 /* JCEventCategoryCell.swift in Sources */,
 				0B329BAB1C329695003D7B5B /* JCEventCategoryModel.swift in Sources */,
 				0B9D31C41C30175200859525 /* JCEventManage.swift in Sources */,
 				0B9067D91C2D4EDA0047FE4E /* JCEventDetailModel.swift in Sources */,

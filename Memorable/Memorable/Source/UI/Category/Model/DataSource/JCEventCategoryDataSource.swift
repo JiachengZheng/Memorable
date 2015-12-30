@@ -10,7 +10,10 @@ import UIKit
 
 class JCEventCategoryDataSource: JCBaseTableViewDataSource {
     override func tableView(tableView: UITableView, cellClassForObject object: AnyObject) -> JCBaseTableViewCell.Type {
-        return JCBaseTableViewCell.self
+        if object is JCEventCategoryItem{
+            return JCEventCategoryCell.self
+        }
+        return super.tableView(tableView, cellClassForObject: object)
     }
 
     

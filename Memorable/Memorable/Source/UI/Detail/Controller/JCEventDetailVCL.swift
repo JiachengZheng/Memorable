@@ -32,6 +32,8 @@ class JCEventDetailVCL: JCBaseVCL {
     var eventTime: String = "00:00"
     var eventType: String?
     var eventIsTop: Bool?
+    
+    var disappearFromEdit: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,12 +58,22 @@ class JCEventDetailVCL: JCBaseVCL {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if disappearFromEdit{
+            UIApplication.sharedApplication().statusBarStyle = .Default
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if !timer.valid{
             timer.fireDate =  NSDate.distantPast()
         }
-        self.performSelector("animationContentView", withObject: nil, afterDelay: 0.3)
+        if !disappearFromEdit{
+            self.performSelector("animationContentView", withObject: nil, afterDelay: 0.3)
+        }
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -407,7 +419,9 @@ extension JCEventDetailVCL:UITableViewDelegate{
             datePicker.datePickerMode = .Time
             showPickerView(true)
         }else if indexPath.row == 3{
-            
+            let vcl = loadViewController("JCEventCategoryVCL")
+            disappearFromEdit = true
+            self.navigationController?.pushViewController(vcl, animated: true)
         }
     }
 }
