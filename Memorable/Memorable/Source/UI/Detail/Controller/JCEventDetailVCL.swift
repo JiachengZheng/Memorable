@@ -31,8 +31,9 @@ class JCEventDetailVCL: JCBaseVCL {
     var eventName: String = ""
     var eventDate: String = dateToStr(NSDate())
     var eventTime: String = "00:00"
-    var eventType: String?
+    var eventCategory: String = ""
     var eventIsTop: Bool = false
+    var eventId: String = ""
     
     var disappearFromEdit: Bool = false
     private var disposeBag = DisposeBag()
@@ -97,12 +98,10 @@ class JCEventDetailVCL: JCBaseVCL {
             let event: JCEvent!
             if instance.datePicker.datePickerMode == .Date{
                 instance.eventDate = dateToStr(instance.datePicker.date)
-                event = JCEvent(value:["1",instance.eventName, instance.eventDate,"00:00","生活",instance.eventIsTop])
             }else{
                 instance.eventTime = dateToStr(instance.datePicker.date,formatter:"HH:mm")
-                event = JCEvent(value:["1",instance.eventName,instance.eventDate,instance.eventTime,"生活",instance.eventIsTop])
             }
-            
+            event = JCEvent(value:[instance.eventId,instance.eventName,instance.eventDate,instance.eventTime,instance.eventCategory,instance.eventIsTop])
             let dic: [String: AnyObject] = ["isEdit":true,"editEvent": event]
             instance.reloadEditView(dic)
         }.addDisposableTo(disposeBag)
@@ -169,7 +168,7 @@ class JCEventDetailVCL: JCBaseVCL {
             return
         }
         contentView.setupLable(eventName, date: eventDate, time: eventTime)
-        eventManager.updateEventWith("1",eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: "生活",eventIsTop: eventIsTop)
+        eventManager.updateEventWith(eventId,eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: eventCategory,eventIsTop: eventIsTop)
         clickCancelBtn()
         showSuccess("保存成功")
     }
@@ -259,6 +258,12 @@ class JCEventDetailVCL: JCBaseVCL {
         }
         if let isTop =  model.event?.isTop{
             eventIsTop = isTop
+        }
+        if let type =  model.event?.type{
+            eventCategory = type
+        }
+        if let id =  model.event?.id{
+            eventId = id
         }
         timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "updateContentViewLabel", userInfo: nil, repeats: true)
         
@@ -437,7 +442,17 @@ extension JCEventDetailVCL:UITableViewDelegate{
             datePicker.datePickerMode = .Time
             showPickerView(true)
         }else if indexPath.row == 3{
-            let vcl = loadViewController("JCEventCategoryVCL")
+            let vcl = loadViewController("JCEventCategoryVCL") as! JCEventCategoryVCL
+            vcl.currentCategory = eventCategory
+            vcl.selectCategoryBlock = {[weak self] in
+                guard let instance = self else{
+                    return
+                }
+                instance.eventCategory = $0
+                let event = JCEvent(value:[instance.eventId,instance.eventName,instance.eventDate,instance.eventTime,instance.eventCategory,instance.eventIsTop])
+                let dic: [String: AnyObject] = ["isEdit":true,"editEvent": event]
+                instance.reloadEditView(dic)
+            }
             disappearFromEdit = true
             self.navigationController?.pushViewController(vcl, animated: true)
         }

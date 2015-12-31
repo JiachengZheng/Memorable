@@ -17,7 +17,7 @@ class JCEventManage {
             return
         }
         
-        let event = JCEvent(value:["1","周末",getRecentSaturday(),"00:00","生活",true])
+        let event = JCEvent(value:[getUUID(),"周末",getRecentSaturday(),"00:00","生活",true])
         
         let _ = try? eventRealm.write { () -> Void in
             eventRealm.add(event)
@@ -48,9 +48,9 @@ class JCEventManage {
         if list.count > 0{
             return
         }
-        let cate1 = JCEventCategory(value:["4","生活"])
-        let cate2 = JCEventCategory(value:["5","工作"])
-        let cate3 = JCEventCategory(value:["6","纪念日"])
+        let cate1 = JCEventCategory(value:[getUUID(),"生活"])
+        let cate2 = JCEventCategory(value:[getUUID(),"工作"])
+        let cate3 = JCEventCategory(value:[getUUID(),"纪念日"])
         let _ = try? eventRealm.write { () -> Void in
             eventRealm.add([cate1,cate2,cate3])
         }
@@ -68,12 +68,6 @@ class JCEventManage {
             eventRealm.add(category,update: true)
         }
     }
-    
-//    func deleteAllCategory() {
-//        let _ = try? eventRealm.write { () -> Void in
-//            eventRealm.deleteAll()
-//        }
-//    }
     
     func deleteCategory(category : JCEventCategory) {
         let _ = try? eventRealm.write { () -> Void in

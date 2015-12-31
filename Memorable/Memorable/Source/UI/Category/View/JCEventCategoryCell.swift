@@ -10,6 +10,7 @@ import UIKit
 
 class JCEventCategoryCell: JCBaseTableViewCell {
 
+    @IBOutlet weak var selectImageView: UIImageView!
     override class func identifier() -> String {
         return "\(JCEventCategoryCell.self)"
     }
@@ -22,6 +23,15 @@ class JCEventCategoryCell: JCBaseTableViewCell {
         self.textLabel?.text = object.text
         self.textLabel?.font = UIFont.systemFontOfSize(15)
         self.textLabel?.textColor = UIColor.whiteColor()
+        selectImageView.hidden = true
+        if object.isSelected{
+            selectImageView.hidden = false
+        }
+    }
+    
+    override func prepareForReuse() {
+        self.textLabel?.text = ""
+        selectImageView.hidden = true
     }
 
     

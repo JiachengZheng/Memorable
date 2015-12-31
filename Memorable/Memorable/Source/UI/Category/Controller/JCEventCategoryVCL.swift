@@ -10,6 +10,9 @@ import UIKit
 
 class JCEventCategoryVCL: JCBaseTableViewVCL {
     
+    var currentCategory: String?
+    var selectCategoryBlock:((String)-> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.model = JCEventCategoryModel()
@@ -27,7 +30,12 @@ class JCEventCategoryVCL: JCBaseTableViewVCL {
     
     func loadItem(){
         let model = self.model as! JCEventCategoryModel
-        model.loadItem(nil, complete: {[weak self] (com) -> Void in
+        var cate = ""
+        if let currentCategory = currentCategory{
+            cate = currentCategory
+        }
+        let dic:[String: AnyObject] = ["category": cate]
+        model.loadItem(dic, complete: {[weak self] (com) -> Void in
             self?.reloadData()
             }) { (fail) -> Void in
         }
@@ -43,4 +51,19 @@ class JCEventCategoryVCL: JCBaseTableViewVCL {
     @IBAction func backAction(sender: AnyObject) {
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let model = self.model as! JCEventCategoryModel
+        for item in model.items{
+            let item1 = item as! JCEventCategoryItem
+            item1.isSelected = false
+        }
+        let item = model.items[indexPath.row] as! JCEventCategoryItem
+        item.isSelected = true
+        reloadData()
+        selectCategoryBlock?(item.text)
+    }
+    
+    
+    
 }

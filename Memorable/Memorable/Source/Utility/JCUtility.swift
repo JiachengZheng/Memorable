@@ -133,6 +133,11 @@ func caculateLableSize(labelText: NSString,
         
 }
 
+func getUUID() -> String{
+    let uuidRef = CFUUIDCreate(nil)
+    let uuidStringRef = CFUUIDCreateString(nil, uuidRef)
+    return uuidStringRef as String
+}
 
 
 

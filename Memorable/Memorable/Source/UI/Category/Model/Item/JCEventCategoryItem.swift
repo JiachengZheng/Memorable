@@ -13,5 +13,6 @@ class JCEventCategoryItem: NSObject {
     init(text: String){
         self.text = text
     }
+    var isSelected: Bool = false
     
 }
