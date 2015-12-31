@@ -29,8 +29,8 @@ class JCEventDetailVCL: JCBaseVCL {
     var timer: NSTimer!
     
     var eventName: String = ""
-    var eventDate: String = dateToStr(NSDate())
-    var eventTime: String = "00:00"
+    var eventDate: String = ""
+    var eventTime: String = ""
     var eventCategory: String = ""
     var eventIsTop: Bool = false
     var eventId: String = ""
@@ -105,7 +105,6 @@ class JCEventDetailVCL: JCBaseVCL {
             let dic: [String: AnyObject] = ["isEdit":true,"editEvent": event]
             instance.reloadEditView(dic)
         }.addDisposableTo(disposeBag)
-
     }
     
     //MARK: 加载模型
@@ -244,7 +243,6 @@ class JCEventDetailVCL: JCBaseVCL {
         
         menuBtn.imageEdgeInsets = UIEdgeInsets(top: -10, left: -20, bottom: 0, right: 0)
         editBtn.imageEdgeInsets = UIEdgeInsets(top: -10, left: 20, bottom: 0, right: 0)
-        
     }
     
     func initContentView(){
@@ -252,19 +250,15 @@ class JCEventDetailVCL: JCBaseVCL {
             return
         }
         
-        if let name = model.event?.name{
-            eventName = name
+        if let event = model.event{
+            eventName = event.name
+            eventCategory = event.type
+            eventIsTop = event.isTop
+            eventDate = event.date
+            eventTime = event.time
             updateContentViewLabel()
         }
-        if let isTop =  model.event?.isTop{
-            eventIsTop = isTop
-        }
-        if let type =  model.event?.type{
-            eventCategory = type
-        }
-        if let id =  model.event?.id{
-            eventId = id
-        }
+
         timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "updateContentViewLabel", userInfo: nil, repeats: true)
         
         contentView.snp_makeConstraints { (make) -> Void in
@@ -356,7 +350,6 @@ class JCEventDetailVCL: JCBaseVCL {
         let translation = gesture.translationInView(self.view)
         
         if (gesture.state == .Began){
-
         }else if (gesture.state == .Changed){
             let changeY = translation.y - editViewExtentHeight/2
             if changeY < 0{
