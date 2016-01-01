@@ -94,6 +94,9 @@ class JCEventDetailVCL: JCBaseVCL {
             guard let instance = self else{
                 return
             }
+            guard let _ = instance.editView else{
+                return
+            }
     
             let event: JCEvent!
             if instance.datePicker.datePickerMode == .Date{
@@ -251,6 +254,7 @@ class JCEventDetailVCL: JCBaseVCL {
         }
         
         if let event = model.event{
+            eventId = event.id
             eventName = event.name
             eventCategory = event.type
             eventIsTop = event.isTop
@@ -327,14 +331,14 @@ class JCEventDetailVCL: JCBaseVCL {
     func setupPickerDate(){
         if let model = self.model as? JCEventDetailModel{
             if datePicker.datePickerMode == .Date{
-                if let date = model.event?.date{
-                    if let str = strToDate(date,formatter: "yyyy-MM-dd"){
+                if let date = model.event?.date, time = model.event?.time{
+                    if let str = strToDate(date + " " + time){
                         datePicker.date = str
                     }
                 }
             }else{
-                if let date = model.event?.time{
-                    if let str = strToDate(date,formatter: "HH:mm"){
+                if let date = model.event?.date, time = model.event?.time{
+                    if let str = strToDate(date + " " + time){
                         datePicker.date = str
                     }
                 }
