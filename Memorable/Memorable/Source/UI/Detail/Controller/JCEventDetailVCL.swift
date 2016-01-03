@@ -37,6 +37,8 @@ class JCEventDetailVCL: JCBaseVCL {
     
     var disappearFromEdit: Bool = false
     private var disposeBag = DisposeBag()
+    var shareVCL: JCShareVCL?
+    var shareView: UIView?
 
     //MARK: 生命周期
     override func viewDidLoad() {
@@ -149,6 +151,19 @@ class JCEventDetailVCL: JCBaseVCL {
     }
     
     @IBAction func clickShareBtn(sender: AnyObject) {
+        if let  _ = shareVCL{
+        }else{
+            let vcl = loadViewController("JCShareVCL") as! JCShareVCL
+            shareVCL = vcl
+            self.addChildViewController(vcl)
+            self.view.addSubview(shareVCL!.view)
+            shareVCL!.view.frame = self.view.frame
+            vcl.dismissBlock = { [weak self] in
+                vcl.view.removeFromSuperview()
+                vcl.removeFromParentViewController()
+                self?.shareVCL = nil
+            }
+        }
         clickCancelBtn()
     }
     

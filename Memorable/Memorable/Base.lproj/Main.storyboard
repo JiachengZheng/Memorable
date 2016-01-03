@@ -228,6 +228,63 @@
             </objects>
             <point key="canvasLocation" x="596" y="134"/>
         </scene>
+        <!--ShareVCL-->
+        <scene sceneID="95Y-MG-hPi">
+            <objects>
+                <viewController storyboardIdentifier="JCShareVCL" id="ASH-7V-CuL" customClass="JCShareVCL" customModule="Memorable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RBU-f7-dji">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vIA-KP-rdI" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="41" y="242" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="share_qq_friends_btn"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pdb-5y-OQB" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="138" y="242" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="share_qq_zone_btn"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SEP-Te-ohv" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="138" y="308" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="share_weixin_friends"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="U8f-GJ-oaP" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="237" y="242" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="share_sina_btn"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DzT-94-kDn" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="134" y="433" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="share_close"/>
+                                <connections>
+                                    <action selector="closeAction:" destination="ASH-7V-CuL" eventType="touchUpInside" id="vgc-Vu-pLY"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="esQ-dR-Os1" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="41" y="308" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="share_weixin"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeBtn" destination="DzT-94-kDn" id="t99-cJ-Xqk"/>
+                        <outlet property="friendBtn" destination="SEP-Te-ohv" id="zws-6D-V6t"/>
+                        <outlet property="qqBtn" destination="vIA-KP-rdI" id="BRM-Bb-fPa"/>
+                        <outlet property="qqZoneBtn" destination="pdb-5y-OQB" id="fdc-46-gFY"/>
+                        <outlet property="sinaBtn" destination="U8f-GJ-oaP" id="WjU-bI-38f"/>
+                        <outlet property="weixinBtn" destination="esQ-dR-Os1" id="56X-Bg-dXw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tKd-mZ-RON" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085" y="134"/>
+        </scene>
     </scenes>
     <resources>
         <image name="add_btn" width="21" height="22"/>
@@ -238,6 +295,12 @@
         <image name="selected_btn_white" width="23" height="17"/>
         <image name="settingBg" width="414" height="736"/>
         <image name="share_btn" width="18" height="29"/>
+        <image name="share_close" width="40" height="40"/>
+        <image name="share_qq_friends_btn" width="60" height="60"/>
+        <image name="share_qq_zone_btn" width="60" height="60"/>
+        <image name="share_sina_btn" width="60" height="60"/>
+        <image name="share_weixin" width="60" height="60"/>
+        <image name="share_weixin_friends" width="60" height="60"/>
         <image name="theme_btn" width="28" height="28"/>
     </resources>
 </document>

@@ -38,6 +38,8 @@
 		0BBB36E41C2D1698008795A6 /* JCBaseVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB36E31C2D1698008795A6 /* JCBaseVCL.swift */; };
 		0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB36E51C2D16A9008795A6 /* JCBaseModel.swift */; };
 		0BBB36F21C2D1788008795A6 /* JCEventDetailVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBB36ED1C2D1788008795A6 /* JCEventDetailVCL.swift */; };
+		0BD892D21C36C58100EF3D1B /* JCShareVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD892D11C36C58100EF3D1B /* JCShareVCL.swift */; };
+		0BD892D41C36C59F00EF3D1B /* JCShareModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD892D31C36C59F00EF3D1B /* JCShareModel.swift */; };
 		0BE7F1791C2FC6960060B3C1 /* JCBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE7F1781C2FC6960060B3C1 /* JCBaseButton.swift */; };
 		7B45C0656F19ACE7465657B1 /* Pods_Memorable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12473F0AA30B59C2A1BA112 /* Pods_Memorable.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +80,8 @@
 		0BBB36E31C2D1698008795A6 /* JCBaseVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBaseVCL.swift; sourceTree = "<group>"; };
 		0BBB36E51C2D16A9008795A6 /* JCBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBaseModel.swift; sourceTree = "<group>"; };
 		0BBB36ED1C2D1788008795A6 /* JCEventDetailVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventDetailVCL.swift; sourceTree = "<group>"; };
+		0BD892D11C36C58100EF3D1B /* JCShareVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCShareVCL.swift; sourceTree = "<group>"; };
+		0BD892D31C36C59F00EF3D1B /* JCShareModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCShareModel.swift; sourceTree = "<group>"; };
 		0BE7F1781C2FC6960060B3C1 /* JCBaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBaseButton.swift; sourceTree = "<group>"; };
 		5821D56AB1879AEB5BC44BE3 /* Pods-Memorable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memorable.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Memorable/Pods-Memorable.debug.xcconfig"; sourceTree = "<group>"; };
 		A12473F0AA30B59C2A1BA112 /* Pods_Memorable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memorable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +298,7 @@
 		0BBB36EA1C2D1788008795A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0BD892CD1C36C55300EF3D1B /* Share */,
 				0B329BA21C329481003D7B5B /* Category */,
 				0BBB36EB1C2D1788008795A6 /* Detail */,
 				0BBB36F01C2D1788008795A6 /* Menu */,
@@ -352,6 +357,39 @@
 			children = (
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		0BD892CD1C36C55300EF3D1B /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				0BD892CE1C36C55300EF3D1B /* Controller */,
+				0BD892CF1C36C55300EF3D1B /* model */,
+				0BD892D01C36C55300EF3D1B /* VIew */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
+		0BD892CE1C36C55300EF3D1B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0BD892D11C36C58100EF3D1B /* JCShareVCL.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0BD892CF1C36C55300EF3D1B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0BD892D31C36C59F00EF3D1B /* JCShareModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0BD892D01C36C55300EF3D1B /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIew;
 			sourceTree = "<group>";
 		};
 		61D495DDE68C05B9D80B06F4 /* Pods */ = {
@@ -507,6 +545,7 @@
 				0B329BAB1C329695003D7B5B /* JCEventCategoryModel.swift in Sources */,
 				0B9D31C41C30175200859525 /* JCEventManage.swift in Sources */,
 				0B9067D91C2D4EDA0047FE4E /* JCEventDetailModel.swift in Sources */,
+				0BD892D41C36C59F00EF3D1B /* JCShareModel.swift in Sources */,
 				0B9D31C21C2FF3D200859525 /* JCEvent.swift in Sources */,
 				0B8BE26B1C2EC1BE00E59F1C /* JCUIViewExtension.swift in Sources */,
 				0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */,
@@ -521,6 +560,7 @@
 				0B9067D71C2D44CC0047FE4E /* JCEventContentView.swift in Sources */,
 				0BADE5A01C310EC600F61EAC /* JCEventEditViewItem.swift in Sources */,
 				0B9067D01C2D2D270047FE4E /* JCUtility.swift in Sources */,
+				0BD892D21C36C58100EF3D1B /* JCShareVCL.swift in Sources */,
 				0B8BE2651C2EB01A00E59F1C /* JCEventEditView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
