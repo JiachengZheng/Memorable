@@ -10,6 +10,7 @@ import UIKit
 import pop
 class JCEventThemeSelectView: UIView {
 
+    var isAnimationStop = true
     var dissmissBlock: (()->Void)?
     var chooseThemeBlock: ((tag: Int)-> Void)?
     
@@ -36,7 +37,9 @@ class JCEventThemeSelectView: UIView {
     }
     
     func closeAction(){
-        dissmissBlock?()
+        if isAnimationStop{
+            dissmissBlock?()
+        }
     }
     
     override func layoutSubviews() {
@@ -57,6 +60,9 @@ class JCEventThemeSelectView: UIView {
     }
     
     func toggleAnimation(){
+        if !isAnimationStop{
+            return
+        }
         isShow = !isShow
         if isShow{
             self.hidden = false
@@ -68,6 +74,7 @@ class JCEventThemeSelectView: UIView {
     }
     
     func startAnimation(){
+        isAnimationStop = false
         for i in 1...6{
             var btn: JCBaseButton!
             if isShow{
@@ -77,9 +84,6 @@ class JCEventThemeSelectView: UIView {
             }
            
             performSelector("btnAnimation:", withObject: btn!, afterDelay: 0.05*Double(i))
-            if !isShow && i == 6{
-                performSelector("hiddenSelf", withObject: btn!, afterDelay: 0.05*Double(6) + 0.5)
-            }
         }
     }
     
@@ -91,7 +95,7 @@ class JCEventThemeSelectView: UIView {
         view.hidden = false
         let anim = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
         anim.springBounciness = 5
-        anim.springSpeed = 12
+        anim.springSpeed = 18
         if isShow{
             anim.fromValue = screenWidth
             anim.toValue = ((screenWidth-6 * btnWidth)/7.0)*CGFloat(view.tag - 1000) + CGFloat(view.tag - 1000-1)*btnWidth + btnWidth/2
@@ -99,6 +103,14 @@ class JCEventThemeSelectView: UIView {
         }else{
             anim.toValue = screenWidth + btnWidth/2
             anim.fromValue = ((screenWidth-6 * btnWidth)/7.0)*CGFloat(view.tag - 1000) + CGFloat(view.tag - 1000-1)*btnWidth + btnWidth/2
+        }
+        if view.tag == 1006{
+            anim.completionBlock = { (anim,bool) in
+                self.isAnimationStop = true
+                if !self.isShow{
+                    self.performSelector("hiddenSelf", withObject: nil, afterDelay: 0.01)
+                }
+            }
         }
         view.layer.pop_addAnimation(anim, forKey: "btn\(tag)")
     }
