@@ -42,29 +42,35 @@ class JCShareVCL: JCBaseVCL {
         super.viewDidAppear(animated)
         for i in 0...4{
             if let view = self.view.viewWithTag(1000+i){
-                performSelector("bounceAnimation:", withObject: view, afterDelay:  (Double(i) * 0.05))
+                performSelector("presentAnimation:", withObject: view, afterDelay:  (Double(i) * 0.05))
             }
         }
-        closeBtnAnimation()
+        closeBtnAnimation(9.4)
 
     }
     
-    func closeBtnAnimation(){
+    func closeBtnAnimation(toValue: Float){
         closeBtn.hidden = false
-        bounceAnimation(closeBtn)
+        presentAnimation(closeBtn)
         let anim = POPBasicAnimation(propertyNamed: kPOPLayerRotation)
         anim.beginTime = CACurrentMediaTime() + 0.1
         anim.duration = 0.6
-        anim.toValue = 9.4
+        anim.toValue = toValue
         closeBtn.layer.pop_addAnimation(anim, forKey: "close")
     }
     
-    func bounceAnimation(view: UIView){
+    func presentAnimation(view: UIView){
         view.hidden = false
-        view.layer.addSpringAnimation(kPOPLayerBounds, fromValue: NSValue.init(CGRect: CGRectMake(0, 0, 0, 0)), toValue: NSValue.init(CGRect: CGRectMake(0, 0, 50, 50)), bounds: 10, speed: 8, animKey: "pop") { (anim, finished) -> Void in
+        view.layer.addSpringAnimation(kPOPLayerBounds, fromValue: NSValue.init(CGRect: CGRectMake(0, 0, 0, 0)), toValue: NSValue.init(CGRect: CGRectMake(0, 0, 60, 60)), bounds: 10, speed: 8, animKey: "pop") { (anim, finished) -> Void in
         }
     }
     
+    func dismissAnimation(view: UIView){
+        view.layer.addSpringAnimation(kPOPLayerBounds, fromValue: NSValue.init(CGRect: CGRectMake(0, 0, 60, 60)), toValue: NSValue.init(CGRect: CGRectMake(0, 0, 0, 0)), bounds: 10, speed: 8, animKey: "pop") { (anim, finished) -> Void in
+            view.hidden = true
+        }
+    }
+
     func setupView(){
 
         qqZoneBtn.snp_makeConstraints { (make) -> Void in
@@ -72,31 +78,48 @@ class JCShareVCL: JCBaseVCL {
             make.centerY.equalTo(self.view).offset(-30)
         }
         qqBtn.snp_makeConstraints { (make) -> Void in
-            make.right.equalTo(qqZoneBtn.snp_left).offset(-30)
+            make.right.equalTo(qqZoneBtn.snp_left).offset(-40)
             make.centerY.equalTo(qqZoneBtn)
         }
         weixinBtn.snp_makeConstraints { (make) -> Void in
-            make.left.equalTo(qqZoneBtn.snp_right).offset(30)
+            make.left.equalTo(qqZoneBtn.snp_right).offset(40)
             make.centerY.equalTo(qqZoneBtn)
         }
         friendBtn.snp_makeConstraints { (make) -> Void in
             make.centerX.equalTo(qqZoneBtn)
-            make.top.equalTo(qqZoneBtn.snp_bottom).offset(20)
+            make.top.equalTo(qqZoneBtn.snp_bottom).offset(30)
 
         }
         sinaBtn.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(qqBtn.snp_bottom).offset(20)
+            make.top.equalTo(qqBtn.snp_bottom).offset(30)
             make.centerX.equalTo(qqBtn)
         }
         closeBtn.snp_makeConstraints { (make) -> Void in
-            make.top.equalTo(friendBtn).offset(130)
+            make.top.equalTo(friendBtn).offset(150)
             make.centerX.equalTo(friendBtn)
+//            make.size.equalTo(CGSizeMake(10, 10))
         }
     }
     
     @IBAction func closeAction(sender: AnyObject) {
+        for i in 0...4{
+            if let view = self.view.viewWithTag(1000+i){
+                performSelector("dismissAnimation:", withObject: view, afterDelay:  (Double(i) * 0.05))
+            }
+        }
+        
+        let anim = POPBasicAnimation(propertyNamed: kPOPLayerRotation)
+        anim.duration = 0.6
+        anim.toValue = 0
+        closeBtn.layer.pop_addAnimation(anim, forKey: "close")
+        dismissAnimation(closeBtn)
+        performSelector("dissmissSelf", withObject: nil, afterDelay:  0.32)
+    }
+    
+    func dissmissSelf(){
         dismissBlock?()
     }
+
 
     /*
     // MARK: - Navigation
