@@ -14,6 +14,7 @@
 		0B329BAE1C3296EB003D7B5B /* JCEventCategoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B329BAD1C3296EB003D7B5B /* JCEventCategoryDataSource.swift */; };
 		0B329BB01C32984E003D7B5B /* JCEventCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B329BAF1C32984E003D7B5B /* JCEventCategory.swift */; };
 		0B63F59E1C3A54F100938C71 /* JCEventThemeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B63F59D1C3A54F000938C71 /* JCEventThemeSelectView.swift */; };
+		0B899AF31C3AC53300C9CE75 /* JCListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B899AF21C3AC53300C9CE75 /* JCListItem.swift */; };
 		0B8BE2651C2EB01A00E59F1C /* JCEventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2641C2EB01A00E59F1C /* JCEventEditView.swift */; };
 		0B8BE2671C2EBC8400E59F1C /* JCEventEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2661C2EBC8400E59F1C /* JCEventEditTableViewCell.swift */; };
 		0B8BE2691C2EC16D00E59F1C /* JCColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2681C2EC16D00E59F1C /* JCColorExtension.swift */; };
@@ -23,6 +24,10 @@
 		0B9067D51C2D386C0047FE4E /* JCConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9067D41C2D386C0047FE4E /* JCConstant.swift */; };
 		0B9067D71C2D44CC0047FE4E /* JCEventContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9067D61C2D44CC0047FE4E /* JCEventContentView.swift */; };
 		0B9067D91C2D4EDA0047FE4E /* JCEventDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9067D81C2D4EDA0047FE4E /* JCEventDetailModel.swift */; };
+		0B9166791C3AC359005ADAD0 /* JCListVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9166781C3AC359005ADAD0 /* JCListVCL.swift */; };
+		0B91667C1C3AC396005ADAD0 /* JCListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B91667B1C3AC396005ADAD0 /* JCListDataSource.swift */; };
+		0B91667E1C3AC3DB005ADAD0 /* JCListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B91667D1C3AC3DB005ADAD0 /* JCListModel.swift */; };
+		0B9166801C3AC471005ADAD0 /* JCListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B91667F1C3AC471005ADAD0 /* JCListTableViewCell.swift */; };
 		0B9D31C21C2FF3D200859525 /* JCEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D31C11C2FF3D200859525 /* JCEvent.swift */; };
 		0B9D31C41C30175200859525 /* JCEventManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D31C31C30175200859525 /* JCEventManage.swift */; };
 		0B9D31C61C301E5800859525 /* JCStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D31C51C301E5800859525 /* JCStringExtension.swift */; };
@@ -55,6 +60,7 @@
 		0B329BAD1C3296EB003D7B5B /* JCEventCategoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventCategoryDataSource.swift; sourceTree = "<group>"; };
 		0B329BAF1C32984E003D7B5B /* JCEventCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventCategory.swift; sourceTree = "<group>"; };
 		0B63F59D1C3A54F000938C71 /* JCEventThemeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventThemeSelectView.swift; sourceTree = "<group>"; };
+		0B899AF21C3AC53300C9CE75 /* JCListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListItem.swift; sourceTree = "<group>"; };
 		0B8BE2641C2EB01A00E59F1C /* JCEventEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventEditView.swift; sourceTree = "<group>"; };
 		0B8BE2661C2EBC8400E59F1C /* JCEventEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventEditTableViewCell.swift; sourceTree = "<group>"; };
 		0B8BE2681C2EC16D00E59F1C /* JCColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCColorExtension.swift; sourceTree = "<group>"; };
@@ -64,6 +70,10 @@
 		0B9067D41C2D386C0047FE4E /* JCConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCConstant.swift; sourceTree = "<group>"; };
 		0B9067D61C2D44CC0047FE4E /* JCEventContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventContentView.swift; sourceTree = "<group>"; };
 		0B9067D81C2D4EDA0047FE4E /* JCEventDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventDetailModel.swift; sourceTree = "<group>"; };
+		0B9166781C3AC359005ADAD0 /* JCListVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListVCL.swift; sourceTree = "<group>"; };
+		0B91667B1C3AC396005ADAD0 /* JCListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListDataSource.swift; sourceTree = "<group>"; };
+		0B91667D1C3AC3DB005ADAD0 /* JCListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListModel.swift; sourceTree = "<group>"; };
+		0B91667F1C3AC471005ADAD0 /* JCListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListTableViewCell.swift; sourceTree = "<group>"; };
 		0B9D31C11C2FF3D200859525 /* JCEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEvent.swift; sourceTree = "<group>"; };
 		0B9D31C31C30175200859525 /* JCEventManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventManage.swift; sourceTree = "<group>"; };
 		0B9D31C51C301E5800859525 /* JCStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCStringExtension.swift; sourceTree = "<group>"; };
@@ -154,6 +164,14 @@
 			path = DataSource;
 			sourceTree = "<group>";
 		};
+		0B899AF11C3AC51B00C9CE75 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				0B899AF21C3AC53300C9CE75 /* JCListItem.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
 		0B9067D11C2D2E180047FE4E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +191,50 @@
 				0B329BAF1C32984E003D7B5B /* JCEventCategory.swift */,
 			);
 			path = DataBase;
+			sourceTree = "<group>";
+		};
+		0B9166741C3AC2F2005ADAD0 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				0B9166751C3AC2F2005ADAD0 /* Controller */,
+				0B9166761C3AC2F2005ADAD0 /* Model */,
+				0B9166771C3AC2F2005ADAD0 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		0B9166751C3AC2F2005ADAD0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0B9166781C3AC359005ADAD0 /* JCListVCL.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0B9166761C3AC2F2005ADAD0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B899AF11C3AC51B00C9CE75 /* Item */,
+				0B91667A1C3AC376005ADAD0 /* DataSource */,
+				0B91667D1C3AC3DB005ADAD0 /* JCListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0B9166771C3AC2F2005ADAD0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0B91667F1C3AC471005ADAD0 /* JCListTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0B91667A1C3AC376005ADAD0 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0B91667B1C3AC396005ADAD0 /* JCListDataSource.swift */,
+			);
+			path = DataSource;
 			sourceTree = "<group>";
 		};
 		0BADE59C1C31091800F61EAC /* DataSource */ = {
@@ -300,11 +362,10 @@
 		0BBB36EA1C2D1788008795A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0B9166741C3AC2F2005ADAD0 /* List */,
 				0BD892CD1C36C55300EF3D1B /* Share */,
 				0B329BA21C329481003D7B5B /* Category */,
 				0BBB36EB1C2D1788008795A6 /* Detail */,
-				0BBB36F01C2D1788008795A6 /* Menu */,
-				0BBB36F11C2D1788008795A6 /* Setting */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -346,20 +407,6 @@
 				0B63F59D1C3A54F000938C71 /* JCEventThemeSelectView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		0BBB36F01C2D1788008795A6 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
-		0BBB36F11C2D1788008795A6 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Setting;
 			sourceTree = "<group>";
 		};
 		0BD892CD1C36C55300EF3D1B /* Share */ = {
@@ -549,10 +596,12 @@
 				0B9D31C41C30175200859525 /* JCEventManage.swift in Sources */,
 				0B9067D91C2D4EDA0047FE4E /* JCEventDetailModel.swift in Sources */,
 				0BD892D41C36C59F00EF3D1B /* JCShareModel.swift in Sources */,
+				0B91667C1C3AC396005ADAD0 /* JCListDataSource.swift in Sources */,
 				0B9D31C21C2FF3D200859525 /* JCEvent.swift in Sources */,
 				0B8BE26B1C2EC1BE00E59F1C /* JCUIViewExtension.swift in Sources */,
 				0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */,
 				0B329BA91C32967E003D7B5B /* JCEventCategoryVCL.swift in Sources */,
+				0B899AF31C3AC53300C9CE75 /* JCListItem.swift in Sources */,
 				0B9D31C61C301E5800859525 /* JCStringExtension.swift in Sources */,
 				0B63F59E1C3A54F100938C71 /* JCEventThemeSelectView.swift in Sources */,
 				0BADE5A21C311CC000F61EAC /* JCBaseTableViewVCL.swift in Sources */,
@@ -561,9 +610,12 @@
 				0BBB36E41C2D1698008795A6 /* JCBaseVCL.swift in Sources */,
 				0B329BAE1C3296EB003D7B5B /* JCEventCategoryDataSource.swift in Sources */,
 				0BBB36CC1C2CE668008795A6 /* Memorable.xcdatamodeld in Sources */,
+				0B9166801C3AC471005ADAD0 /* JCListTableViewCell.swift in Sources */,
+				0B9166791C3AC359005ADAD0 /* JCListVCL.swift in Sources */,
 				0B9067D71C2D44CC0047FE4E /* JCEventContentView.swift in Sources */,
 				0BADE5A01C310EC600F61EAC /* JCEventEditViewItem.swift in Sources */,
 				0B9067D01C2D2D270047FE4E /* JCUtility.swift in Sources */,
+				0B91667E1C3AC3DB005ADAD0 /* JCListModel.swift in Sources */,
 				0BD892D21C36C58100EF3D1B /* JCShareVCL.swift in Sources */,
 				0B8BE2651C2EB01A00E59F1C /* JCEventEditView.swift in Sources */,
 			);

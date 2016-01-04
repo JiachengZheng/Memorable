@@ -47,6 +47,7 @@ class JCEventDetailVCL: JCBaseVCL {
         initUI()
         loadModel()
         subscribe()
+        //self.navigationController?.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -485,6 +486,12 @@ extension JCEventDetailVCL:UITableViewDelegate{
         }
     }
 }
+
+//extension JCEventDetailVCL: UINavigationControllerDelegate{
+//    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
+//
+//    }
+//}
 
 
 

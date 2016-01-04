@@ -22,6 +22,77 @@
             </objects>
             <point key="canvasLocation" x="-275.73333333333335" y="134.42666666666668"/>
         </scene>
+        <!--ListVCL-->
+        <scene sceneID="j3j-GB-LcC">
+            <objects>
+                <viewController storyboardIdentifier="JCListVCL" id="mza-x9-G4n" customClass="JCListVCL" customModule="Memorable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NYt-n2-6DW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="settingBg" id="azQ-ca-sbW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rF2-zg-QVk" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="1" minY="-7" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="setting_btn"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qGS-OG-ou3" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="276" y="20" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="4" minY="-7" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="add_btn"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="92u-Tj-iFr">
+                                <rect key="frame" x="20" y="545" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YkL-93-g3m" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="118" y="20" width="85" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="-4" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-28" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="62" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="全部" image="arrow_down"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="vuG-9G-qDh">
+                                <rect key="frame" x="0.0" y="64" width="320" height="484"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JCListTableViewCell" rowHeight="70" id="cUj-f1-RHx" customClass="JCListTableViewCell" customModule="Memorable" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cUj-f1-RHx" id="um1-iH-YGM">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="delegate" destination="mza-x9-G4n" id="BGZ-sr-g5o"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nUz-zh-lVi"/>
+                    <connections>
+                        <outlet property="tableView" destination="vuG-9G-qDh" id="Z5f-GT-iFY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7y-3X-aha" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="63" y="-483"/>
+        </scene>
         <!--Event DetailVCL-->
         <scene sceneID="83o-4r-6Gd">
             <objects>
@@ -30,7 +101,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="background1" id="phT-rG-dLb">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="background1" id="phT-rG-dLb">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -88,6 +159,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="-15" minY="-10" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="menu_btn"/>
+                                <connections>
+                                    <segue destination="mza-x9-G4n" kind="push" id="2kK-f4-R7w"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Pv-Mv-Etu" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
                                 <rect key="frame" x="281" y="20" width="30" height="30"/>
@@ -326,12 +400,14 @@
     </scenes>
     <resources>
         <image name="add_btn" width="21" height="22"/>
+        <image name="arrow_down" width="14" height="8"/>
         <image name="back_arrow" width="12" height="21"/>
         <image name="background1" width="621" height="1104"/>
         <image name="edit_btn" width="22" height="19"/>
         <image name="menu_btn" width="22" height="15"/>
         <image name="selected_btn_white" width="23" height="17"/>
         <image name="settingBg" width="414" height="736"/>
+        <image name="setting_btn" width="24" height="24"/>
         <image name="share_btn" width="18" height="29"/>
         <image name="share_close" width="40" height="40"/>
         <image name="share_qq_friends_btn" width="60" height="60"/>

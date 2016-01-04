@@ -28,7 +28,7 @@ class JCEventEditTableViewCell: JCBaseTableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.textLabel?.font = UIFont.systemFontOfSize(13)
-        self.textLabel?.textColor = ColorSecondary()
+        self.textLabel?.textColor = ColorImportant()
         self.backgroundColor = UIColor.clearColor()
         let line = CALayer()
         line.frame = CGRect(x: 13, y: 43.5, width: screenWidth, height: 0.5)
