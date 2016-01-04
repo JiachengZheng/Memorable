@@ -21,6 +21,7 @@ class JCEventDetailVCL: JCBaseVCL {
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var themeBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
+    @IBOutlet weak var themeSelectView: JCEventThemeSelectView!
     
     var isEditVeiwAnimation = false
     var editViewDataSource: JCEventEditViewDataSource!
@@ -169,6 +170,12 @@ class JCEventDetailVCL: JCBaseVCL {
     
     @IBAction func clickThemeBtn(sender: AnyObject) {
         clickCancelBtn()
+        themeSelectView.toggleAnimation()
+    }
+    
+    func changeBackground(tag: Int){
+        backgroundImageView.image = UIImage(named: "background\(tag)")
+        themeBtn.setImage(UIImage(named: "theme_btn_\(tag)"), forState: .Normal)
     }
     
     func clickCancelBtn(){
@@ -261,6 +268,14 @@ class JCEventDetailVCL: JCBaseVCL {
         
         menuBtn.imageEdgeInsets = UIEdgeInsets(top: -10, left: -20, bottom: 0, right: 0)
         editBtn.imageEdgeInsets = UIEdgeInsets(top: -10, left: 20, bottom: 0, right: 0)
+        
+        themeSelectView.hidden = false
+        themeSelectView.dissmissBlock = { [weak self] in
+                self?.clickThemeBtn((self?.themeBtn)!)
+        }
+        themeSelectView.chooseThemeBlock = { [weak self] in
+                self?.changeBackground($0)
+        }
     }
     
     func initContentView(){

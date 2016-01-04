@@ -101,7 +101,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bZi-ht-tOA" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
                                 <rect key="frame" x="6" y="526" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="theme_btn"/>
+                                <state key="normal" image="theme_btn_1"/>
                                 <connections>
                                     <action selector="clickThemeBtn:" destination="tWA-bb-NfQ" eventType="touchUpInside" id="nwt-IJ-IZL"/>
                                 </connections>
@@ -130,6 +130,43 @@
                                 </date>
                                 <locale key="locale" localeIdentifier="zh_CN"/>
                             </datePicker>
+                            <view hidden="YES" contentMode="scaleToFill" id="9Db-bB-qD9" customClass="JCEventThemeSelectView" customModule="Memorable" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="499" width="320" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yeP-oA-dFv" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                        <rect key="frame" x="56" y="8" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="theme2_btn"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cY8-gT-kBS" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                        <rect key="frame" x="110" y="8" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="theme3_btn"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3oJ-Nj-JTJ" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                        <rect key="frame" x="163" y="8" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="theme4_btn"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="1005" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aLJ-Ew-o5T" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                        <rect key="frame" x="212" y="8" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="theme5_btn"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="1006" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6t9-zo-57l" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                        <rect key="frame" x="273" y="8" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="theme_add_btn"/>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aUr-IQ-I3h" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="theme1_btn"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.23711939102564106" green="0.23711939102564106" blue="0.23711939102564106" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -142,6 +179,7 @@
                         <outlet property="menuBtn" destination="m2V-rx-cv4" id="yTA-fg-fW1"/>
                         <outlet property="shareBtn" destination="bU3-O4-4CR" id="gqK-Wd-gTC"/>
                         <outlet property="themeBtn" destination="bZi-ht-tOA" id="prn-nt-PLr"/>
+                        <outlet property="themeSelectView" destination="9Db-bB-qD9" id="D1D-tb-8bk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctx-ms-AJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,6 +339,12 @@
         <image name="share_sina_btn" width="60" height="60"/>
         <image name="share_weixin" width="60" height="60"/>
         <image name="share_weixin_friends" width="60" height="60"/>
-        <image name="theme_btn" width="28" height="28"/>
+        <image name="theme1_btn" width="44" height="44"/>
+        <image name="theme2_btn" width="44" height="44"/>
+        <image name="theme3_btn" width="44" height="44"/>
+        <image name="theme4_btn" width="44" height="44"/>
+        <image name="theme5_btn" width="44" height="44"/>
+        <image name="theme_add_btn" width="44" height="44"/>
+        <image name="theme_btn_1" width="28" height="28"/>
     </resources>
 </document>

@@ -36,13 +36,18 @@ class JCShareVCL: JCBaseVCL {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = .Default
-            }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         for i in 0...4{
             if let view = self.view.viewWithTag(1000+i){
-                performSelector("presentAnimation:", withObject: view, afterDelay:  (Double(i) * 0.05))
+                performSelector("presentAnimation:", withObject: view, afterDelay:  (Double(i) * 0.08))
             }
         }
         closeBtnAnimation(9.4)
@@ -61,13 +66,14 @@ class JCShareVCL: JCBaseVCL {
     
     func presentAnimation(view: UIView){
         view.hidden = false
-        view.layer.addSpringAnimation(kPOPLayerBounds, fromValue: NSValue.init(CGRect: CGRectMake(0, 0, 0, 0)), toValue: NSValue.init(CGRect: CGRectMake(0, 0, 60, 60)), bounds: 10, speed: 8, animKey: "pop") { (anim, finished) -> Void in
+        view.layer.addSpringAnimation(kPOPLayerBounds, fromValue: NSValue.init(CGRect: CGRectMake(0, 0, 0, 0)), toValue: NSValue.init(CGRect: CGRectMake(0, 0, 60, 60)), bounds: 3, speed: 17, animKey: "pop") { (anim, finished) -> Void in
         }
     }
     
     func dismissAnimation(view: UIView){
-        view.layer.addSpringAnimation(kPOPLayerBounds, fromValue: NSValue.init(CGRect: CGRectMake(0, 0, 60, 60)), toValue: NSValue.init(CGRect: CGRectMake(0, 0, 0, 0)), bounds: 10, speed: 8, animKey: "pop") { (anim, finished) -> Void in
-            view.hidden = true
+        view.layer.addSpringAnimation(kPOPLayerBounds, fromValue: NSValue.init(CGRect: CGRectMake(0, 0, 60, 60)), toValue: NSValue.init(CGRect: CGRectMake(0, 0, 0, 0)), bounds: 10, speed: 15, animKey: "pop") { (anim, finished) -> Void in
+        }
+        view.layer.addSpringAnimation(kPOPLayerOpacity, fromValue: 1, toValue: 0, bounds: 10, speed: 2, animKey: "pop1") { (anim, finished) -> Void in
         }
     }
 
@@ -97,7 +103,6 @@ class JCShareVCL: JCBaseVCL {
         closeBtn.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(friendBtn).offset(150)
             make.centerX.equalTo(friendBtn)
-//            make.size.equalTo(CGSizeMake(10, 10))
         }
     }
     
@@ -113,7 +118,7 @@ class JCShareVCL: JCBaseVCL {
         anim.toValue = 0
         closeBtn.layer.pop_addAnimation(anim, forKey: "close")
         dismissAnimation(closeBtn)
-        performSelector("dissmissSelf", withObject: nil, afterDelay:  0.32)
+        performSelector("dissmissSelf", withObject: nil, afterDelay:  0.4)
     }
     
     func dissmissSelf(){

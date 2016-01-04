@@ -13,6 +13,7 @@
 		0B329BAB1C329695003D7B5B /* JCEventCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B329BAA1C329695003D7B5B /* JCEventCategoryModel.swift */; };
 		0B329BAE1C3296EB003D7B5B /* JCEventCategoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B329BAD1C3296EB003D7B5B /* JCEventCategoryDataSource.swift */; };
 		0B329BB01C32984E003D7B5B /* JCEventCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B329BAF1C32984E003D7B5B /* JCEventCategory.swift */; };
+		0B63F59E1C3A54F100938C71 /* JCEventThemeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B63F59D1C3A54F000938C71 /* JCEventThemeSelectView.swift */; };
 		0B8BE2651C2EB01A00E59F1C /* JCEventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2641C2EB01A00E59F1C /* JCEventEditView.swift */; };
 		0B8BE2671C2EBC8400E59F1C /* JCEventEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2661C2EBC8400E59F1C /* JCEventEditTableViewCell.swift */; };
 		0B8BE2691C2EC16D00E59F1C /* JCColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2681C2EC16D00E59F1C /* JCColorExtension.swift */; };
@@ -53,6 +54,7 @@
 		0B329BAA1C329695003D7B5B /* JCEventCategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventCategoryModel.swift; sourceTree = "<group>"; };
 		0B329BAD1C3296EB003D7B5B /* JCEventCategoryDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventCategoryDataSource.swift; sourceTree = "<group>"; };
 		0B329BAF1C32984E003D7B5B /* JCEventCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventCategory.swift; sourceTree = "<group>"; };
+		0B63F59D1C3A54F000938C71 /* JCEventThemeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventThemeSelectView.swift; sourceTree = "<group>"; };
 		0B8BE2641C2EB01A00E59F1C /* JCEventEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventEditView.swift; sourceTree = "<group>"; };
 		0B8BE2661C2EBC8400E59F1C /* JCEventEditTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventEditTableViewCell.swift; sourceTree = "<group>"; };
 		0B8BE2681C2EC16D00E59F1C /* JCColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCColorExtension.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				0B9067D61C2D44CC0047FE4E /* JCEventContentView.swift */,
 				0B8BE2641C2EB01A00E59F1C /* JCEventEditView.swift */,
 				0B8BE2661C2EBC8400E59F1C /* JCEventEditTableViewCell.swift */,
+				0B63F59D1C3A54F000938C71 /* JCEventThemeSelectView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */,
 				0B329BA91C32967E003D7B5B /* JCEventCategoryVCL.swift in Sources */,
 				0B9D31C61C301E5800859525 /* JCStringExtension.swift in Sources */,
+				0B63F59E1C3A54F100938C71 /* JCEventThemeSelectView.swift in Sources */,
 				0BADE5A21C311CC000F61EAC /* JCBaseTableViewVCL.swift in Sources */,
 				0BADE59E1C31095900F61EAC /* JCBaseTableViewDataSource.swift in Sources */,
 				0BE7F1791C2FC6960060B3C1 /* JCBaseButton.swift in Sources */,
