@@ -71,17 +71,17 @@ func getRecentSaturday()-> String{
     return dateToStr(saturday)
 }
 
-func standardDateFormat(str:String) -> String{
+func standardDateFormat(str:String,style: NSDateFormatterStyle = .FullStyle) -> String{
     let date = strToDate(str)
-    if let dateStr = date?.formattedDateWithStyle(.FullStyle){
+    if let dateStr = date?.formattedDateWithStyle(style){
         return dateStr
     }else{
         return ""
     }
 }
 
-func intervalTimeFromDate(str :String) -> (String,String,String){
-    let date1 = strToDate(str,formatter: "yyyy-MM-dd HH:mm")
+func intervalTimeFromDate(str :String,formatter:String = "yyyy-MM-dd HH:mm") -> (String,String,String){
+    let date1 = strToDate(str,formatter: formatter)
     guard let date = date1 else{
         return ("","","")
     }
@@ -138,6 +138,18 @@ func getUUID() -> String{
     let uuidStringRef = CFUUIDCreateString(nil, uuidRef)
     return uuidStringRef as String
 }
+
+func isDay(day1:String,earlier day2: String) -> Bool{
+    guard let day = strToDate(day1) else{
+        return true
+    }
+    guard let day3 = strToDate(day2) else{
+        return false
+    }
+    return day.isEarlierThan(day3)
+}
+
+
 
 
 

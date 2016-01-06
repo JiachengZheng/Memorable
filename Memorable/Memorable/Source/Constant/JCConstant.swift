@@ -38,3 +38,11 @@ func ColorMinor() -> UIColor {
     return UIColor.colorWithHex(0xbebebe)
 }
 
+/// 分割线
+func ColorSeparator() -> UIColor {
+    return UIColor.colorWithHex(0xFFFFFF,alpha: 0.3)
+}
+
+
+
+

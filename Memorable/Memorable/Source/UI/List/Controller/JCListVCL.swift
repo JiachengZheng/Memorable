@@ -17,6 +17,11 @@ class JCListVCL: JCBaseTableViewVCL {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        loadItem()
+    }
+    
     func loadItem(){
         let model = self.model as! JCListModel
         model.loadItem(nil , complete: { [weak self](com) -> Void in

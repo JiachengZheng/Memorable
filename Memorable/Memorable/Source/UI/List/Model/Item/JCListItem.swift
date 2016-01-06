@@ -9,4 +9,12 @@
 import UIKit
 
 class JCListItem: NSObject {
+    var name: String
+    var id: String?
+    var date: String?
+    init(id: String,name: String, date: String) {
+        self.name = name
+        self.id = id
+        self.date = date
+    }
 }
