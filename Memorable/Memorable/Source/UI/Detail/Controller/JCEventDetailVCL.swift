@@ -47,7 +47,7 @@ class JCEventDetailVCL: JCBaseVCL {
         initUI()
         loadModel()
         subscribe()
-        //self.navigationController?.delegate = self
+        self.navigationController?.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -410,16 +410,17 @@ class JCEventDetailVCL: JCBaseVCL {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "List" {
+            let vcl = segue.sourceViewController as! JCEventDetailVCL
+            vcl.contentView.daysLabel.font = UIFont.systemFontOfSize(37)
+            vcl.contentView.layoutIfNeeded()
+        }
     }
-    */
-
 }
 
 //MARK: UITextFieldDelegate
@@ -487,11 +488,17 @@ extension JCEventDetailVCL:UITableViewDelegate{
     }
 }
 
-//extension JCEventDetailVCL: UINavigationControllerDelegate{
-//    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
-//
-//    }
-//}
+extension JCEventDetailVCL: UINavigationControllerDelegate{
+    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
+        if operation == UINavigationControllerOperation.Push {
+            return JCDetailToListTransion()
+        } else {
+            return nil
+        }
+
+    }
+}
 
 
 

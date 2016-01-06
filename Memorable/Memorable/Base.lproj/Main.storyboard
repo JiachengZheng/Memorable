@@ -193,7 +193,7 @@
                                 <inset key="imageEdgeInsets" minX="-15" minY="-10" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="menu_btn"/>
                                 <connections>
-                                    <segue destination="mza-x9-G4n" kind="push" id="2kK-f4-R7w"/>
+                                    <segue destination="mza-x9-G4n" kind="push" identifier="List" id="2kK-f4-R7w"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Pv-Mv-Etu" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
