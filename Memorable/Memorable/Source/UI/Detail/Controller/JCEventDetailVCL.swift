@@ -11,7 +11,7 @@ import pop
 import RxCocoa
 import RxSwift
 class JCEventDetailVCL: JCBaseVCL {
-
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     
     @IBOutlet weak var contentView: JCEventContentView!
@@ -55,6 +55,9 @@ class JCEventDetailVCL: JCBaseVCL {
         if disappearFromEdit{
             UIApplication.sharedApplication().statusBarStyle = .Default
         }
+        if (contentView != nil){
+            contentView.updateDaysLabelFont()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -63,9 +66,8 @@ class JCEventDetailVCL: JCBaseVCL {
             timer.fireDate =  NSDate.distantPast()
         }
         if !disappearFromEdit{
-            self.performSelector("animationContentView", withObject: nil, afterDelay: 0.3)
+            animationContentView()
         }
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -117,7 +119,8 @@ class JCEventDetailVCL: JCBaseVCL {
     //MARK: 加载模型
     func loadModel(){
         self.model = JCEventDetailModel()
-        model.loadItem(nil, complete: {[weak self] (suc) -> Void in
+        
+        model.loadItem(paramDic, complete: {[weak self] (suc) -> Void in
             self?.initContentView()
         }) { (fail) -> Void in
                 
@@ -418,6 +421,12 @@ class JCEventDetailVCL: JCBaseVCL {
         if segue.identifier == "List" {
             let vcl = segue.sourceViewController as! JCEventDetailVCL
             vcl.contentView.daysLabel.font = UIFont.systemFontOfSize(37)
+            vcl.contentView.titleLabel.font = UIFont.systemFontOfSize(22)
+            vcl.contentView.dateLabel.font = UIFont.systemFontOfSize(11)
+            vcl.contentView.dateLabel.text = eventDate + " " + eventTime
+            if eventTime == "00:00" || eventTime == "24:00"{
+                vcl.contentView.dateLabel.text = eventDate
+            }
             vcl.contentView.layoutIfNeeded()
         }
     }
@@ -491,12 +500,14 @@ extension JCEventDetailVCL:UITableViewDelegate{
 extension JCEventDetailVCL: UINavigationControllerDelegate{
     
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
-        if operation == UINavigationControllerOperation.Push {
-            return JCDetailToListTransion()
-        } else {
-            return nil
+        if let _ = toVC as? JCListVCL{
+            if operation == UINavigationControllerOperation.Push {
+                return JCDetailToListTransion()
+            } else {
+                return nil
+            }
         }
-
+        return nil
     }
 }
 

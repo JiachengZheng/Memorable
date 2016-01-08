@@ -13,7 +13,9 @@ class JCListModel: JCBaseModel {
         self.items.removeAll()
         let list = eventRealm.objects(JCEvent)
         for obj in list {
-            self.items.append(JCListItem(id: obj.id, name: obj.name, date: obj.date))
+            let item = JCListItem(id: obj.id, name: obj.name, date: obj.date + " " + obj.time)
+            item.event = obj
+            self.items.append(item)
         }
         complete(nil)
     }

@@ -28,6 +28,8 @@
 		0B91667C1C3AC396005ADAD0 /* JCListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B91667B1C3AC396005ADAD0 /* JCListDataSource.swift */; };
 		0B91667E1C3AC3DB005ADAD0 /* JCListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B91667D1C3AC3DB005ADAD0 /* JCListModel.swift */; };
 		0B9166801C3AC471005ADAD0 /* JCListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B91667F1C3AC471005ADAD0 /* JCListTableViewCell.swift */; };
+		0B98B3291C3F69A600B12DA6 /* LaunchVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98B3281C3F69A600B12DA6 /* LaunchVCL.swift */; };
+		0B98B32C1C3F857500B12DA6 /* JCListToDetailTransion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B98B32B1C3F857500B12DA6 /* JCListToDetailTransion.swift */; };
 		0B9D31C21C2FF3D200859525 /* JCEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D31C11C2FF3D200859525 /* JCEvent.swift */; };
 		0B9D31C41C30175200859525 /* JCEventManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D31C31C30175200859525 /* JCEventManage.swift */; };
 		0B9D31C61C301E5800859525 /* JCStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D31C51C301E5800859525 /* JCStringExtension.swift */; };
@@ -75,6 +77,8 @@
 		0B91667B1C3AC396005ADAD0 /* JCListDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListDataSource.swift; sourceTree = "<group>"; };
 		0B91667D1C3AC3DB005ADAD0 /* JCListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListModel.swift; sourceTree = "<group>"; };
 		0B91667F1C3AC471005ADAD0 /* JCListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListTableViewCell.swift; sourceTree = "<group>"; };
+		0B98B3281C3F69A600B12DA6 /* LaunchVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchVCL.swift; sourceTree = "<group>"; };
+		0B98B32B1C3F857500B12DA6 /* JCListToDetailTransion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListToDetailTransion.swift; sourceTree = "<group>"; };
 		0B9D31C11C2FF3D200859525 /* JCEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEvent.swift; sourceTree = "<group>"; };
 		0B9D31C31C30175200859525 /* JCEventManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventManage.swift; sourceTree = "<group>"; };
 		0B9D31C51C301E5800859525 /* JCStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCStringExtension.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 		0B9166741C3AC2F2005ADAD0 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				0B98B32A1C3F855800B12DA6 /* Transition */,
 				0B9166751C3AC2F2005ADAD0 /* Controller */,
 				0B9166761C3AC2F2005ADAD0 /* Model */,
 				0B9166771C3AC2F2005ADAD0 /* View */,
@@ -237,6 +242,14 @@
 				0B91667B1C3AC396005ADAD0 /* JCListDataSource.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		0B98B32A1C3F855800B12DA6 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				0B98B32B1C3F857500B12DA6 /* JCListToDetailTransion.swift */,
+			);
+			path = Transition;
 			sourceTree = "<group>";
 		};
 		0BADE59C1C31091800F61EAC /* DataSource */ = {
@@ -299,6 +312,7 @@
 				0BBB36CD1C2CE668008795A6 /* Assets.xcassets */,
 				0BBB36CA1C2CE668008795A6 /* Memorable.xcdatamodeld */,
 				0BBB36D21C2CE668008795A6 /* Info.plist */,
+				0B98B3281C3F69A600B12DA6 /* LaunchVCL.swift */,
 			);
 			name = info;
 			sourceTree = "<group>";
@@ -612,7 +626,9 @@
 				0B8BE26B1C2EC1BE00E59F1C /* JCUIViewExtension.swift in Sources */,
 				0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */,
 				0B329BA91C32967E003D7B5B /* JCEventCategoryVCL.swift in Sources */,
+				0B98B32C1C3F857500B12DA6 /* JCListToDetailTransion.swift in Sources */,
 				0B899AF31C3AC53300C9CE75 /* JCListItem.swift in Sources */,
+				0B98B3291C3F69A600B12DA6 /* LaunchVCL.swift in Sources */,
 				0B9D31C61C301E5800859525 /* JCStringExtension.swift in Sources */,
 				0B63F59E1C3A54F100938C71 /* JCEventThemeSelectView.swift in Sources */,
 				0BADE5A21C311CC000F61EAC /* JCBaseTableViewVCL.swift in Sources */,

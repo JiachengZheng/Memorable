@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import pop
 class JCListTableViewCell: JCBaseTableViewCell {
 
     @IBOutlet weak var daysLable: UILabel!
@@ -38,17 +38,32 @@ class JCListTableViewCell: JCBaseTableViewCell {
         nameLable.text = object.name
         if let date = object.date{
             dateLabel.text = date
-            daysLable.text = intervalTimeFromDate(date,formatter: "yyyy-MM-dd").0
-            if let d = strToDate(date,formatter: "yyyy-MM-dd"){
-                if d.isEarlierThan(NSDate()){
-                    bgImageView.image = UIImage(named: "cell_bg1")
-                }else{
-                    bgImageView.image = UIImage(named: "cell_bg2")
-                }
+            if date.hasSuffix("00:00") || date.hasSuffix("24:00"){
+                dateLabel.text = date[0...9]
+            }
+            daysLable.text = intervalTimeFromDate(date,formatter: "yyyy-MM-dd HH:mm").0
+            if let d = strToDate(date,formatter: "yyyy-MM-dd HH:mm"){
+//                if d.isEarlierThan(NSDate()){
+//                    bgImageView.image = UIImage(named: "cell_bg1")
+//                }else{
+//                    bgImageView.image = UIImage(named: "cell_bg2")
+//                }
+                bgImageView.image = UIImage(named: "cell_bg_3")
             }
             
         }
+    }
+    
+    //抖动效果，被李佳琪否决了
+    func toggleAnimation(){
         
+        let anim = POPBasicAnimation(propertyNamed: kPOPLayerPosition)
+        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        anim.duration = 0.1
+        anim.repeatCount = 4
+        anim.fromValue = NSValue.init(CGPoint: CGPoint(x: screenWidth/2 - 1, y: self.center.y))
+        anim.toValue = NSValue.init(CGPoint: CGPoint(x: screenWidth/2 + 1, y: self.center.y))
+        self.layer.pop_addAnimation(anim, forKey: "opacityAnim")
     }
     
     override func prepareForReuse() {

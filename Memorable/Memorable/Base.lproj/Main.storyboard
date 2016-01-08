@@ -107,11 +107,12 @@
                                             <outlet property="dateLabel" destination="lb0-Mf-KrF" id="yRt-KM-Fbe"/>
                                             <outlet property="daysLable" destination="NXW-I5-Ivy" id="CCj-v4-Icf"/>
                                             <outlet property="nameLable" destination="Tar-pY-mRC" id="oQk-1P-OLs"/>
+                                            <segue destination="tWA-bb-NfQ" kind="push" identifier="Detail" id="Nxg-3H-LJw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="delegate" destination="mza-x9-G4n" id="BGZ-sr-g5o"/>
+                                    <outlet property="delegate" destination="mza-x9-G4n" id="u0E-ql-q8U"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -119,12 +120,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="nUz-zh-lVi"/>
                     <connections>
-                        <outlet property="tableView" destination="vuG-9G-qDh" id="Z5f-GT-iFY"/>
+                        <outlet property="tableView" destination="vuG-9G-qDh" id="deO-LH-0w0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7y-3X-aha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63" y="-483"/>
+            <point key="canvasLocation" x="302" y="-627"/>
         </scene>
         <!--Event DetailVCL-->
         <scene sceneID="83o-4r-6Gd">
@@ -361,6 +362,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="delegate" destination="1Tl-Gd-v5e" id="hVQ-7W-zc6"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -457,4 +461,7 @@
         <image name="theme_add_btn" width="44" height="44"/>
         <image name="theme_btn_1" width="28" height="28"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Nxg-3H-LJw"/>
+    </inferredMetricsTieBreakers>
 </document>

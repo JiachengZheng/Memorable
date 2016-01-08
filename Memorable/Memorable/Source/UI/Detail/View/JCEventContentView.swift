@@ -18,7 +18,6 @@ class JCEventContentView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        titleLabel.sizeToFit()
     }
     
     override func layoutSubviews() {
@@ -56,16 +55,16 @@ class JCEventContentView: UIView {
         
         let opacityAnim = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
         opacityAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        opacityAnim.duration = 0.8
+        opacityAnim.duration = 0.6
         opacityAnim.fromValue = 0.2
         opacityAnim.toValue = 1
         self.layer.pop_addAnimation(opacityAnim, forKey: "opacityAnim")
         
         self.layer.addSpringAnimation(kPOPLayerScaleXY,
-            fromValue: NSValue.init(CGSize: CGSize(width: 0.5, height: 0.5)),
+            fromValue: NSValue.init(CGSize: CGSize(width: 0.7, height: 0.7)),
             toValue: NSValue.init(CGSize: CGSize(width: 1, height: 1)),
             bounds: 5,
-            speed: 1,
+            speed: 9,
             animKey: "scaleAnim"){ (pop, finish) -> Void in
         }
     }
@@ -113,6 +112,8 @@ class JCEventContentView: UIView {
             }
             daysLabel.font = UIFont(name: "Arial", size: size)
         }
+        titleLabel.font = UIFont.systemFontOfSize(51)
+        dateLabel.font = UIFont.systemFontOfSize(15)
     }
     
     

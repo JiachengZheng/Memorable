@@ -129,8 +129,6 @@ func caculateLableSize(labelText: NSString,
             CGSizeMake(CGFloat(width), CGFloat(height)),
             options: NSStringDrawingOptions.UsesLineFragmentOrigin,
         attributes:textAttributes , context: nil).size
-        
-        
 }
 
 func getUUID() -> String{

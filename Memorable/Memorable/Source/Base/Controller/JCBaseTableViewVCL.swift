@@ -15,7 +15,6 @@ class JCBaseTableViewVCL: JCBaseVCL ,UITableViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self
         self.tableView.tableFooterView = UIView(frame:CGRectZero)
     }
     

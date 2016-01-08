@@ -14,9 +14,18 @@ class JCEventDetailModel: JCBaseModel {
     var editViewItem: [JCEventEditViewItem]?
     
     override func loadItem(param: [String : AnyObject]?, complete: ([String : AnyObject]? -> Void), failure: ([String : AnyObject]? -> Void)) {
-        let list = eventRealm.objects(JCEvent)
-        if let obj1 = list.first {
-            event = obj1
+        if let param = param{
+            if let fromList = param["fromList"] as? Bool {
+                if fromList{
+                    event = param["event"] as? JCEvent
+                }
+            }
+        }
+        if event == nil{
+            let list = eventRealm.objects(JCEvent)
+            if let obj1 = list.first {
+                event = obj1
+            }
         }
         complete(nil)
     }

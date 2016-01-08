@@ -12,6 +12,7 @@ class JCListItem: NSObject {
     var name: String
     var id: String?
     var date: String?
+    var event: JCEvent!
     init(id: String,name: String, date: String) {
         self.name = name
         self.id = id

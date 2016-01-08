@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import SVProgressHUD
 class JCBaseVCL: UIViewController ,UIGestureRecognizerDelegate{
-
+    var paramDic: [String: AnyObject]?
     var model: JCBaseModel = JCBaseModel()
     
     override func viewDidLoad() {
