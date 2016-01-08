@@ -42,15 +42,7 @@ class JCListTableViewCell: JCBaseTableViewCell {
                 dateLabel.text = date[0...9]
             }
             daysLable.text = intervalTimeFromDate(date,formatter: "yyyy-MM-dd HH:mm").0
-            if let d = strToDate(date,formatter: "yyyy-MM-dd HH:mm"){
-//                if d.isEarlierThan(NSDate()){
-//                    bgImageView.image = UIImage(named: "cell_bg1")
-//                }else{
-//                    bgImageView.image = UIImage(named: "cell_bg2")
-//                }
-                bgImageView.image = UIImage(named: "cell_bg_3")
-            }
-            
+            bgImageView.image = UIImage(named: "cell_bg_\(object.event.bgName[10...10])")
         }
     }
     

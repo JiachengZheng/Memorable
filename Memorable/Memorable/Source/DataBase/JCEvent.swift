@@ -16,6 +16,7 @@ import RealmSwift
     dynamic var time =  ""
     dynamic var type = ""
     dynamic var isTop = false
+    dynamic var bgName = ""
     
     override class func primaryKey()-> String{
         return "id"

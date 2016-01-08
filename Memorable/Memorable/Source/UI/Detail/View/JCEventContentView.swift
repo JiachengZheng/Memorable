@@ -63,8 +63,8 @@ class JCEventContentView: UIView {
         self.layer.addSpringAnimation(kPOPLayerScaleXY,
             fromValue: NSValue.init(CGSize: CGSize(width: 0.7, height: 0.7)),
             toValue: NSValue.init(CGSize: CGSize(width: 1, height: 1)),
-            bounds: 5,
-            speed: 9,
+            bounds: 9,
+            speed: 17,
             animKey: "scaleAnim"){ (pop, finish) -> Void in
         }
     }

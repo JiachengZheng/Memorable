@@ -35,6 +35,7 @@ class JCEventDetailVCL: JCBaseVCL {
     var eventCategory: String = ""
     var eventIsTop: Bool = false
     var eventId: String = ""
+    var eventBgName = ""
     
     var disappearFromEdit: Bool = false
     private var disposeBag = DisposeBag()
@@ -178,8 +179,10 @@ class JCEventDetailVCL: JCBaseVCL {
     }
     
     func changeBackground(tag: Int){
-        backgroundImageView.image = UIImage(named: "background\(tag)")
+        eventBgName = "background\(tag)";
+        backgroundImageView.image = UIImage(named: eventBgName)
         themeBtn.setImage(UIImage(named: "theme_btn_\(tag)"), forState: .Normal)
+        eventManager.updateEventWith(eventId,eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: eventCategory,eventIsTop: eventIsTop,eventBgName: eventBgName)
     }
     
     func clickCancelBtn(){
@@ -196,7 +199,7 @@ class JCEventDetailVCL: JCBaseVCL {
             return
         }
         contentView.setupLable(eventName, date: eventDate, time: eventTime)
-        eventManager.updateEventWith(eventId,eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: eventCategory,eventIsTop: eventIsTop)
+        eventManager.updateEventWith(eventId,eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: eventCategory,eventIsTop: eventIsTop,eventBgName: eventBgName)
         clickCancelBtn()
         showSuccess("保存成功")
     }
@@ -294,9 +297,12 @@ class JCEventDetailVCL: JCBaseVCL {
             eventIsTop = event.isTop
             eventDate = event.date
             eventTime = event.time
+            eventBgName = event.bgName
             updateContentViewLabel()
         }
-
+        backgroundImageView.image = UIImage(named: eventBgName)
+        themeBtn.setImage(UIImage(named: "theme_btn_\(eventBgName[10...10])"), forState: .Normal)
+        
         timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "updateContentViewLabel", userInfo: nil, repeats: true)
         
         contentView.snp_makeConstraints { (make) -> Void in

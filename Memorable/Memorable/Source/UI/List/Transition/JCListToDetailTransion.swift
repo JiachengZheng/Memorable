@@ -21,14 +21,16 @@ class JCListToDetailTransion: NSObject,UIViewControllerAnimatedTransitioning {
         let bg = fromVC.cellImageView.snapshotViewAfterScreenUpdates(true)
         toVC.view.frame = transitionContext.finalFrameForViewController(toVC)
         bg.frame = container!.convertRect(fromVC.cellImageView.frame, fromView: fromVC.view)
-        toVC.view.alpha = 0
+        fromVC.view.frame = toVC.view.frame
+        container!.addSubview(fromVC.view)
         container!.addSubview(toVC.view)
         container!.addSubview(bg)
-        UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+        toVC.view.alpha = 0
+        UIView.animateWithDuration(0.4, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             bg.frame = toVC.view.frame
-            toVC.view.alpha = 1
-            bg.alpha = 0.95
             }) { (finish: Bool) -> Void in
+                toVC.view.alpha = 1
+                fromVC.view.removeFromSuperview()
                 bg.removeFromSuperview()
                 transitionContext.completeTransition(true)
         }

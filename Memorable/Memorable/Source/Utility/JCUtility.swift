@@ -56,12 +56,21 @@ func dateToStr(date: NSDate,formatter:String = "yyyy-MM-dd") -> String{
 func getRecentSaturday()-> String{
     let now = NSDate()
     var saturday: NSDate
-    let weekDay = now.weekday()
-
-    if weekDay == 0{
+    let calendar = NSCalendar.currentCalendar()
+    let weekDay = calendar.component(.Weekday, fromDate: now)
+    /*
+    1 －－星期天
+    2－－星期一
+    3－－星期二
+    4－－星期三
+    5－－星期四
+    6－－星期五
+    7－－星期六
+    */
+    if weekDay == 1{
         //周日
         saturday = now.dateByAddingDays(-1)
-    }else if weekDay == 6{
+    }else if weekDay == 7{
         //周六
         saturday = now
     }else{
@@ -69,6 +78,24 @@ func getRecentSaturday()-> String{
     }
     
     return dateToStr(saturday)
+}
+
+func getRecentSunday()-> String{
+    let now = NSDate()
+    var sunday: NSDate
+    let weekDay = now.weekday()
+    
+    if weekDay == 1{
+        //周日
+        sunday = now
+    }else if weekDay == 7{
+        //周六
+        sunday = now.dateByAddingDays(1)
+    }else{
+        sunday = now.dateByAddingDays(7 - (weekDay - 1))
+    }
+    
+    return dateToStr(sunday)
 }
 
 func standardDateFormat(str:String,style: NSDateFormatterStyle = .FullStyle) -> String{

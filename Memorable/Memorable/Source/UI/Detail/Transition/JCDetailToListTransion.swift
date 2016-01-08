@@ -10,11 +10,10 @@ import UIKit
 
 class JCDetailToListTransion: NSObject,UIViewControllerAnimatedTransitioning {
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.7
+        return 0.4
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        //1.获取动画的源控制器和目标控制器
         guard let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as? JCEventDetailVCL else{
             return
         }
@@ -29,7 +28,7 @@ class JCDetailToListTransion: NSObject,UIViewControllerAnimatedTransitioning {
         date.frame = container!.convertRect(fromVC.contentView.dateLabel.frame, fromView: fromVC.contentView)
         let bg = fromVC.backgroundImageView.snapshotViewAfterScreenUpdates(false)
         dayslabel.frame = container!.convertRect(fromVC.contentView.daysLabel.frame, fromView: fromVC.contentView)
-        fromVC.contentView.hidden = true
+       
         let eventId = fromVC.eventId
         let model = toVC.model as! JCListModel
         var i = 0
@@ -52,6 +51,7 @@ class JCDetailToListTransion: NSObject,UIViewControllerAnimatedTransitioning {
         container!.addSubview(dayslabel)
         container!.addSubview(title)
         container!.addSubview(date)
+        fromVC.contentView.hidden = true
         let titleWidth = caculateLableSize(fromVC.contentView.titleLabel.text!,height:Float(fromVC.contentView.titleLabel.height), textAttributes: [NSFontAttributeName:UIFont.systemFontOfSize(22)]).width
         let dateWidth = caculateLableSize(fromVC.contentView.dateLabel.text!,height:Float(fromVC.contentView.dateLabel.height) ,textAttributes: [NSFontAttributeName:UIFont.systemFontOfSize(11)]).width
         UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in

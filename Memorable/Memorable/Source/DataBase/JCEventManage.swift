@@ -17,15 +17,19 @@ class JCEventManage {
             return
         }
         
-        let event = JCEvent(value:[getUUID(),"周末",getRecentSaturday(),"00:00","生活",true])
-        
+        let event = JCEvent(value:[getUUID(),"周六",getRecentSaturday(),"00:00","生活",true,"background1"])
+        let event1 = JCEvent(value:[getUUID(),"周日",getRecentSunday(),"00:00","生活",true,"background1"])
+        let event2 = JCEvent(value:[getUUID(),"周六",getRecentSaturday(),"00:00","生活",true,"background1"])
+        let event3 = JCEvent(value:[getUUID(),"周日",getRecentSunday(),"00:00","生活",true,"background1"])
+        let event4 = JCEvent(value:[getUUID(),"周六",getRecentSaturday(),"00:00","生活",true,"background1"])
+        let event5 = JCEvent(value:[getUUID(),"周日",getRecentSunday(),"00:00","生活",true,"background1"])
         let _ = try? eventRealm.write { () -> Void in
-            eventRealm.add(event)
+            eventRealm.add([event,event1,event2,event3,event4,event5])
         }
     }
     
-    func updateEventWith(eventId:String ,eventName: String,eventDate: String,eventTime: String,eventType: String,eventIsTop: Bool) {
-        let event = JCEvent(value:[eventId,eventName,eventDate,eventTime,eventType,eventIsTop])
+    func updateEventWith(eventId:String ,eventName: String,eventDate: String,eventTime: String,eventType: String,eventIsTop: Bool,eventBgName: String) {
+        let event = JCEvent(value:[eventId,eventName,eventDate,eventTime,eventType,eventIsTop,eventBgName])
         let _ = try? eventRealm.write { () -> Void in
             eventRealm.add(event,update: true)
         }
