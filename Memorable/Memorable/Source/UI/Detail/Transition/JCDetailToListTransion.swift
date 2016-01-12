@@ -10,7 +10,7 @@ import UIKit
 
 class JCDetailToListTransion: NSObject,UIViewControllerAnimatedTransitioning {
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.4
+        return 0.3
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -20,19 +20,19 @@ class JCDetailToListTransion: NSObject,UIViewControllerAnimatedTransitioning {
 
         let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! JCListVCL
         let container = transitionContext.containerView()
-        let dayslabel = fromVC.contentView.daysLabel.snapshotViewAfterScreenUpdates(true)
         
+        let dayslabel = fromVC.contentView.daysLabel.snapshotViewAfterScreenUpdates(true)
         let title = fromVC.contentView.titleLabel.snapshotViewAfterScreenUpdates(true)
-        title.frame = container!.convertRect(fromVC.contentView.titleLabel.frame, fromView: fromVC.contentView)
         let date = fromVC.contentView.dateLabel.snapshotViewAfterScreenUpdates(true)
-        date.frame = container!.convertRect(fromVC.contentView.dateLabel.frame, fromView: fromVC.contentView)
         let bg = fromVC.backgroundImageView.snapshotViewAfterScreenUpdates(false)
+        
+        title.frame = container!.convertRect(fromVC.contentView.titleLabel.frame, fromView: fromVC.contentView)
+        date.frame = container!.convertRect(fromVC.contentView.dateLabel.frame, fromView: fromVC.contentView)
         dayslabel.frame = container!.convertRect(fromVC.contentView.daysLabel.frame, fromView: fromVC.contentView)
        
         let eventId = fromVC.eventId
         let model = toVC.model as! JCListModel
-        var i = 0
-        
+        var i:CGFloat = 0
         for item in model.items{
             if let item1 = item as? JCListItem{
                 if item1.id == eventId{
@@ -51,16 +51,20 @@ class JCDetailToListTransion: NSObject,UIViewControllerAnimatedTransitioning {
         container!.addSubview(dayslabel)
         container!.addSubview(title)
         container!.addSubview(date)
+        
         fromVC.contentView.hidden = true
+        
         let titleWidth = caculateLableSize(fromVC.contentView.titleLabel.text!,height:Float(fromVC.contentView.titleLabel.height), textAttributes: [NSFontAttributeName:UIFont.systemFontOfSize(22)]).width
         let dateWidth = caculateLableSize(fromVC.contentView.dateLabel.text!,height:Float(fromVC.contentView.dateLabel.height) ,textAttributes: [NSFontAttributeName:UIFont.systemFontOfSize(11)]).width
+        
         UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
             
-            dayslabel.frame = CGRectMake(screenWidth - 14 - dayslabel.width, CGFloat(64 + i*70 + 14), dayslabel.width, dayslabel.height)
-            title.center = CGPointMake(13+titleWidth/2, CGFloat(64 + i*70 + 26))
-            date.center = CGPointMake(13+dateWidth/2, CGFloat(64 + i*70 + 51))
-            bg.frame = CGRectMake(0, CGFloat(64 + i*70), screenWidth, 70)
+            dayslabel.frame = CGRectMake(screenWidth - 14 - dayslabel.width, CGFloat(64 + i*listCellHight + 14), dayslabel.width, dayslabel.height)
+            title.center = CGPointMake(13+titleWidth/2, CGFloat(64 + i*listCellHight + 26))
+            date.center = CGPointMake(13+dateWidth/2, CGFloat(64 + i*listCellHight + 51))
+            bg.frame = CGRectMake(0, CGFloat(64 + i*listCellHight), screenWidth, listCellHight)
             toVC.view.alpha = 1
+            
             }) { (finish: Bool) -> Void in
                 dayslabel.removeFromSuperview()
                 bg.removeFromSuperview()

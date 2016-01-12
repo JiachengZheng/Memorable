@@ -98,7 +98,8 @@ class JCEventEditTableViewCell: JCBaseTableViewCell {
             }
             if let _ = arrowImage{
             }else{
-                arrowImage = UIImageView(image:UIImage(named: "edit_arrow"))
+                arrowImage = UIImageView()
+                arrowImage!.loadLocalImage("edit_arrow")
                 self.contentView.addSubview(arrowImage!)
             }
             typeLabel!.text = item.text

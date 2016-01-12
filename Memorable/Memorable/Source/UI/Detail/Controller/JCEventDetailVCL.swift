@@ -142,6 +142,22 @@ class JCEventDetailVCL: JCBaseVCL {
         editView.tableView.reloadData()
     }
     
+    func prepareForPop(){
+        contentView.daysLabel.font = UIFont.systemFontOfSize(37)
+        contentView.titleLabel.font = UIFont.systemFontOfSize(22)
+        contentView.dateLabel.font = UIFont.systemFontOfSize(11)
+        contentView.dateLabel.text = eventDate + " " + eventTime
+        if eventTime == "00:00" || eventTime == "24:00"{
+            contentView.dateLabel.text = eventDate
+        }
+        contentView.layoutIfNeeded()
+    }
+    
+    @IBAction func clickMenuBtn(sender: AnyObject) {
+        prepareForPop();
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     //MARK: 点击事件
     @IBAction func clickEditBtn(sender: AnyObject) {
         isEdit = !isEdit
@@ -180,8 +196,8 @@ class JCEventDetailVCL: JCBaseVCL {
     
     func changeBackground(tag: Int){
         eventBgName = "background\(tag)";
-        backgroundImageView.image = UIImage(named: eventBgName)
-        themeBtn.setImage(UIImage(named: "theme_btn_\(tag)"), forState: .Normal)
+        backgroundImageView.loadLocalImage(eventBgName)
+        themeBtn.loadLocalImage("theme_btn_\(tag)")
         eventManager.updateEventWith(eventId,eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: eventCategory,eventIsTop: eventIsTop,eventBgName: eventBgName)
     }
     
@@ -300,8 +316,9 @@ class JCEventDetailVCL: JCBaseVCL {
             eventBgName = event.bgName
             updateContentViewLabel()
         }
-        backgroundImageView.image = UIImage(named: eventBgName)
-        themeBtn.setImage(UIImage(named: "theme_btn_\(eventBgName[10...10])"), forState: .Normal)
+        backgroundImageView.loadLocalImage(eventBgName)
+
+        themeBtn.loadLocalImage("theme_btn_\(eventBgName[10...10])")
         
         timer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "updateContentViewLabel", userInfo: nil, repeats: true)
         
@@ -418,24 +435,6 @@ class JCEventDetailVCL: JCBaseVCL {
             }
         }
     }
-    
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "List" {
-            let vcl = segue.sourceViewController as! JCEventDetailVCL
-            vcl.contentView.daysLabel.font = UIFont.systemFontOfSize(37)
-            vcl.contentView.titleLabel.font = UIFont.systemFontOfSize(22)
-            vcl.contentView.dateLabel.font = UIFont.systemFontOfSize(11)
-            vcl.contentView.dateLabel.text = eventDate + " " + eventTime
-            if eventTime == "00:00" || eventTime == "24:00"{
-                vcl.contentView.dateLabel.text = eventDate
-            }
-            vcl.contentView.layoutIfNeeded()
-        }
-    }
 }
 
 //MARK: UITextFieldDelegate
@@ -507,7 +506,8 @@ extension JCEventDetailVCL: UINavigationControllerDelegate{
     
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning?{
         if let _ = toVC as? JCListVCL{
-            if operation == UINavigationControllerOperation.Push {
+            if operation == UINavigationControllerOperation.Pop {
+                prepareForPop()
                 return JCDetailToListTransion()
             } else {
                 return nil

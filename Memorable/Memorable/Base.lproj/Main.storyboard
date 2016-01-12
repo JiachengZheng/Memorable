@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="tWA-bb-NfQ" kind="relationship" relationship="rootViewController" id="RE9-Vz-amc"/>
+                        <segue destination="mza-x9-G4n" kind="relationship" relationship="rootViewController" id="WG6-vo-UHY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdz-4h-G51" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,7 +100,6 @@
                                             <outlet property="dateLabel" destination="lb0-Mf-KrF" id="yRt-KM-Fbe"/>
                                             <outlet property="daysLable" destination="NXW-I5-Ivy" id="CCj-v4-Icf"/>
                                             <outlet property="nameLable" destination="Tar-pY-mRC" id="oQk-1P-OLs"/>
-                                            <segue destination="tWA-bb-NfQ" kind="push" identifier="Detail" id="Nxg-3H-LJw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -194,7 +193,7 @@
                                 <inset key="imageEdgeInsets" minX="-15" minY="-10" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="menu_btn"/>
                                 <connections>
-                                    <segue destination="mza-x9-G4n" kind="push" identifier="List" id="2kK-f4-R7w"/>
+                                    <action selector="clickMenuBtn:" destination="tWA-bb-NfQ" eventType="touchUpInside" id="rDn-by-t5U"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Pv-Mv-Etu" customClass="JCBaseButton" customModule="Memorable" customModuleProvider="target">
@@ -292,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctx-ms-AJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="134"/>
+            <point key="canvasLocation" x="161" y="128"/>
         </scene>
         <!--Event CategoryVCL-->
         <scene sceneID="SY0-lE-dRc">
@@ -461,7 +460,4 @@
         <image name="theme_add_btn" width="44" height="44"/>
         <image name="theme_btn_1" width="28" height="28"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Nxg-3H-LJw"/>
-    </inferredMetricsTieBreakers>
 </document>

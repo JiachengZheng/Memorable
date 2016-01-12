@@ -44,9 +44,6 @@ func strToDate(str: String,formatter:String = "yyyy-MM-dd HH:mm") -> NSDate?{
 
 func dateToStr(date: NSDate,formatter:String = "yyyy-MM-dd") -> String{
     let dateFormat = NSDateFormatter()
-//    let zone = NSTimeZone.localTimeZone()
-//    let interval = zone.secondsFromGMTForDate(date)
-//    let newDate = date.dateByAddingSeconds(interval)
     dateFormat.timeZone = NSTimeZone.localTimeZone()
     dateFormat.dateFormat = formatter
     let str = dateFormat.stringFromDate(date)
@@ -174,7 +171,20 @@ func isDay(day1:String,earlier day2: String) -> Bool{
     return day.isEarlierThan(day3)
 }
 
-
+func getImageFullPath(name: String) -> String{
+    var imageName = name
+    if isIphone6p(){
+        imageName = imageName + "@3x";
+    }else{
+        imageName = imageName + "@2x";
+    }
+    if let path = NSBundle.mainBundle().pathForResource(imageName, ofType: "png"){
+        return path
+    }else{
+        let path = NSBundle.mainBundle().pathForResource(name, ofType: "png")
+        return path ?? name
+    }
+}
 
 
 

@@ -8,6 +8,8 @@
 
 import UIKit
 import pop
+let listCellHight:CGFloat = 70
+
 class JCListTableViewCell: JCBaseTableViewCell {
 
     @IBOutlet weak var daysLable: UILabel!
@@ -19,7 +21,7 @@ class JCListTableViewCell: JCBaseTableViewCell {
     @IBOutlet weak var bgImageView: UIImageView!
     
     override class func tableView(tableView: UITableView, rowHeightForObject object: AnyObject) -> CGFloat {
-        return 70
+        return listCellHight
     }
     
     override func awakeFromNib() {
@@ -42,7 +44,7 @@ class JCListTableViewCell: JCBaseTableViewCell {
                 dateLabel.text = date[0...9]
             }
             daysLable.text = intervalTimeFromDate(date,formatter: "yyyy-MM-dd HH:mm").0
-            bgImageView.image = UIImage(named: "cell_bg_\(object.event.bgName[10...10])")
+            bgImageView.loadLocalImage("cell_bg_\(object.event.bgName[10...10])")
         }
     }
     
