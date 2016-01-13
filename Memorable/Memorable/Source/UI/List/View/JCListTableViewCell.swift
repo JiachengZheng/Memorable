@@ -27,10 +27,10 @@ class JCListTableViewCell: JCBaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         let line = CALayer()
-        line.frame = CGRectMake(0, self.height - 0.5, screenWidth, 0.5)
+        line.frame = CGRectMake(0, listCellHight - 0.5, screenWidth, 0.5)
         self.layer.addSublayer(line)
         line.backgroundColor = ColorSeparator().CGColor
-    }
+            }
     
     override func setObject (obj: AnyObject?) {
         super.setObject(obj)
@@ -45,6 +45,9 @@ class JCListTableViewCell: JCBaseTableViewCell {
             }
             daysLable.text = intervalTimeFromDate(date,formatter: "yyyy-MM-dd HH:mm").0
             bgImageView.loadLocalImage("cell_bg_\(object.event.bgName[10...10])")
+//            print(screenWidth)
+//            bgImageView.frame = CGRectMake(0, 0, 320, listCellHight)
+//            print(bgImageView.frame)
         }
     }
     

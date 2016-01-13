@@ -196,7 +196,7 @@ class JCEventDetailVCL: JCBaseVCL {
     
     func changeBackground(tag: Int){
         eventBgName = "background\(tag)";
-        backgroundImageView.image = UIImage(named: eventBgName)
+        backgroundImageView.loadLocalImage(eventBgName)
         themeBtn.loadLocalImage("theme_btn_\(tag)")
         eventManager.updateEventWith(eventId,eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: eventCategory,eventIsTop: eventIsTop,eventBgName: eventBgName)
     }
@@ -316,7 +316,7 @@ class JCEventDetailVCL: JCBaseVCL {
             eventBgName = event.bgName
             updateContentViewLabel()
         }
-        backgroundImageView.image = UIImage(named: eventBgName)
+        backgroundImageView.loadLocalImage(eventBgName)
 
         themeBtn.loadLocalImage("theme_btn_\(eventBgName[10...10])")
         

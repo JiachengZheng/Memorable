@@ -12,6 +12,9 @@ extension UIImageView{
     
     func loadLocalImage(name: String){
         let imagePath = getImageFullPath(name)
-        self.yy_setImageWithURL(NSURL.fileURLWithPath(imagePath), options: .Progressive)
+        if let data = NSData(contentsOfFile: imagePath){
+            self.image = UIImage(data:data)
+        }
+        //self.yy_setImageWithURL(NSURL.fileURLWithPath(imagePath), options: .Progressive)
     }
 }

@@ -68,6 +68,24 @@ extension JCListVCL{
         vcl.paramDic = ["fromList": true,"event":event]
         self.navigationController?.pushViewController(vcl, animated: true)
     }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
+        let topAction = UITableViewRowAction(style: .Default, title: "置顶") {
+            (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            tableView.editing = false
+        }
+        topAction.backgroundColor = UIColor.lightGrayColor()
+        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") {
+            (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+            tableView.editing = false
+        }
+        deleteAction.backgroundColor = UIColor.redColor()
+        return [deleteAction,topAction]
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    }
+    
 }
 
 extension JCListVCL: UINavigationControllerDelegate{
