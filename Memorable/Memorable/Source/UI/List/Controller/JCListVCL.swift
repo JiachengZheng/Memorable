@@ -13,7 +13,7 @@ class JCListVCL: JCBaseTableViewVCL {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.delegate = self
-        self.model = JCListModel()
+        model = JCListModel()
         loadItem()
         // Do any additional setup after loading the view.
     }
@@ -43,14 +43,38 @@ class JCListVCL: JCBaseTableViewVCL {
     
     func reloadData(){
         let model = self.model as! JCListModel
-        self.dataSource = JCListDataSource(items:model.items)
-        self.tableView.dataSource = self.dataSource
-        self.tableView.reloadData()
+        dataSource = JCListDataSource(items:model.items)
+        tableView.dataSource = self.dataSource
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func clickDeleteBtn(indexPath: NSIndexPath){
+        let item =  model.items[indexPath.row] as! JCListItem
+        eventManager.deleteEvent(item.event)
+        model.items.removeAtIndex(indexPath.row)
+        let dataSource = self.dataSource as! JCListDataSource
+        dataSource.items.removeAtIndex(indexPath.row)
+        tableView.beginUpdates()
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Top)
+        tableView.endUpdates()
+    }
+    
+    func clickTopBtn(indexPath: NSIndexPath){
+        let item =  model.items[indexPath.row] as! JCListItem
+        model.items.removeAtIndex(indexPath.row)
+        model.items.insert(item, atIndex: 0)
+        let dataSource = self.dataSource as! JCListDataSource
+        dataSource.items.removeAtIndex(indexPath.row)
+        dataSource.items.insert(item, atIndex: 0)
+        tableView.beginUpdates()
+        tableView.moveRowAtIndexPath(indexPath, toIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+        tableView.endUpdates()
+
     }
 }
 
@@ -70,18 +94,22 @@ extension JCListVCL{
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
-        let topAction = UITableViewRowAction(style: .Default, title: "置顶") {
+        let topAction = UITableViewRowAction(style: .Default, title: "置顶") {[unowned self]
             (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            tableView.editing = false
+             tableView.editing = false
+             self.clickTopBtn(indexPath)
+           
         }
         topAction.backgroundColor = UIColor.lightGrayColor()
-        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") {
+        let deleteAction = UITableViewRowAction(style: .Default, title: "删除") {[unowned self]
             (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             tableView.editing = false
+            self.clickDeleteBtn(indexPath)
         }
         deleteAction.backgroundColor = UIColor.redColor()
         return [deleteAction,topAction]
     }
+    
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     }
