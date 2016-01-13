@@ -111,7 +111,7 @@ class JCEventDetailVCL: JCBaseVCL {
             }else{
                 instance.eventTime = dateToStr(instance.datePicker.date,formatter:"HH:mm")
             }
-            event = JCEvent(value:[instance.eventId,instance.eventName,instance.eventDate,instance.eventTime,instance.eventCategory,instance.eventIsTop])
+            event = JCEvent(value:[instance.eventId,instance.eventName,instance.eventDate,instance.eventTime,instance.eventCategory,instance.eventIsTop,instance.eventBgName])
             let dic: [String: AnyObject] = ["isEdit":true,"editEvent": event]
             instance.reloadEditView(dic)
         }.addDisposableTo(disposeBag)
@@ -196,7 +196,7 @@ class JCEventDetailVCL: JCBaseVCL {
     
     func changeBackground(tag: Int){
         eventBgName = "background\(tag)";
-        backgroundImageView.loadLocalImage(eventBgName)
+        backgroundImageView.image = UIImage(named: eventBgName)
         themeBtn.loadLocalImage("theme_btn_\(tag)")
         eventManager.updateEventWith(eventId,eventName: eventName,eventDate: eventDate,eventTime: eventTime,eventType: eventCategory,eventIsTop: eventIsTop,eventBgName: eventBgName)
     }
@@ -316,7 +316,7 @@ class JCEventDetailVCL: JCBaseVCL {
             eventBgName = event.bgName
             updateContentViewLabel()
         }
-        backgroundImageView.loadLocalImage(eventBgName)
+        backgroundImageView.image = UIImage(named: eventBgName)
 
         themeBtn.loadLocalImage("theme_btn_\(eventBgName[10...10])")
         
@@ -492,7 +492,7 @@ extension JCEventDetailVCL:UITableViewDelegate{
                     return
                 }
                 instance.eventCategory = $0
-                let event = JCEvent(value:[instance.eventId,instance.eventName,instance.eventDate,instance.eventTime,instance.eventCategory,instance.eventIsTop])
+                let event = JCEvent(value:[instance.eventId,instance.eventName,instance.eventDate,instance.eventTime,instance.eventCategory,instance.eventIsTop,instance.eventBgName])
                 let dic: [String: AnyObject] = ["isEdit":true,"editEvent": event]
                 instance.reloadEditView(dic)
             }
