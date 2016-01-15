@@ -54,9 +54,7 @@ class JCListVCL: JCBaseTableViewVCL {
     }
     
     func clickDeleteBtn(indexPath: NSIndexPath){
-        let item =  model.items[indexPath.row] as! JCListItem
-        eventManager.deleteEvent(item.event)
-        model.items.removeAtIndex(indexPath.row)
+        (model as! JCListModel).deleteItemAtIndex(indexPath)
         let dataSource = self.dataSource as! JCListDataSource
         dataSource.items.removeAtIndex(indexPath.row)
         tableView.beginUpdates()
@@ -68,6 +66,7 @@ class JCListVCL: JCBaseTableViewVCL {
         let item =  model.items[indexPath.row] as! JCListItem
         model.items.removeAtIndex(indexPath.row)
         model.items.insert(item, atIndex: 0)
+        (model as! JCListModel).resetTopItemAtIndex(indexPath)
         let dataSource = self.dataSource as! JCListDataSource
         dataSource.items.removeAtIndex(indexPath.row)
         dataSource.items.insert(item, atIndex: 0)
