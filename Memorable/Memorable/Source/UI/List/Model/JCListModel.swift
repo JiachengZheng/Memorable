@@ -55,9 +55,10 @@ class JCListModel: JCBaseModel {
         self.items.removeAtIndex(indexPath.row)
     }
     
-    func resetTopItemAtIndex(indexPath: NSIndexPath){
+    func resetTopEvent(){
         let list = eventRealm.objects(JCEvent)
-        let item = items[indexPath.row] as! JCListItem
+        let item = items.first as! JCListItem
+        
         for event in list {
             if event.id == item.event.id{
                 eventManager.updateEventWith(event.id, eventName: event.name, eventDate: event.date, eventTime: event.time, eventType: event.type, eventIsTop: true, eventBgName: event.bgName)
