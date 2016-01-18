@@ -7,11 +7,12 @@
 //
 
 import UIKit
-
+import pop
 class JCListVCL: JCBaseTableViewVCL {
     var cellImageView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        startLaunchImage()
         self.navigationController?.delegate = self
         model = JCListModel()
         loadItem()
@@ -26,6 +27,30 @@ class JCListVCL: JCBaseTableViewVCL {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    func startLaunchImage(){
+        let launchVCL = loadViewController("JCLaunchVCL") as! JCLaunchVCL
+        self.addChildViewController(launchVCL)
+        self.view.addSubview(launchVCL.view)
+        launchVCL.block = {
+            launchVCL.view.layer.addSpringAnimation(kPOPLayerScaleXY,
+                fromValue: NSValue.init(CGSize: CGSize(width: 1, height: 1)),
+                toValue: NSValue.init(CGSize: CGSize(width: 1.4, height: 1.4)),
+                bounds: 1,
+                speed: 0.5,
+                animKey: "scaleAnim"){ (pop, finish) -> Void in
+                    launchVCL.view.removeFromSuperview()
+                    launchVCL.removeFromParentViewController()
+            }
+            let opacityAnim = POPBasicAnimation(propertyNamed: kPOPLayerOpacity)
+            opacityAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            opacityAnim.duration = 0.5
+            opacityAnim.fromValue = 1
+            opacityAnim.toValue = 0
+            launchVCL.view.layer.pop_addAnimation(opacityAnim, forKey: "opacityAnim")
+        }
+        
     }
     
     func loadItem(){

@@ -141,6 +141,9 @@
 		0BE6AD521C4613D700C32C8E /* theme_btn_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6ACF91C4613D700C32C8E /* theme_btn_5@2x.png */; };
 		0BE6AD531C4613D700C32C8E /* theme_btn_5@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE6ACFA1C4613D700C32C8E /* theme_btn_5@3x.png */; };
 		0BE7F1791C2FC6960060B3C1 /* JCBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE7F1781C2FC6960060B3C1 /* JCBaseButton.swift */; };
+		0BF4155C1C4D253A0048A1C5 /* launch_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF4155B1C4D253A0048A1C5 /* launch_image.png */; };
+		0BF4155F1C4D26B00048A1C5 /* JCLaunchVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF4155E1C4D26B00048A1C5 /* JCLaunchVCL.swift */; };
+		0BF415611C4D2B310048A1C5 /* xiaolian.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF415601C4D2B310048A1C5 /* xiaolian.png */; };
 		7B45C0656F19ACE7465657B1 /* Pods_Memorable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A12473F0AA30B59C2A1BA112 /* Pods_Memorable.framework */; };
 /* End PBXBuildFile section */
 
@@ -283,6 +286,9 @@
 		0BE6ACF91C4613D700C32C8E /* theme_btn_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theme_btn_5@2x.png"; sourceTree = "<group>"; };
 		0BE6ACFA1C4613D700C32C8E /* theme_btn_5@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theme_btn_5@3x.png"; sourceTree = "<group>"; };
 		0BE7F1781C2FC6960060B3C1 /* JCBaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBaseButton.swift; sourceTree = "<group>"; };
+		0BF4155B1C4D253A0048A1C5 /* launch_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_image.png; sourceTree = "<group>"; };
+		0BF4155E1C4D26B00048A1C5 /* JCLaunchVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCLaunchVCL.swift; sourceTree = "<group>"; };
+		0BF415601C4D2B310048A1C5 /* xiaolian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiaolian.png; sourceTree = "<group>"; };
 		5821D56AB1879AEB5BC44BE3 /* Pods-Memorable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memorable.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Memorable/Pods-Memorable.debug.xcconfig"; sourceTree = "<group>"; };
 		A12473F0AA30B59C2A1BA112 /* Pods_Memorable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memorable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA350435C4584019A31FB9C8 /* Pods-Memorable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memorable.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memorable/Pods-Memorable.release.xcconfig"; sourceTree = "<group>"; };
@@ -571,6 +577,7 @@
 		0BBB36EA1C2D1788008795A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0BF4155D1C4D26920048A1C5 /* Launch */,
 				0B9166741C3AC2F2005ADAD0 /* List */,
 				0BD892CD1C36C55300EF3D1B /* Share */,
 				0B329BA21C329481003D7B5B /* Category */,
@@ -655,6 +662,8 @@
 		0BE6ACA11C4613D600C32C8E /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				0BF415601C4D2B310048A1C5 /* xiaolian.png */,
+				0BF4155B1C4D253A0048A1C5 /* launch_image.png */,
 				0BE6ACA21C4613D600C32C8E /* add_btn.png */,
 				0BE6ACA31C4613D600C32C8E /* add_btn@2x.png */,
 				0BE6ACA41C4613D600C32C8E /* add_btn@3x.png */,
@@ -748,6 +757,14 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
+		0BF4155D1C4D26920048A1C5 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				0BF4155E1C4D26B00048A1C5 /* JCLaunchVCL.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 		61D495DDE68C05B9D80B06F4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,6 +845,7 @@
 			files = (
 				0BE6AD291C4613D700C32C8E /* share_qq_zone_btn@3x.png in Resources */,
 				0BE6AD341C4613D700C32C8E /* theme1_btn@2x.png in Resources */,
+				0BF415611C4D2B310048A1C5 /* xiaolian.png in Resources */,
 				0BE6AD1A1C4613D700C32C8E /* setting_btn.png in Resources */,
 				0BE6AD251C4613D700C32C8E /* share_qq_friends_btn@2x.png in Resources */,
 				0BE6AD0D1C4613D700C32C8E /* cell_bg_5.png in Resources */,
@@ -874,6 +892,7 @@
 				0BE6AD021C4613D700C32C8E /* back_arrow@2x.png in Resources */,
 				0BE6AD331C4613D700C32C8E /* theme1_btn.png in Resources */,
 				0BE6AD001C4613D700C32C8E /* arrow_down@3x.png in Resources */,
+				0BF4155C1C4D253A0048A1C5 /* launch_image.png in Resources */,
 				0BE6AD3C1C4613D700C32C8E /* theme4_btn.png in Resources */,
 				0BE6AD3E1C4613D700C32C8E /* theme4_btn@3x.png in Resources */,
 				0BE6AD261C4613D700C32C8E /* share_qq_friends_btn@3x.png in Resources */,
@@ -997,6 +1016,7 @@
 				0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */,
 				0B329BA91C32967E003D7B5B /* JCEventCategoryVCL.swift in Sources */,
 				0B98B32C1C3F857500B12DA6 /* JCListToDetailTransion.swift in Sources */,
+				0BF4155F1C4D26B00048A1C5 /* JCLaunchVCL.swift in Sources */,
 				0B899AF31C3AC53300C9CE75 /* JCListItem.swift in Sources */,
 				0B98B3291C3F69A600B12DA6 /* LaunchVCL.swift in Sources */,
 				0B9D31C61C301E5800859525 /* JCStringExtension.swift in Sources */,

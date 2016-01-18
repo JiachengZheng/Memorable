@@ -20,7 +20,51 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdz-4h-G51" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-275.73333333333335" y="134.42666666666668"/>
+            <point key="canvasLocation" x="-792" y="134"/>
+        </scene>
+        <!--LaunchVCL-->
+        <scene sceneID="RGv-oA-gga">
+            <objects>
+                <viewController storyboardIdentifier="JCLaunchVCL" id="kU0-mJ-y7y" customClass="JCLaunchVCL" customModule="Memorable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f7i-zs-w2O">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_image.png" id="H26-HC-N6y">
+                                <rect key="frame" x="60" y="506" width="200" height="41.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xiaolian.png" id="apB-t2-75F">
+                                <rect key="frame" x="124" y="218" width="73" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015 年 1月 2日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lsn-l9-56e">
+                                <rect key="frame" x="100" y="326" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.28211137820512822" green="0.28211137820512822" blue="0.28211137820512822" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="遇见你，真好" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hi1-lu-u7u">
+                                <rect key="frame" x="100" y="349" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.28211137820512822" green="0.28211137820512822" blue="0.28211137820512822" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomImage" destination="H26-HC-N6y" id="Dye-1s-Dwm"/>
+                        <outlet property="dateLabel" destination="lsn-l9-56e" id="EbV-5G-Tsd"/>
+                        <outlet property="smileImage" destination="apB-t2-75F" id="hQS-lr-xmB"/>
+                        <outlet property="subTitle" destination="hi1-lu-u7u" id="4lT-MW-hZX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fPV-ri-ydb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-81" y="-627"/>
         </scene>
         <!--ListVCL-->
         <scene sceneID="j3j-GB-LcC">
@@ -440,6 +484,7 @@
         <image name="back_arrow" width="12" height="21"/>
         <image name="background1" width="621" height="1104"/>
         <image name="edit_btn" width="22" height="19"/>
+        <image name="launch_image.png" width="666" height="138"/>
         <image name="menu_btn" width="22" height="15"/>
         <image name="selected_btn_white" width="23" height="17"/>
         <image name="settingBg" width="414" height="736"/>
@@ -458,5 +503,6 @@
         <image name="theme5_btn" width="44" height="44"/>
         <image name="theme_add_btn" width="44" height="44"/>
         <image name="theme_btn_1" width="28" height="28"/>
+        <image name="xiaolian.png" width="198" height="246"/>
     </resources>
 </document>
