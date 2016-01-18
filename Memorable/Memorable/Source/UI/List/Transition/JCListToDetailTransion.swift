@@ -10,7 +10,7 @@ import UIKit
 
 class JCListToDetailTransion: NSObject,UIViewControllerAnimatedTransitioning {
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.3
+        return 0.34
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {

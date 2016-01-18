@@ -149,6 +149,7 @@ class JCEventEditTableViewCell: JCBaseTableViewCell {
             arrowImage!.snp_makeConstraints(closure: { (make) -> Void in
                 make.right.equalTo(self).offset(-10)
                 make.centerY.equalTo(self)
+                make.size.equalTo(CGSizeMake(8, 14))
             })
         case .Top:
             isTopSwitch!.snp_makeConstraints(closure: { (make) -> Void in

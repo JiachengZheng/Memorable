@@ -45,9 +45,6 @@ class JCListTableViewCell: JCBaseTableViewCell {
             }
             daysLable.text = intervalTimeFromDate(date,formatter: "yyyy-MM-dd HH:mm").0
             bgImageView.loadLocalImage("cell_bg_\(object.event.bgName[10...10])")
-//            print(screenWidth)
-//            bgImageView.frame = CGRectMake(0, 0, 320, listCellHight)
-//            print(bgImageView.frame)
         }
     }
     
