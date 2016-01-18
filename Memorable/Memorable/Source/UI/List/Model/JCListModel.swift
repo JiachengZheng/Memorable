@@ -62,9 +62,8 @@ class JCListModel: JCBaseModel {
         for event in list {
             if event.id == item.event.id{
                 eventManager.updateEventWith(event.id, eventName: event.name, eventDate: event.date, eventTime: event.time, eventType: event.type, eventIsTop: true, eventBgName: event.bgName)
-            }else{
+            }else if event.isTop {
                 eventManager.updateEventWith(event.id, eventName: event.name, eventDate: event.date, eventTime: event.time, eventType: event.type, eventIsTop: false, eventBgName: event.bgName)
-
             }
         }
     }

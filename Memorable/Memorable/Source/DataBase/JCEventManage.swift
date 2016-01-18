@@ -28,6 +28,15 @@ class JCEventManage {
     
     func updateEventWith(eventId:String ,eventName: String,eventDate: String,eventTime: String,eventType: String,eventIsTop: Bool,eventBgName: String) {
         let event = JCEvent(value:[eventId,eventName,eventDate,eventTime,eventType,eventIsTop,eventBgName])
+        if eventIsTop{
+            let list = eventRealm.objects(JCEvent)
+            for event in list {
+                if event.isTop {
+                    eventManager.updateEventWith(event.id, eventName: event.name, eventDate: event.date, eventTime: event.time, eventType: event.type, eventIsTop: false, eventBgName: event.bgName)
+                }
+            }
+        }
+
         let _ = try? eventRealm.write { () -> Void in
             eventRealm.add(event,update: true)
         }
