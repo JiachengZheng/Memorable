@@ -20,9 +20,9 @@ class JCLaunchVCL: JCBaseVCL {
         super.viewDidLoad()
         dateLabel.text = NSDate().formattedDateWithStyle(.FullStyle, locale: NSLocale.currentLocale())
         bottomImage.snp_makeConstraints { (make) -> Void in
-            make.bottom.equalTo(self.view.snp_bottom).offset(-25.5)
+            make.bottom.equalTo(self.view.snp_bottom).offset(-20)
             make.centerX.equalTo(self.view)
-            make.size.equalTo(CGSizeMake(200, 41.5))
+            make.size.equalTo(CGSizeMake(180, 47))
         }
         smileImage.snp_makeConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(-40)
