@@ -21,8 +21,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         eventManager.addDefaultEvent()
         eventManager.addDefaultEventCategory()
+        loadQuickActionsShortcutItems()
         // Override point for customization after application launch.
         return true
+    }
+    
+    func loadQuickActionsShortcutItems(){
+        if #available(iOS 9.0, *) {
+            let topEventIcon = UIApplicationShortcutIcon(templateImageName: "3d_topIcon")
+            let topEventItem = UIApplicationShortcutItem(type: "", localizedTitle: "周六", localizedSubtitle: "还剩2天", icon: topEventIcon, userInfo: nil)
+            let caculateIcon = UIApplicationShortcutIcon(templateImageName: "3d_topIcon")
+            let caculateItem = UIApplicationShortcutItem(type: "", localizedTitle: "日期计算", localizedSubtitle: "", icon: caculateIcon, userInfo: nil)
+            let addIcon = UIApplicationShortcutIcon(templateImageName: "3d_topIcon")
+            let addItem = UIApplicationShortcutItem(type: "", localizedTitle: "新增事件", localizedSubtitle: "", icon: addIcon, userInfo: nil)
+            UIApplication.sharedApplication().shortcutItems = [addItem,caculateItem,topEventItem]
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    @available(iOS 9.0, *)
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+
     }
 
     func applicationWillResignActive(application: UIApplication) {
