@@ -8,34 +8,33 @@
 
 import UIKit
 
-class JCSettingSwitchCell: UITableViewCell {
+class JCSettingSwitchCell: JCBaseTableViewCell {
     @IBOutlet weak var swithBtn: UISwitch!
     @IBOutlet weak var title: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        let layer = CALayer()
-        layer.backgroundColor = ColorSeparator().CGColor
-        self.contentView.layer.addSublayer(layer)
-        layer.frame = CGRectMake(8, 43.5, screenWidth, 0.5)
-        // Initialization code
+    override class func identifier() -> String {
+        return "\(JCSettingSwitchCell.self)"
     }
     
-    func configCell(index: NSIndexPath){
-        let row = index.row
-        if row == 1{
-            title.text = "开启通知"
-            swithBtn.on = false
-        }else if row == 2 {
-            title.text = "图标数字"
-            swithBtn.on = true
-        }else if row == 3 {
-            title.text = "置顶事件每日提醒"
-            swithBtn.on = true
-        }else if row == 4 {
-            title.text = "日历"
-            swithBtn.on = false
+    override class func tableView(tableView: UITableView, rowHeightForObject object: AnyObject) -> CGFloat {
+        return 44
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let line = CALayer()
+        line.frame = CGRectMake(8, 44 - 0.5, screenWidth, 0.5)
+        self.layer.addSublayer(line)
+        line.backgroundColor = ColorSeparator().CGColor
+    }
+    
+    override func setObject (obj: AnyObject?) {
+        super.setObject(obj)
+        guard let object = obj as? JCSettingSwitchItem else{
+            return
         }
+        swithBtn.on = object.on
+        title.text = object.text
     }
     
     override func prepareForReuse() {

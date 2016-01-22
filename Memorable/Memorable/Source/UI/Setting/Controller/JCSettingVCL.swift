@@ -8,48 +8,31 @@
 
 import UIKit
 
-class JCSettingVCL: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
+class JCSettingVCL: JCBaseTableViewVCL {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-    }
-}
-
-extension JCSettingVCL:UITableViewDelegate,UITableViewDataSource{
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 13
+        model = JCSettingModel()
+        loadItem()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let row = indexPath.row
-        
-        let sectionCellArr = [0,4,6,10]
-        let switchCellArr = [1,2,3,8]
-        var identifier = ""
-        
-        if sectionCellArr.contains(row){
-            identifier = "JCSettingSectionCell"
-        }else if switchCellArr.contains(row){
-            identifier = "JCSettingSwitchCell"
-        }else{
-            identifier = "JCSettingSelectCell"
-        }
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
-        if let cell1 = cell as? JCSettingSectionCell{
-            cell1.configCell(indexPath)
-        }
-        if let cell1 = cell as? JCSettingSwitchCell{
-            cell1.configCell(indexPath)
-        }
-        if let cell1 = cell as? JCSettingSelectCell{
-            cell1.configCell(indexPath)
-        }
-        return cell
-
+    @IBAction func backAction(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
-
+    
+    func loadItem(){
+        let model = self.model as! JCSettingModel
+        model.loadItem(nil , complete: { [weak self](com) -> Void in
+            self?.reloadData()
+            }) { (fail ) -> Void in
+        }
+    }
+    
+    func reloadData(){
+        let model = self.model as! JCSettingModel
+        dataSource = JCSettingDataSource(items:model.items)
+        tableView.dataSource = self.dataSource
+        tableView.reloadData()
+    }
 }
+

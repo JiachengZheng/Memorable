@@ -14,6 +14,5 @@ class JCListDataSource: JCBaseTableViewDataSource {
             return JCListTableViewCell.self
         }
         return super.tableView(tableView, cellClassForObject: object)
-
     }
 }

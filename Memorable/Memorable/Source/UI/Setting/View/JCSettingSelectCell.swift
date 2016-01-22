@@ -8,37 +8,33 @@
 
 import UIKit
 
-class JCSettingSelectCell: UITableViewCell {
+class JCSettingSelectCell: JCBaseTableViewCell {
     @IBOutlet weak var rightTitle: UILabel!
 
     @IBOutlet weak var title: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        let layer = CALayer()
-        layer.backgroundColor = ColorSeparator().CGColor
-        self.contentView.layer.addSublayer(layer)
-        layer.frame = CGRectMake(8, 43.5, screenWidth, 0.5)
-        // Initialization code
+    override class func identifier() -> String {
+        return "\(JCSettingSelectCell.self)"
     }
     
-    func configCell(index: NSIndexPath){
-        let row = index.row
-        if row == 5{
-            title.text = "排序方式"
-            rightTitle.text = "按时间排序"
-        }else if row == 7 {
-            title.text = "显示事件数量"
-            rightTitle.text = "3"
-        }else if row == 9 {
-            title.text = "显示分类"
-            rightTitle.text = "生活"
-        }else if row == 11 {
-            title.text = "备份到iCloud"
-            rightTitle.text = ""
-        }else if row == 12 {
-            title.text = "从iCloud恢复"
-            rightTitle.text = ""
+    override class func tableView(tableView: UITableView, rowHeightForObject object: AnyObject) -> CGFloat {
+        return 44
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let line = CALayer()
+        line.frame = CGRectMake(8, 44 - 0.5, screenWidth, 0.5)
+        self.layer.addSublayer(line)
+        line.backgroundColor = ColorSeparator().CGColor
+    }
+    
+    override func setObject (obj: AnyObject?) {
+        super.setObject(obj)
+        guard let object = obj as? JCSettingSelectItem else{
+            return
         }
+        title.text = object.title
+        rightTitle.text = object.detail
     }
 
     override func prepareForReuse() {

@@ -17,6 +17,11 @@
 		0B329BB01C32984E003D7B5B /* JCEventCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B329BAF1C32984E003D7B5B /* JCEventCategory.swift */; };
 		0B43DB131C44EBFF008630DB /* JCImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43DB121C44EBFF008630DB /* JCImageViewExtension.swift */; };
 		0B43DB151C44EEF1008630DB /* JCUIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B43DB141C44EEF1008630DB /* JCUIButtonExtension.swift */; };
+		0B5414C81C51C68300769F66 /* JCSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5414C71C51C68300769F66 /* JCSettingModel.swift */; };
+		0B5414CC1C51C6C900769F66 /* JCSettingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5414CB1C51C6C900769F66 /* JCSettingDataSource.swift */; };
+		0B5414CE1C51C6F300769F66 /* JCSettingSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5414CD1C51C6F300769F66 /* JCSettingSectionItem.swift */; };
+		0B5414D01C51C70700769F66 /* JCSettingSelectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5414CF1C51C70700769F66 /* JCSettingSelectItem.swift */; };
+		0B5414D21C51C72000769F66 /* JCSettingSwitchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5414D11C51C72000769F66 /* JCSettingSwitchItem.swift */; };
 		0B63F59E1C3A54F100938C71 /* JCEventThemeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B63F59D1C3A54F000938C71 /* JCEventThemeSelectView.swift */; };
 		0B899AF31C3AC53300C9CE75 /* JCListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B899AF21C3AC53300C9CE75 /* JCListItem.swift */; };
 		0B8BE2651C2EB01A00E59F1C /* JCEventEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8BE2641C2EB01A00E59F1C /* JCEventEditView.swift */; };
@@ -167,6 +172,11 @@
 		0B329BAF1C32984E003D7B5B /* JCEventCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventCategory.swift; sourceTree = "<group>"; };
 		0B43DB121C44EBFF008630DB /* JCImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCImageViewExtension.swift; sourceTree = "<group>"; };
 		0B43DB141C44EEF1008630DB /* JCUIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCUIButtonExtension.swift; sourceTree = "<group>"; };
+		0B5414C71C51C68300769F66 /* JCSettingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCSettingModel.swift; sourceTree = "<group>"; };
+		0B5414CB1C51C6C900769F66 /* JCSettingDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCSettingDataSource.swift; sourceTree = "<group>"; };
+		0B5414CD1C51C6F300769F66 /* JCSettingSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCSettingSectionItem.swift; sourceTree = "<group>"; };
+		0B5414CF1C51C70700769F66 /* JCSettingSelectItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCSettingSelectItem.swift; sourceTree = "<group>"; };
+		0B5414D11C51C72000769F66 /* JCSettingSwitchItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCSettingSwitchItem.swift; sourceTree = "<group>"; };
 		0B63F59D1C3A54F000938C71 /* JCEventThemeSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventThemeSelectView.swift; sourceTree = "<group>"; };
 		0B899AF21C3AC53300C9CE75 /* JCListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCListItem.swift; sourceTree = "<group>"; };
 		0B8BE2641C2EB01A00E59F1C /* JCEventEditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventEditView.swift; sourceTree = "<group>"; };
@@ -370,6 +380,24 @@
 				0B329BAD1C3296EB003D7B5B /* JCEventCategoryDataSource.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		0B5414C91C51C6B800769F66 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0B5414CB1C51C6C900769F66 /* JCSettingDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		0B5414CA1C51C6B800769F66 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				0B5414CD1C51C6F300769F66 /* JCSettingSectionItem.swift */,
+				0B5414CF1C51C70700769F66 /* JCSettingSelectItem.swift */,
+				0B5414D11C51C72000769F66 /* JCSettingSwitchItem.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 		0B899AF11C3AC51B00C9CE75 /* Item */ = {
@@ -662,6 +690,9 @@
 		0BC70B5F1C51264900359C4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0B5414C91C51C6B800769F66 /* DataSource */,
+				0B5414CA1C51C6B800769F66 /* Item */,
+				0B5414C71C51C68300769F66 /* JCSettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1063,8 +1094,11 @@
 				0B0291FE1C33789000C664E9 /* JCEventCategoryItem.swift in Sources */,
 				0BADE5A71C31272700F61EAC /* JCEventEditViewDataSource.swift in Sources */,
 				0B0292001C3378B600C664E9 /* JCEventCategoryCell.swift in Sources */,
+				0B5414D21C51C72000769F66 /* JCSettingSwitchItem.swift in Sources */,
+				0B5414CE1C51C6F300769F66 /* JCSettingSectionItem.swift in Sources */,
 				0B329BAB1C329695003D7B5B /* JCEventCategoryModel.swift in Sources */,
 				0B9D31C41C30175200859525 /* JCEventManage.swift in Sources */,
+				0B5414D01C51C70700769F66 /* JCSettingSelectItem.swift in Sources */,
 				0B9067D91C2D4EDA0047FE4E /* JCEventDetailModel.swift in Sources */,
 				0BD892D41C36C59F00EF3D1B /* JCShareModel.swift in Sources */,
 				0B91667C1C3AC396005ADAD0 /* JCListDataSource.swift in Sources */,
@@ -1079,6 +1113,7 @@
 				0B899AF31C3AC53300C9CE75 /* JCListItem.swift in Sources */,
 				0B98B3291C3F69A600B12DA6 /* LaunchVCL.swift in Sources */,
 				0B9D31C61C301E5800859525 /* JCStringExtension.swift in Sources */,
+				0B5414CC1C51C6C900769F66 /* JCSettingDataSource.swift in Sources */,
 				0B63F59E1C3A54F100938C71 /* JCEventThemeSelectView.swift in Sources */,
 				0BADE5A21C311CC000F61EAC /* JCBaseTableViewVCL.swift in Sources */,
 				0BC70B651C5128F600359C4F /* JCSettingSelectCell.swift in Sources */,
@@ -1094,6 +1129,7 @@
 				0B91667E1C3AC3DB005ADAD0 /* JCListModel.swift in Sources */,
 				0BD892D21C36C58100EF3D1B /* JCShareVCL.swift in Sources */,
 				0B43DB151C44EEF1008630DB /* JCUIButtonExtension.swift in Sources */,
+				0B5414C81C51C68300769F66 /* JCSettingModel.swift in Sources */,
 				0B43DB131C44EBFF008630DB /* JCImageViewExtension.swift in Sources */,
 				0BC70B611C51264900359C4F /* JCSettingVCL.swift in Sources */,
 				0BBA7F991C3D5B6C003FAEF7 /* JCDetailToListTransion.swift in Sources */,

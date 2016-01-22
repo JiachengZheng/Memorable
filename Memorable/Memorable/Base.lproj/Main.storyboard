@@ -32,6 +32,9 @@
                                 <rect key="frame" x="0.0" y="20" width="48" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="back_arrow"/>
+                                <connections>
+                                    <action selector="backAction:" destination="4yF-QG-JYj" eventType="touchUpInside" id="jki-5C-PCD"/>
+                                </connections>
                             </button>
                             <view alpha="0.55000000000000004" contentMode="scaleToFill" id="uoL-AP-3fp">
                                 <rect key="frame" x="0.0" y="64" width="320" height="0.5"/>
@@ -43,17 +46,17 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JCSettingSectionCell" rowHeight="50" id="IaK-i3-b4u" customClass="JCSettingSectionCell" customModule="Memorable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JCSettingSectionCell" rowHeight="35" id="IaK-i3-b4u" customClass="JCSettingSectionCell" customModule="Memorable" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IaK-i3-b4u" id="H4c-6m-x3N">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提醒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rMV-Rn-LqQ">
-                                                    <rect key="frame" x="10" y="33" width="100" height="11"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提醒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rMV-Rn-LqQ">
+                                                    <rect key="frame" x="10" y="25" width="100" height="10"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.86214277923211169" green="0.86214277923211169" blue="0.86214277923211169" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -66,7 +69,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JCSettingSelectCell" rowHeight="50" id="B8w-DE-lJd" customClass="JCSettingSelectCell" customModule="Memorable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="78" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="63" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B8w-DE-lJd" id="2h2-AK-LCo">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -82,7 +85,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qpL-OK-D8g">
                                                     <rect key="frame" x="10" y="14" width="179" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -96,7 +99,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JCSettingSwitchCell" rowHeight="50" id="VQ3-lf-gfM" customClass="JCSettingSwitchCell" customModule="Memorable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="128" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="113" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VQ3-lf-gfM" id="CP3-JX-Cw7">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
@@ -109,7 +112,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知中心" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Qb-Zp-qOR">
                                                     <rect key="frame" x="10" y="14" width="179" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -124,7 +127,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="4yF-QG-JYj" id="xqv-IP-p0f"/>
                                     <outlet property="delegate" destination="4yF-QG-JYj" id="5mb-bH-D3u"/>
                                 </connections>
                             </tableView>
@@ -133,7 +135,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="n29-wg-2n7"/>
                     <connections>
-                        <outlet property="tableView" destination="15R-ad-mEr" id="HQV-Ga-jH1"/>
+                        <outlet property="tableView" destination="15R-ad-mEr" id="ury-L3-bHE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iex-Ds-VIG" userLabel="First Responder" sceneMemberID="firstResponder"/>

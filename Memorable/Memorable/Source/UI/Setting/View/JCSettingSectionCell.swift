@@ -8,24 +8,28 @@
 
 import UIKit
 
-class JCSettingSectionCell: UITableViewCell {
+class JCSettingSectionCell: JCBaseTableViewCell {
 
     @IBOutlet weak var title: UILabel!
+    
+    override class func identifier() -> String {
+        return "\(JCSettingSectionCell.self)"
+    }
+    
+    override class func tableView(tableView: UITableView, rowHeightForObject object: AnyObject) -> CGFloat {
+        return 35
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configCell(index: NSIndexPath){
-        let row = index.row
-        if row == 0{
-            title.text = "提醒"
-        }else if row == 4 {
-            title.text = "排序"
-        }else if row == 6 {
-            title.text = "通知中心插件"
-        }else if row == 10 {
-            title.text = "iCloud"
+    override func setObject (obj: AnyObject?) {
+        super.setObject(obj)
+        guard let object = obj as? JCSettingSectionItem else{
+            return
         }
+        title.text = object.text
     }
 
     override func prepareForReuse() {
