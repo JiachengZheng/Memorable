@@ -1,23 +1,21 @@
 //
-//  JCSettingSwitchCell.swift
+//  JCAddEventCategoryCell.swift
 //  Memorable
 //
-//  Created by 郑嘉成 on 16/1/21.
+//  Created by 郑嘉成 on 16/1/23.
 //  Copyright © 2016年 zhengjiacheng. All rights reserved.
 //
 
 import UIKit
 
-class JCSettingSwitchCell: JCBaseTableViewCell {
-    @IBOutlet weak var swithBtn: UISwitch!
-    @IBOutlet weak var title: UILabel!
+class JCAddEventCategoryCell: JCBaseTableViewCell {
 
     override class func identifier() -> String {
-        return "\(JCSettingSwitchCell.self)"
+        return "\(JCAddEventCategoryCell.self)"
     }
     
     override class func tableView(tableView: UITableView, rowHeightForObject object: AnyObject) -> CGFloat {
-        return 44
+        return 50
     }
     
     override func awakeFromNib() {
@@ -30,22 +28,16 @@ class JCSettingSwitchCell: JCBaseTableViewCell {
     
     override func setObject (obj: AnyObject?) {
         super.setObject(obj)
-        guard let object = obj as? JCSettingSwitchItem else{
+        guard let object = obj as? JCAddEventCategoryItem else{
             return
         }
-        swithBtn.on = object.on
-        title.text = object.text
+        
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-
+        
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

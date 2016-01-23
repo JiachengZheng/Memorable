@@ -48,10 +48,6 @@ class JCEventCategoryVCL: JCBaseTableViewVCL {
         self.tableView.reloadData()
     }
     
-    @IBAction func backAction(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let model = self.model as! JCEventCategoryModel
         for item in model.items{

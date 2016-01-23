@@ -1,23 +1,23 @@
 //
-//  JCSettingVCL.swift
+//  JCAddEventVCL.swift
 //  Memorable
 //
-//  Created by 郑嘉成 on 16/1/21.
+//  Created by 郑嘉成 on 16/1/23.
 //  Copyright © 2016年 zhengjiacheng. All rights reserved.
 //
 
 import UIKit
 
-class JCSettingVCL: JCBaseTableViewVCL {
-    
+class JCAddEventVCL: JCBaseTableViewVCL {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        model = JCSettingModel()
+        model = JCAddEventModel()
         loadItem()
     }
     
     func loadItem(){
-        let model = self.model as! JCSettingModel
+        let model = self.model as! JCAddEventModel
         model.loadItem(nil , complete: { [weak self](com) -> Void in
             self?.reloadData()
             }) { (fail ) -> Void in
@@ -25,10 +25,11 @@ class JCSettingVCL: JCBaseTableViewVCL {
     }
     
     func reloadData(){
-        let model = self.model as! JCSettingModel
-        dataSource = JCSettingDataSource(items:model.items)
+        let model = self.model as! JCAddEventModel
+        dataSource = JCAddEventDataSource(items:model.items)
         tableView.dataSource = self.dataSource
         tableView.reloadData()
     }
-}
 
+
+}

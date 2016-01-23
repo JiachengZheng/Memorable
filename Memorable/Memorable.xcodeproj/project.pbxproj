@@ -41,6 +41,19 @@
 		0B9D31C21C2FF3D200859525 /* JCEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D31C11C2FF3D200859525 /* JCEvent.swift */; };
 		0B9D31C41C30175200859525 /* JCEventManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D31C31C30175200859525 /* JCEventManage.swift */; };
 		0B9D31C61C301E5800859525 /* JCStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D31C51C301E5800859525 /* JCStringExtension.swift */; };
+		0BA7F4271C53768E00488C67 /* JCAddEventVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F4261C53768E00488C67 /* JCAddEventVCL.swift */; };
+		0BA7F4291C5376AD00488C67 /* JCAddEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F4281C5376AD00488C67 /* JCAddEventModel.swift */; };
+		0BA7F42D1C5377A200488C67 /* JCAddEventDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F42C1C5377A200488C67 /* JCAddEventDataSource.swift */; };
+		0BA7F42F1C53794F00488C67 /* JCAddEventNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F42E1C53794F00488C67 /* JCAddEventNameCell.swift */; };
+		0BA7F4311C5379D200488C67 /* JCAddEventDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F4301C5379D200488C67 /* JCAddEventDateCell.swift */; };
+		0BA7F4331C5379EC00488C67 /* JCAddEventTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F4321C5379EC00488C67 /* JCAddEventTimeCell.swift */; };
+		0BA7F4351C537A1C00488C67 /* JCAddEventCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F4341C537A1C00488C67 /* JCAddEventCategoryCell.swift */; };
+		0BA7F4371C537A4100488C67 /* JCAddEventTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F4361C537A4100488C67 /* JCAddEventTopCell.swift */; };
+		0BA7F4391C537AF400488C67 /* JCAddEventNameItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F4381C537AF400488C67 /* JCAddEventNameItem.swift */; };
+		0BA7F43B1C537B0800488C67 /* JCAddEventDateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F43A1C537B0800488C67 /* JCAddEventDateItem.swift */; };
+		0BA7F43D1C537B1D00488C67 /* JCAddEventTimeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F43C1C537B1D00488C67 /* JCAddEventTimeItem.swift */; };
+		0BA7F43F1C537B3000488C67 /* JCAddEventCategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F43E1C537B3000488C67 /* JCAddEventCategoryItem.swift */; };
+		0BA7F4411C537B4400488C67 /* JCAddEventTopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7F4401C537B4400488C67 /* JCAddEventTopItem.swift */; };
 		0BADE59E1C31095900F61EAC /* JCBaseTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADE59D1C31095900F61EAC /* JCBaseTableViewDataSource.swift */; };
 		0BADE5A01C310EC600F61EAC /* JCEventEditViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADE59F1C310EC600F61EAC /* JCEventEditViewItem.swift */; };
 		0BADE5A21C311CC000F61EAC /* JCBaseTableViewVCL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BADE5A11C311CC000F61EAC /* JCBaseTableViewVCL.swift */; };
@@ -196,6 +209,19 @@
 		0B9D31C11C2FF3D200859525 /* JCEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEvent.swift; sourceTree = "<group>"; };
 		0B9D31C31C30175200859525 /* JCEventManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventManage.swift; sourceTree = "<group>"; };
 		0B9D31C51C301E5800859525 /* JCStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCStringExtension.swift; sourceTree = "<group>"; };
+		0BA7F4261C53768E00488C67 /* JCAddEventVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventVCL.swift; sourceTree = "<group>"; };
+		0BA7F4281C5376AD00488C67 /* JCAddEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventModel.swift; sourceTree = "<group>"; };
+		0BA7F42C1C5377A200488C67 /* JCAddEventDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventDataSource.swift; sourceTree = "<group>"; };
+		0BA7F42E1C53794F00488C67 /* JCAddEventNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventNameCell.swift; sourceTree = "<group>"; };
+		0BA7F4301C5379D200488C67 /* JCAddEventDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventDateCell.swift; sourceTree = "<group>"; };
+		0BA7F4321C5379EC00488C67 /* JCAddEventTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventTimeCell.swift; sourceTree = "<group>"; };
+		0BA7F4341C537A1C00488C67 /* JCAddEventCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventCategoryCell.swift; sourceTree = "<group>"; };
+		0BA7F4361C537A4100488C67 /* JCAddEventTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventTopCell.swift; sourceTree = "<group>"; };
+		0BA7F4381C537AF400488C67 /* JCAddEventNameItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventNameItem.swift; sourceTree = "<group>"; };
+		0BA7F43A1C537B0800488C67 /* JCAddEventDateItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventDateItem.swift; sourceTree = "<group>"; };
+		0BA7F43C1C537B1D00488C67 /* JCAddEventTimeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventTimeItem.swift; sourceTree = "<group>"; };
+		0BA7F43E1C537B3000488C67 /* JCAddEventCategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventCategoryItem.swift; sourceTree = "<group>"; };
+		0BA7F4401C537B4400488C67 /* JCAddEventTopItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCAddEventTopItem.swift; sourceTree = "<group>"; };
 		0BADE59D1C31095900F61EAC /* JCBaseTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBaseTableViewDataSource.swift; sourceTree = "<group>"; };
 		0BADE59F1C310EC600F61EAC /* JCEventEditViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCEventEditViewItem.swift; sourceTree = "<group>"; };
 		0BADE5A11C311CC000F61EAC /* JCBaseTableViewVCL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JCBaseTableViewVCL.swift; sourceTree = "<group>"; };
@@ -484,6 +510,66 @@
 			path = Transition;
 			sourceTree = "<group>";
 		};
+		0BA7F4221C53763500488C67 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				0BA7F4231C53766400488C67 /* Controller */,
+				0BA7F4241C53766400488C67 /* Model */,
+				0BA7F4251C53766400488C67 /* View */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		0BA7F4231C53766400488C67 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0BA7F4261C53768E00488C67 /* JCAddEventVCL.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0BA7F4241C53766400488C67 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0BA7F42A1C53778200488C67 /* DataSource */,
+				0BA7F42B1C53778200488C67 /* Item */,
+				0BA7F4281C5376AD00488C67 /* JCAddEventModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0BA7F4251C53766400488C67 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0BA7F42E1C53794F00488C67 /* JCAddEventNameCell.swift */,
+				0BA7F4301C5379D200488C67 /* JCAddEventDateCell.swift */,
+				0BA7F4321C5379EC00488C67 /* JCAddEventTimeCell.swift */,
+				0BA7F4341C537A1C00488C67 /* JCAddEventCategoryCell.swift */,
+				0BA7F4361C537A4100488C67 /* JCAddEventTopCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0BA7F42A1C53778200488C67 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0BA7F42C1C5377A200488C67 /* JCAddEventDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		0BA7F42B1C53778200488C67 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				0BA7F4381C537AF400488C67 /* JCAddEventNameItem.swift */,
+				0BA7F43A1C537B0800488C67 /* JCAddEventDateItem.swift */,
+				0BA7F43C1C537B1D00488C67 /* JCAddEventTimeItem.swift */,
+				0BA7F43E1C537B3000488C67 /* JCAddEventCategoryItem.swift */,
+				0BA7F4401C537B4400488C67 /* JCAddEventTopItem.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
 		0BADE59C1C31091800F61EAC /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +705,7 @@
 		0BBB36EA1C2D1788008795A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0BA7F4221C53763500488C67 /* Add */,
 				0BC70B581C51244A00359C4F /* Setting */,
 				0BF4155D1C4D26920048A1C5 /* Launch */,
 				0B9166741C3AC2F2005ADAD0 /* List */,
@@ -1091,12 +1178,15 @@
 				0BBB36C41C2CE667008795A6 /* AppDelegate.swift in Sources */,
 				0B329BB01C32984E003D7B5B /* JCEventCategory.swift in Sources */,
 				0BC70B671C51290D00359C4F /* JCSettingSwitchCell.swift in Sources */,
+				0BA7F4371C537A4100488C67 /* JCAddEventTopCell.swift in Sources */,
 				0B0291FE1C33789000C664E9 /* JCEventCategoryItem.swift in Sources */,
 				0BADE5A71C31272700F61EAC /* JCEventEditViewDataSource.swift in Sources */,
 				0B0292001C3378B600C664E9 /* JCEventCategoryCell.swift in Sources */,
+				0BA7F4411C537B4400488C67 /* JCAddEventTopItem.swift in Sources */,
 				0B5414D21C51C72000769F66 /* JCSettingSwitchItem.swift in Sources */,
 				0B5414CE1C51C6F300769F66 /* JCSettingSectionItem.swift in Sources */,
 				0B329BAB1C329695003D7B5B /* JCEventCategoryModel.swift in Sources */,
+				0BA7F43B1C537B0800488C67 /* JCAddEventDateItem.swift in Sources */,
 				0B9D31C41C30175200859525 /* JCEventManage.swift in Sources */,
 				0B5414D01C51C70700769F66 /* JCSettingSelectItem.swift in Sources */,
 				0B9067D91C2D4EDA0047FE4E /* JCEventDetailModel.swift in Sources */,
@@ -1105,7 +1195,11 @@
 				0BC70B5C1C51263900359C4F /* JCListVCL.swift in Sources */,
 				0B9D31C21C2FF3D200859525 /* JCEvent.swift in Sources */,
 				0B8BE26B1C2EC1BE00E59F1C /* JCUIViewExtension.swift in Sources */,
+				0BA7F4271C53768E00488C67 /* JCAddEventVCL.swift in Sources */,
+				0BA7F43D1C537B1D00488C67 /* JCAddEventTimeItem.swift in Sources */,
 				0BBB36E61C2D16A9008795A6 /* JCBaseModel.swift in Sources */,
+				0BA7F43F1C537B3000488C67 /* JCAddEventCategoryItem.swift in Sources */,
+				0BA7F4351C537A1C00488C67 /* JCAddEventCategoryCell.swift in Sources */,
 				0B329BA91C32967E003D7B5B /* JCEventCategoryVCL.swift in Sources */,
 				0BC70B631C5128D600359C4F /* JCSettingSectionCell.swift in Sources */,
 				0B98B32C1C3F857500B12DA6 /* JCListToDetailTransion.swift in Sources */,
@@ -1114,6 +1208,7 @@
 				0B98B3291C3F69A600B12DA6 /* LaunchVCL.swift in Sources */,
 				0B9D31C61C301E5800859525 /* JCStringExtension.swift in Sources */,
 				0B5414CC1C51C6C900769F66 /* JCSettingDataSource.swift in Sources */,
+				0BA7F4291C5376AD00488C67 /* JCAddEventModel.swift in Sources */,
 				0B63F59E1C3A54F100938C71 /* JCEventThemeSelectView.swift in Sources */,
 				0BADE5A21C311CC000F61EAC /* JCBaseTableViewVCL.swift in Sources */,
 				0BC70B651C5128F600359C4F /* JCSettingSelectCell.swift in Sources */,
@@ -1121,16 +1216,21 @@
 				0BE7F1791C2FC6960060B3C1 /* JCBaseButton.swift in Sources */,
 				0BBB36E41C2D1698008795A6 /* JCBaseVCL.swift in Sources */,
 				0B329BAE1C3296EB003D7B5B /* JCEventCategoryDataSource.swift in Sources */,
+				0BA7F4311C5379D200488C67 /* JCAddEventDateCell.swift in Sources */,
 				0BBB36CC1C2CE668008795A6 /* Memorable.xcdatamodeld in Sources */,
 				0B9166801C3AC471005ADAD0 /* JCListTableViewCell.swift in Sources */,
 				0B9067D71C2D44CC0047FE4E /* JCEventContentView.swift in Sources */,
 				0BADE5A01C310EC600F61EAC /* JCEventEditViewItem.swift in Sources */,
 				0B9067D01C2D2D270047FE4E /* JCUtility.swift in Sources */,
 				0B91667E1C3AC3DB005ADAD0 /* JCListModel.swift in Sources */,
+				0BA7F4331C5379EC00488C67 /* JCAddEventTimeCell.swift in Sources */,
 				0BD892D21C36C58100EF3D1B /* JCShareVCL.swift in Sources */,
+				0BA7F42D1C5377A200488C67 /* JCAddEventDataSource.swift in Sources */,
 				0B43DB151C44EEF1008630DB /* JCUIButtonExtension.swift in Sources */,
 				0B5414C81C51C68300769F66 /* JCSettingModel.swift in Sources */,
 				0B43DB131C44EBFF008630DB /* JCImageViewExtension.swift in Sources */,
+				0BA7F4391C537AF400488C67 /* JCAddEventNameItem.swift in Sources */,
+				0BA7F42F1C53794F00488C67 /* JCAddEventNameCell.swift in Sources */,
 				0BC70B611C51264900359C4F /* JCSettingVCL.swift in Sources */,
 				0BBA7F991C3D5B6C003FAEF7 /* JCDetailToListTransion.swift in Sources */,
 				0B8BE2651C2EB01A00E59F1C /* JCEventEditView.swift in Sources */,

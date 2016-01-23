@@ -18,6 +18,10 @@ class JCBaseTableViewVCL: JCBaseVCL ,UITableViewDelegate{
         self.tableView.tableFooterView = UIView(frame:CGRectZero)
     }
     
+    @IBAction func backAction(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (tableView.dataSource is JCBaseTableViewDataSource) {
             let dataSource:JCBaseTableViewDataSource? = tableView.dataSource as? JCBaseTableViewDataSource
