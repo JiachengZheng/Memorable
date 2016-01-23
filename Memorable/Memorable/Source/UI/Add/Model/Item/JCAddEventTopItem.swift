@@ -9,5 +9,5 @@
 import UIKit
 
 class JCAddEventTopItem: NSObject {
-
+    var on = false
 }

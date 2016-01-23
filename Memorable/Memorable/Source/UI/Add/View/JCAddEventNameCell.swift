@@ -10,6 +10,7 @@ import UIKit
 
 class JCAddEventNameCell: JCBaseTableViewCell {
 
+    @IBOutlet weak var textField: UITextField!
     override class func identifier() -> String {
         return "\(JCAddEventNameCell.self)"
     }
@@ -28,9 +29,9 @@ class JCAddEventNameCell: JCBaseTableViewCell {
     
     override func setObject (obj: AnyObject?) {
         super.setObject(obj)
-        guard let object = obj as? JCAddEventNameItem else{
-            return
-        }
+//        guard let object = obj as? JCAddEventNameItem else{
+//            return
+//        }
 
     }
     

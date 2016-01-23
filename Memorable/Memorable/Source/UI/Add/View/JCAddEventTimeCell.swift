@@ -10,6 +10,7 @@ import UIKit
 
 class JCAddEventTimeCell: JCBaseTableViewCell {
 
+    @IBOutlet weak var timeLabel: UILabel!
     override class func identifier() -> String {
         return "\(JCAddEventTimeCell.self)"
     }
@@ -28,9 +29,10 @@ class JCAddEventTimeCell: JCBaseTableViewCell {
     
     override func setObject (obj: AnyObject?) {
         super.setObject(obj)
-        guard let object = obj as? JCAddEventTimeItem else{
-            return
-        }
+//        guard let object = obj as? JCAddEventTimeItem else{
+//            return
+//        }
+//        timeLabel.text = object.time
         
     }
     

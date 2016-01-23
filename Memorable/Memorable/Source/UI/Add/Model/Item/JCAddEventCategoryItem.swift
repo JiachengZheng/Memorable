@@ -9,5 +9,5 @@
 import UIKit
 
 class JCAddEventCategoryItem: NSObject {
-
+    var category = "生活"
 }

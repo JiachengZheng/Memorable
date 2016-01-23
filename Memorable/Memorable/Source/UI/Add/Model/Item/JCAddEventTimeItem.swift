@@ -9,5 +9,5 @@
 import UIKit
 
 class JCAddEventTimeItem: NSObject {
-
+    var time = ""
 }

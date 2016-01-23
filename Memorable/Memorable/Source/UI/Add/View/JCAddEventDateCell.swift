@@ -10,6 +10,7 @@ import UIKit
 
 class JCAddEventDateCell: JCBaseTableViewCell {
 
+    @IBOutlet weak var dateLable: UILabel!
     override class func identifier() -> String {
         return "\(JCAddEventDateCell.self)"
     }
@@ -31,6 +32,7 @@ class JCAddEventDateCell: JCBaseTableViewCell {
         guard let object = obj as? JCAddEventDateItem else{
             return
         }
+        dateLable.text = object.date
         
     }
     

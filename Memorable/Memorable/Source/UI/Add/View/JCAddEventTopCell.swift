@@ -10,6 +10,7 @@ import UIKit
 
 class JCAddEventTopCell: JCBaseTableViewCell {
 
+    @IBOutlet weak var switchBtn: UISwitch!
     override class func identifier() -> String {
         return "\(JCAddEventTopCell.self)"
     }
@@ -31,6 +32,7 @@ class JCAddEventTopCell: JCBaseTableViewCell {
         guard let object = obj as? JCAddEventTopItem else{
             return
         }
+        switchBtn.on = object.on
         
     }
     

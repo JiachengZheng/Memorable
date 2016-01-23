@@ -10,6 +10,7 @@ import UIKit
 
 class JCAddEventCategoryCell: JCBaseTableViewCell {
 
+    @IBOutlet weak var categorylabel: UILabel!
     override class func identifier() -> String {
         return "\(JCAddEventCategoryCell.self)"
     }
@@ -31,6 +32,7 @@ class JCAddEventCategoryCell: JCBaseTableViewCell {
         guard let object = obj as? JCAddEventCategoryItem else{
             return
         }
+        categorylabel.text = object.category
         
     }
     

@@ -13,9 +13,12 @@ class JCAddEventModel: JCBaseModel {
         self.items.removeAll()
         let item1 = JCAddEventNameItem()
         let item2 = JCAddEventDateItem()
+        item2.date = dateToStr(NSDate())
         let item3 = JCAddEventTimeItem()
         let item4 = JCAddEventCategoryItem()
+        item4.category = "生活"
         let item5 = JCAddEventTopItem()
+        item5.on = false
         items = [item1,item2,item3,item4,item5]
         complete(nil)
     }

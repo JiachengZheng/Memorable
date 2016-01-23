@@ -72,6 +72,7 @@ class JCEventDetailVCL: JCBaseVCL {
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         if timer.valid{
             timer.fireDate =  NSDate.distantFuture()
         }
