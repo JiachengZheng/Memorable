@@ -41,7 +41,7 @@ class JCLaunchVCL: JCBaseVCL {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        performSelector("dissmiss", withObject: nil, afterDelay: 2.5)
+        performSelector("dissmiss", withObject: nil, afterDelay: 1.5)
     }
     
     func dissmiss(){

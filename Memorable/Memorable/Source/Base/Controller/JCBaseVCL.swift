@@ -24,6 +24,10 @@ class JCBaseVCL: UIViewController ,UIGestureRecognizerDelegate{
         super.viewWillAppear(animated)
         UIApplication.sharedApplication().statusBarStyle = .LightContent
     }
+    
+    func backAction(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

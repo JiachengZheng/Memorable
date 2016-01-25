@@ -186,6 +186,33 @@ func getImageFullPath(name: String) -> String{
     }
 }
 
+func loadTopEventDays() -> String{
+    let list = eventRealm.objects(JCEvent)
+    for event in list {
+        if event.isTop {
+            return intervalTimeFromDate(event.date + " " + event.time).0
+        }
+    }
+    if let event = list.first{
+        return intervalTimeFromDate(event.date + " " + event.time).0
+    }
+    return ""
+}
+
+func showIconBadge(){
+    let isShow = NSUserDefaults.standardUserDefaults().objectForKey("showIconBadge") as? String
+    var count = 0
+    let num = Int(loadTopEventDays()) ?? 0
+    if let isShow1 = isShow  {
+        if isShow1 == "yes"{
+            count = num
+        }
+    }else{
+        count = num
+    }
+    UIApplication.sharedApplication().applicationIconBadgeNumber = count
+}
+
 
 
 

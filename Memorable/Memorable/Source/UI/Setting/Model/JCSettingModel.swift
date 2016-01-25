@@ -15,13 +15,23 @@ class JCSettingModel: JCBaseModel {
         item1.text = "提醒"
         let item2 = JCSettingSwitchItem()
         item2.text = "开启通知"
-        item2.on = false
+        let setting = UIApplication.sharedApplication().currentUserNotificationSettings()
+        item2.on = true
+        if setting?.types.rawValue == 0{
+            item2.on = false
+        }
         let item3 = JCSettingSwitchItem()
         item3.text = "图标数字"
         item3.on = true
+        if setting?.types.rawValue == 0{
+            item3.on = false
+        }
         let item4 = JCSettingSwitchItem()
         item4.text = "置顶事件每日提醒"
         item4.on = true
+        if setting?.types.rawValue == 0{
+            item4.on = false
+        }
         let item5 = JCSettingSectionItem()
         item5.text = "排序"
         let item6 = JCSettingSelectItem()

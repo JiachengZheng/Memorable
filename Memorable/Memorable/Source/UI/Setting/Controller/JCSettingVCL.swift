@@ -7,9 +7,10 @@
 //
 
 import UIKit
-
+import RxCocoa
+import RxSwift
 class JCSettingVCL: JCBaseTableViewVCL {
-    
+    private var disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         model = JCSettingModel()
@@ -30,5 +31,77 @@ class JCSettingVCL: JCBaseTableViewVCL {
         tableView.dataSource = self.dataSource
         tableView.reloadData()
     }
+    
+    func setupUserNotification(on: Bool){
+        if on{
+            let setting = UIApplication.sharedApplication().currentUserNotificationSettings()
+            if setting?.types.rawValue == 0{
+                let alertViewController = UIAlertController(title: "未打开通知权限", message: "请到“设置-通知”中打开应用的允许通知权限", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: { [unowned self](action) -> Void in
+                    self.loadItem()
+                    })
+                let goAction = UIAlertAction(title: "去设置", style: .Default, handler: {[unowned self] (action) -> Void in
+                    self.loadItem()
+                    if let url = NSURL(string: UIApplicationOpenSettingsURLString){
+                        UIApplication.sharedApplication().openURL(url)
+                    }
+                    })
+                alertViewController.addAction(goAction)
+                alertViewController.addAction(cancelAction)
+                presentViewController(alertViewController, animated: true, completion: { () -> Void in
+                    
+                })
+                return
+            }
+        }
+        
+        var isShow = "false"
+        if on{
+            isShow = "yes"
+        }
+        NSUserDefaults.standardUserDefaults().setObject(isShow, forKey: "showIconBadge")
+        showIconBadge()
+    }
+    
+    func setupIconBadge(on: Bool){
+        if on{
+            setupUserNotification(on)
+        }
+        var isShow = "false"
+        if on{
+            isShow = "yes"
+        }
+        NSUserDefaults.standardUserDefaults().setObject(isShow, forKey: "showIconBadge")
+        showIconBadge()
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 1{
+            let cell = cell as! JCSettingSwitchCell
+            cell.swithBtn.rx_value.subscribe(onNext: {[unowned self] (on) -> Void in
+                self.setupUserNotification(on)
+            }).addDisposableTo(disposeBag)
+        }
+        if indexPath.row == 2{
+            let cell = cell as! JCSettingSwitchCell
+            cell.swithBtn.rx_value.subscribe(onNext: {[unowned self] (on) -> Void in
+                self.setupIconBadge(on)
+                }).addDisposableTo(disposeBag)
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

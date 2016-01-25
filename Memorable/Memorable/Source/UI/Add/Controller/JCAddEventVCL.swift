@@ -57,6 +57,12 @@ class JCAddEventVCL: JCBaseTableViewVCL {
         tableView.reloadData()
     }
     
+    func resetInputView(){
+        let cell1 = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as! JCAddEventNameCell
+        cell1.textField.resignFirstResponder()
+        showPickerView(false)
+    }
+    
     //MARK: 订阅信号
     func subscribe(){
         
@@ -89,8 +95,9 @@ class JCAddEventVCL: JCBaseTableViewVCL {
     }
     
     @IBAction func saveAction(sender: AnyObject) {
+        resetInputView()
         saveEvent()
-        self.navigationController?.popViewControllerAnimated(true)
+        performSelector("backAction", withObject: nil, afterDelay: 1)
     }
     
     func saveEvent(){
