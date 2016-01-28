@@ -32,60 +32,64 @@ class JCSettingVCL: JCBaseTableViewVCL {
         tableView.reloadData()
     }
     
-    func setupUserNotification(on: Bool){
-        if on{
-            let setting = UIApplication.sharedApplication().currentUserNotificationSettings()
-            if setting?.types.rawValue == 0{
-                let alertViewController = UIAlertController(title: "未打开通知权限", message: "请到“设置-通知”中打开应用的允许通知权限", preferredStyle: .Alert)
-                let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: { [unowned self](action) -> Void in
-                    self.loadItem()
-                    })
-                let goAction = UIAlertAction(title: "去设置", style: .Default, handler: {[unowned self] (action) -> Void in
-                    self.loadItem()
-                    if let url = NSURL(string: UIApplicationOpenSettingsURLString){
-                        UIApplication.sharedApplication().openURL(url)
-                    }
-                    })
-                alertViewController.addAction(goAction)
-                alertViewController.addAction(cancelAction)
-                presentViewController(alertViewController, animated: true, completion: { () -> Void in
-                    
+    func showGoSettingAlertView(){
+        let setting = UIApplication.sharedApplication().currentUserNotificationSettings()
+        if setting?.types.rawValue == 0{
+            let alertViewController = UIAlertController(title: "未打开通知权限", message: "请到“设置-通知”中打开应用的允许通知权限", preferredStyle: .Alert)
+            let cancelAction = UIAlertAction(title: "取消", style: .Cancel, handler: { [unowned self](action) -> Void in
+                self.loadItem()
                 })
-                return
-            }
+            let goAction = UIAlertAction(title: "去设置", style: .Default, handler: {[unowned self] (action) -> Void in
+                self.loadItem()
+                if let url = NSURL(string: UIApplicationOpenSettingsURLString){
+                    UIApplication.sharedApplication().openURL(url)
+                }
+                })
+            alertViewController.addAction(goAction)
+            alertViewController.addAction(cancelAction)
+            presentViewController(alertViewController, animated: true, completion: { () -> Void in
+                
+        })
         }
-        
-        var isShow = "false"
-        if on{
-            isShow = "yes"
-        }
-        NSUserDefaults.standardUserDefaults().setObject(isShow, forKey: "showIconBadge")
-        showIconBadge()
     }
     
     func setupIconBadge(on: Bool){
         if on{
-            setupUserNotification(on)
+            if !isUserOpenNotification(){
+               showGoSettingAlertView()
+                return
+            }
         }
-        var isShow = "false"
-        if on{
-            isShow = "yes"
-        }
+        let isShow = on ? "yes" : "false"
         NSUserDefaults.standardUserDefaults().setObject(isShow, forKey: "showIconBadge")
         showIconBadge()
+    }
+    
+    func setupTopEventNotification(on: Bool){
+        if on{
+            if !isUserOpenNotification(){
+                showGoSettingAlertView()
+                return
+            }
+        }
+        let isShow = on ? "yes" : "false"
+        NSUserDefaults.standardUserDefaults().setObject(isShow, forKey: "topEventNotification")
+        if !on{
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
+        }
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 1{
             let cell = cell as! JCSettingSwitchCell
             cell.swithBtn.rx_value.subscribe(onNext: {[unowned self] (on) -> Void in
-                self.setupUserNotification(on)
-            }).addDisposableTo(disposeBag)
+                self.setupIconBadge(on)
+                }).addDisposableTo(disposeBag)
         }
         if indexPath.row == 2{
             let cell = cell as! JCSettingSwitchCell
             cell.swithBtn.rx_value.subscribe(onNext: {[unowned self] (on) -> Void in
-                self.setupIconBadge(on)
+                self.setupTopEventNotification(on)
                 }).addDisposableTo(disposeBag)
         }
     }

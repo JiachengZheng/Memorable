@@ -13,25 +13,29 @@ class JCSettingModel: JCBaseModel {
         self.items.removeAll()
         let item1 = JCSettingSectionItem()
         item1.text = "提醒"
-        let item2 = JCSettingSwitchItem()
-        item2.text = "开启通知"
         let setting = UIApplication.sharedApplication().currentUserNotificationSettings()
-        item2.on = true
-        if setting?.types.rawValue == 0{
-            item2.on = false
-        }
         let item3 = JCSettingSwitchItem()
         item3.text = "图标数字"
         item3.on = true
-        if setting?.types.rawValue == 0{
-            item3.on = false
-        }
         let item4 = JCSettingSwitchItem()
         item4.text = "置顶事件每日提醒"
         item4.on = true
+        
         if setting?.types.rawValue == 0{
             item4.on = false
+            item3.on = false
         }
+        if let showIconBadge = NSUserDefaults.standardUserDefaults().objectForKey("showIconBadge") as? String{
+            if showIconBadge == "false"{
+                item3.on = false
+            }
+        }
+        if let topEventNotification = NSUserDefaults.standardUserDefaults().objectForKey("topEventNotification") as? String{
+            if topEventNotification == "false"{
+                item4.on = false
+            }
+        }
+    
         let item5 = JCSettingSectionItem()
         item5.text = "排序"
         let item6 = JCSettingSelectItem()
@@ -61,7 +65,7 @@ class JCSettingModel: JCBaseModel {
         let item16 = JCSettingSelectItem()
         item16.title = "版本"
         item16.detail = "1.0.0"
-        items = [item1,item2,item3,item4,item5,item6,item7,item8,item9,item10,item11,item12,item13,item14,item15,item16]
+        items = [item1,item3,item4,item5,item6,item7,item8,item9,item10,item11,item12,item13,item14,item15,item16]
         complete(nil)
     }
     

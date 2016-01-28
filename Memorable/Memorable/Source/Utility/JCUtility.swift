@@ -104,12 +104,12 @@ func standardDateFormat(str:String,style: NSDateFormatterStyle = .FullStyle) -> 
     }
 }
 
-func intervalTimeFromDate(str :String,formatter:String = "yyyy-MM-dd HH:mm") -> (String,String,String){
+func intervalTimeFromDate(str :String,formatter:String = "yyyy-MM-dd HH:mm",originDate: NSDate = NSDate() ) -> (String,String,String){
     let date1 = strToDate(str,formatter: formatter)
     guard let date = date1 else{
         return ("","","")
     }
-    let now = NSDate()
+    let now = originDate
     let totalSeconds = now.timeIntervalSinceDate(date)
     var minutes = Int((totalSeconds / 60) % 60)
     var hours = Int(totalSeconds / 3600)%24
@@ -213,6 +213,67 @@ func showIconBadge(){
     UIApplication.sharedApplication().applicationIconBadgeNumber = count
 }
 
+func registerLocalNotification(){
+    if let topEventNotification = NSUserDefaults.standardUserDefaults().objectForKey("topEventNotification") as? String{
+        if topEventNotification == "false"{
+            UIApplication.sharedApplication().cancelAllLocalNotifications()
+            return
+        }
+    }
+    let list = eventRealm.objects(JCEvent)
+    var topEvent1: JCEvent?
+    for event in list {
+        if event.isTop {
+            topEvent1 = event
+        }
+    }
+    guard let topEvent = topEvent1 else{
+        return
+    }
+    let eventDate = topEvent.date + " " + topEvent.time
+    let eventName = topEvent.name
+    let eventId = topEvent.id
+    UIApplication.sharedApplication().cancelAllLocalNotifications()
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        for i in 1...39{
+            let noti = UILocalNotification()
+            let fireDate = strToDate(dateToStr(NSDate().dateByAddingDays(i)) + " 08:00")
+            noti.fireDate = fireDate
+            noti.timeZone = NSTimeZone.localTimeZone()
+            var body = ""
+            if let d = strToDate(eventDate){
+
+                let hours = intervalTimeFromDate(dateToStr(fireDate!,formatter: "yyyy-MM-dd HH:mm"),originDate:strToDate(eventDate)! ).1
+                let minutes = intervalTimeFromDate(dateToStr(fireDate!,formatter: "yyyy-MM-dd HH:mm"),originDate:strToDate(eventDate)! ).2
+                let hourStr = Int(hours)! > 0 ? hours + "小时" : ""
+                let minuteStr = Int(minutes)! > 0 ? minutes + "分钟" : ""
+                
+                if d.isEarlierThan(fireDate){
+                    let intervalDays = d.daysEarlierThan(fireDate)
+                    let dayStr = intervalDays > 0 ? "\(intervalDays)" + "天" : ""
+                    body = eventName + "过去已经" + dayStr + hourStr +  minuteStr + "了"
+                }else{
+                    let intervalDays = d.daysLaterThan(fireDate)
+                    let dayStr = intervalDays > 0 ? "\(intervalDays)" + "天" : ""
+                    body = "还有" + dayStr + hourStr + minuteStr + "就是" + eventName + "了"
+                }
+            }
+            noti.alertBody = body
+            noti.userInfo = ["topEventId": eventId]
+            UIApplication.sharedApplication().scheduleLocalNotification(noti)
+        }
+        dispatch_async(dispatch_get_main_queue(), {
+        })
+    })
+}
+
+func isUserOpenNotification() -> Bool{
+    let setting = UIApplication.sharedApplication().currentUserNotificationSettings()
+    if setting?.types.rawValue == 0{
+        return false
+    }
+    return true
+}
 
 
 

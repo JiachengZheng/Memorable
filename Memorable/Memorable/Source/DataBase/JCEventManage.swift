@@ -19,8 +19,8 @@ class JCEventManage {
         
         let event = JCEvent(value:[getUUID(),"周六",getRecentSaturday(),"00:00","生活",false ,"background1"])
         let event1 = JCEvent(value:[getUUID(),"周日",getRecentSunday(),"00:00","生活",false,"background1"])
-        let event2 = JCEvent(value:[getUUID(),"周六","2014-12-12","00:00","生活",false,"background1"])
-        let event3 = JCEvent(value:[getUUID(),"周日","2015-12-12","00:00","生活",true,"background1"])
+        let event2 = JCEvent(value:[getUUID(),"14年双十二","2014-12-12","00:00","生活",false,"background1"])
+        let event3 = JCEvent(value:[getUUID(),"15年双十二","2015-12-12","00:00","生活",true,"background1"])
         let _ = try? eventRealm.write { () -> Void in
             eventRealm.add([event,event1,event2,event3])
         }
