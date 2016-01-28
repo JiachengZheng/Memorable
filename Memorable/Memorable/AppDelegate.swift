@@ -34,13 +34,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func loadQuickActionsShortcutItems(){
         if #available(iOS 9.0, *) {
-            let topEventIcon = UIApplicationShortcutIcon(templateImageName: "3d_topIcon")
-            let topEventItem = UIApplicationShortcutItem(type: "", localizedTitle: "周六", localizedSubtitle: "还剩2天", icon: topEventIcon, userInfo: nil)
+
             let caculateIcon = UIApplicationShortcutIcon(templateImageName: "3d_caculateIcon")
             let caculateItem = UIApplicationShortcutItem(type: "", localizedTitle: "日期计算", localizedSubtitle: "", icon: caculateIcon, userInfo: nil)
             let addIcon = UIApplicationShortcutIcon(templateImageName: "3d_addIcon")
             let addItem = UIApplicationShortcutItem(type: "", localizedTitle: "新增事件", localizedSubtitle: "", icon: addIcon, userInfo: nil)
-            UIApplication.sharedApplication().shortcutItems = [addItem,caculateItem,topEventItem]
+            var itemsArr = [addItem,caculateItem]
+            
+            let list = eventRealm.objects(JCEvent)
+            var topEvent1: JCEvent?
+            for event in list {
+                if event.isTop {
+                    topEvent1 = event
+                }
+            }
+            if let topEvent = topEvent1 {
+                let topEventIcon = UIApplicationShortcutIcon(templateImageName: "3d_topIcon")
+                let eventDate = topEvent.date + " " + topEvent.time
+                let days = intervalTimeFromDate(eventDate).0
+                let topEventItem = UIApplicationShortcutItem(type: "", localizedTitle: topEvent.name, localizedSubtitle: "还剩\(days)天", icon: topEventIcon, userInfo: nil)
+                itemsArr.append(topEventItem)
+            }
+           
+            UIApplication.sharedApplication().shortcutItems = itemsArr
         } else {
             // Fallback on earlier versions
         }
@@ -62,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         showIconBadge()
         registerLocalNotification()
+        loadQuickActionsShortcutItems()
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
